@@ -1,13 +1,330 @@
-<!doctype html>
-<html lang="en">
+
+
+<!DOCTYPE html>
+
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Dmitriev Dmitrii </title>
+  <link href="css/normalize.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/d09bc78c43.js" crossorigin="anonymous"></script>
+  <script src="telegramform.js"defer></script>
+  <script src="main.js" defer></script>
+  
 </head>
-<body>
-<h1>hello world</h1>
+
+<body >
+
+  <header class="header">
+
+    <nav class="menu__list">
+      <a class="menu__item underline" href="#portfolio__list">Портфолио</a>
+      <a class="menu__item underline" href="#form-contact">Контакты</a>
+
+<label class="switch">
+  <input type="checkbox" name="theme" id="darck-theme">
+  <span class="slider round"></span>
+</label>
+
+    </nav>
+
+  </header>
+
+<div class="my-name__wrapper">
+  <div class="my-name">
+
+<picture >
+  <source class="my-name__photo" srcset="img/dmitriev__dmitrii.webp" type="image/webp">
+  <img class="my-name__photo" alt="dmitriev__dmitrii"  src="img/dmitriev__dmitrii.jpg">
+</picture>
+
+<div class="my-name__about">
+<h2> Dmitriev Dmitrii</h2>
+  <p>junior Frontend </p>
+      <a class="btn" href="#form-contact">Связаться</a>
+    </div>
+  </div>
+
+  <div class="code">
+    console.log(dmitrievd);<br>
+    {<br>
+
+"name": "dmitrii",<br>
+"surename":dmitriev,<br>
+"age": "28",<br>
+"location:" Saint-Petersburg,<br>
+"position":juniorFrontend,...<br>
+}
+  </div>
+</div>
+
+  <div class="skills">
+
+    <div class="title-wrapper">
+      <h2>Технологии, инструменты</h2>
+    </div>
+
+<div class="skills__list">
+
+  <div class="skills__item">
+    <i class="fab fa-html5 fa-3x"></i>
+    Html
+  </div>
+
+  <div class="skills__item">
+    <i class="fab fa-css3-alt fa-3x"></i>Css
+  </div>
+
+  <div class="skills__item">
+    <i class="fab fa-sass fa-3x"></i>Scss
+  </div>
+
+<div class="skills__item">
+  <i class="fab fa-js fa-3x"></i>Java Script
+</div>
+
+<!-- <div class="skills__item">
+  <i class="fab fa-vuejs fa-3x"></i>VueJS
+</div> -->
+
+<div class="skills__item">
+  <i class="fab fa-gulp fa-3x"></i>
+  Gulp 
+</div>
+
+</div>
+</div>
+
+  <div class="about">
+<div class="about__list">
+
+  <div class="about__item">
+    <ul> <h4 class="about__item-title">Коротко о себе </h4>
+
+      <li class="about__item-li">Я самоучка.Хорошо умею искать информацию</li>
+      <li class="about__item-li">Главный установщик "windows" в классе</li>
+      <li class="about__item-li">В студенчестве был сис-админом класса информатики университета</li>
+      <li class="about__item-li">Владение  Английским на уровне elementary,могу читать документацию</li>   
+
+
+    </ul>
+
+  </div>
+  <div class="about__item">
+    <ul>   <h4 class="about__item-title">О подходе к работе</h4>
+  <li class="about__item-li">Всегда верстаю Mobile First</li> 
+  <li class="about__item-li">Нравится Ui, стараюсь делать удобно</li>
+  <li class="about__item-li">Пользусь БЭМ</li>
+  <li class="about__item-li">Git (десктоп)</li>
+  <li class="about__item-li">Я еще не выбрал фрейморк JS (изучаю Vue), хочу подстроиться под место работы</li>
+
+</ul>
+</div>
+
+  <div class="about__item">
+    <ul> 
+      <h4 class="about__item-title">Пожелания к работе</h4>
+      <li class="about__item-li">Хотелось бы иметь возожностью работать как в офисе так и удаленно</li>
+      <li class="about__item-li">Мне нужен наставник (Очень быстро учусь с наставником)</li>
+      <li class="about__item-li">Не интересует фриланс или проектная занятость</li>
+      <li class="about__item-li">Бесплатно работать или проходить стажировку не стану</li> 
+    </ul>
+  </div>
+
+</div>
+  </div>
+  <div class="portfolio">
+
+    <div class="title-wrapper">
+      <h2>Портфолио</h2>
+</div>
+
+<div class="portfolio__list" id="portfolio__list">
+
+  <div class="portfolio__item">
+    <a  class="portfolio__site-link" target="blank" href="https://dmitrievdmitrii.ru/portfolio/Kino-INFO/" font-link="fas fa-external-link-square-alt">
+    <h3 class="portfolio__title">Кино-INFO</h3>
+    <span class="portfolio__subtitle">сайт с поиском фильмов</span>
+    <picture >
+    <source class="portfolio__img" srcset="img/search-bg.webp" type="image/webp">
+    <img class="portfolio__img" alt="Kino-INFO" src="img/search-bg.png">
+    </picture>
+    </a>
+    <ul class="portfolio__item-about-list">
+    <li class="portfolio__item-about">Работа с API</li>
+    <li class="portfolio__item-about">Асинхронный код</li>
+    <li class="portfolio__item-about">Прелоадеры</li>
+    <li class="portfolio__item-about">Работа с массивами, чистый JS</li>
+    </ul>
+    <a class="portfolio__git-link "  target="blank" href="https://github.com/dmitriev-dmitrii/kino-INFO"><i class="fa fa-github"></i>&nbsp;&nbsp;Код&nbsp;на&nbsp;GitHub</a> 
+    </div>
+    
+  <div class="portfolio__item">
+    <a  class="portfolio__site-link" target="blank" href="yandex.ru" font-link="fas fa-external-link-square-alt">
+    <h3 class="portfolio__title">&&&</h3>
+    <span class="portfolio__subtitle">Игра в кости на чистом JS</span>
+    <picture >
+    <source class="portfolio__img" srcset="img/dice.webp" type="image/webp">
+    <img class="portfolio__img" alt="diceGame" src="img/dice.png">
+    </picture>
+    </a>
+    <ul class="portfolio__item-about-list">
+    <li class="portfolio__item-about">localStore</li>
+    <li class="portfolio__item-about">Анимации</li>
+    <li class="portfolio__item-about">Работа с числами JS</li>
+    <li class="portfolio__item-about">Случайные вычисления(Random)</li>
+    </ul>
+    <a class="portfolio__git-link "  target="blank" href=""><i class="fa fa-github"></i>&nbsp;&nbsp;Код&nbsp;на&nbsp;GitHub</a> 
+    </div>
+  <div class="portfolio__item">
+    <a  class="portfolio__site-link" target="blank" href="https://dmitrievdmitrii.ru/portfolio/weatherApp/" font-link="fas fa-external-link-square-alt">
+    <h3 class="portfolio__title">weatherApp</h3>
+    <span class="portfolio__subtitle">Приложение погоды VueJS</span>
+    <picture >
+    <source class="portfolio__img" srcset="img/weatherApp.webp" type="image/webp">
+    <img class="portfolio__img" alt="diceGame" src="img/weatherApp.png">
+    </picture>
+    </a>
+    <ul class="portfolio__item-about-list">
+    <li class="portfolio__item-about">Геолокация</li>
+    <li class="portfolio__item-about"> Api</li>
+    <li class="portfolio__item-about">VueJS</li>
+
+    </ul>
+    <a class="portfolio__git-link "  target="blank" href="https://github.com/dmitriev-dmitrii/weatherApp"><i class="fa fa-github"></i>&nbsp;&nbsp;Код&nbsp;на&nbsp;GitHub</a> 
+    </div>
+
+  <div class="portfolio__item">
+    <a  class="portfolio__site-link" target="blank" href="https://dmitrievdmitrii.ru/portfolio/jug/Index.html" font-link="fas fa-external-link-square-alt">
+    <h3 class="portfolio__title">Jug.ru</h3>
+    <span class="portfolio__subtitle">It Конференции</span>
+    <picture >
+    <source class="portfolio__img" srcset="img/jug.webp" type="image/webp">
+    <img class="portfolio__img" alt="jug" src="img/jug.png">
+    </picture>
+    </a>
+    <ul class="portfolio__item-about-list">
+    <li class="portfolio__item-about">Вложенные модальные окна</li>
+    <li class="portfolio__item-about">Валидация форм JS</li>
+    <li class="portfolio__item-about">Анимация</li>
+    <li class="portfolio__item-about">Слайдер</li>
+    </ul>
+    <a class="portfolio__git-link "  target="blank" href="https://github.com/dmitriev-dmitrii/jug"><i class="fa fa-github"></i>&nbsp;&nbsp;Код&nbsp;на&nbsp;GitHub</a> 
+    </div>
+
+  <div class="portfolio__item">
+    <a  class="portfolio__site-link" target="blank" href="https://dmitrievdmitrii.ru/portfolio/dice_game/dice-game.html" font-link="fas fa-external-link-square-alt">
+    <h3 class="portfolio__title">dice-Game</h3>
+    <span class="portfolio__subtitle">Игра в кости на чистом JS</span>
+    <picture >
+    <source class="portfolio__img" srcset="img/dice.webp" type="image/webp">
+    <img class="portfolio__img" alt="diceGame" src="img/dice.png">
+    </picture>
+    </a>
+    <ul class="portfolio__item-about-list">
+    <li class="portfolio__item-about">localStore</li>
+    <li class="portfolio__item-about">Анимация</li>
+    <li class="portfolio__item-about">Работа с числами JS</li>
+    <li class="portfolio__item-about">Случайные вычисления(Random)</li>
+    </ul>
+    <a class="portfolio__git-link "  target="blank" href="https://github.com/dmitriev-dmitrii/dice_game"><i class="fa fa-github"></i>&nbsp;&nbsp;Код&nbsp;на&nbsp;GitHub</a> 
+    </div>
+
+  <div class="portfolio__item">
+    <a  class="portfolio__site-link" target="blank" href="https://dmitrievdmitrii.ru/portfolio/Advocatus" font-link="fas fa-external-link-square-alt">
+    <h3 class="portfolio__title">Annalise Keating</h3>
+    <span class="portfolio__subtitle">Сайт юридического бюро </span>
+    <picture >
+    <source class="portfolio__img" srcset="img/Annalise_Keating.webp" type="image/webp">
+    <img class="portfolio__img" alt="Annalise_Keating" src="img/Annalise_Keating.png">
+    </picture>
+    </a>
+    <ul class="portfolio__item-about-list">
+    <li class="portfolio__item-about">Верстка mobile first</li>
+    <li class="portfolio__item-about">Аккордион</li>
+    <li class="portfolio__item-about">Адаптивность,кроссбраузерность</li>
+    </ul>
+    <a class="portfolio__git-link "  target="blank" href="https://github.com/dmitriev-dmitrii/Advocatus"><i class="fa fa-github"></i>&nbsp;&nbsp;Код&nbsp;на&nbsp;GitHub</a> 
+    </div>
+  
+
+<div class="portfolio__item">
+<a  class="portfolio__site-link" target="blank" href="https://dmitrievdmitrii.ru/portfolio/Poland__Travel" font-link="fas fa-external-link-square-alt">
+<h3 class="portfolio__title">Poland-travel</h3>
+<span class="portfolio__subtitle">Туристические путевки</span>
+<picture >
+<source class="portfolio__img" srcset="img/Poland-travel.webp" type="image/webp">
+<img class="portfolio__img" alt="Poland-travel" src="img/Poland-travel.png">
+</picture>
+</a>
+<ul class="portfolio__item-about-list">
+<li class="portfolio__item-about">Верстка mobile first</li>
+<li class="portfolio__item-about">Свои Анимации</li>
+<li class="portfolio__item-about">Адаптивнсть,кроссбраузерность</li>
+</ul>
+
+<a class="portfolio__git-link" target="blank" href="https://github.com/dmitriev-dmitrii/Poland__Travel"><i class="fa fa-github"></i>&nbsp;&nbsp;Код&nbsp;на&nbsp;GitHub</a> 
+</div>
+
+</div>
+
+</div>
+<div class="form__wrapper">
+<form id="form-contact" method="POST" class="form" autocomplete="off" enctype="multipart/form-data">
+  <div>
+    <h2>Контакты</h2>
+    <p>Вы всегда можете со мной связаться 
+      <a  target="blank" href="whatsapp://send?phone=79111795751">WhatsApp</a> или
+      <a target="blank" href="https://t.me/Dmitrev_Dmitrii">Telegram</a>.</p>
+    </div>
+  <label for="name">Ваше имя</label>
+  <input class="form__input"  name="name" id="name" type="text"  tabindex="0">
+  <label for="phone">Телефон</label>
+  <input class="form__input"  name="phone"  id="phone" type="tel"  tabindex="0" pattern="^[+ 0-9]+$" title="89111795751" >
+  <label for="email" >Email</label>
+  <input class="form__input" class="form__input" type="email" name="email" id="email" >
+  <label  for="message">Сообщение</label>
+  <textarea name="message" class="form__input" id="message" cols="20" rows="5"></textarea>
+  <input  type="submit" class="btn" value="Отправить"><span class="status-message">status-message</span>
+</form>
+</div>
+
+
+  <footer class="footer">
+
+<div class="footer__body">
+    <div class="footer__top">
+      <h4>
+        <span class="first">Dmitriev</span>
+        <span class="second">Dmitrii</span>
+      </h4>
+      <p>
+        Санкт-Петербург, м. Садовая,  готов к командировкам.<br>
+        В данный момент нахожусь в поиске работы.
+      </p>
+
+    </div>
+
+    <div class="footer__bottom">
+      <h4 class="footer__title">Контакты</h4>
+      <p>Вы сможете найти меня:</p>
+      <div class="social-icons__list">
+        <a class="social-icons__item" href="https://t.me/Dmitrev_Dmitrii" target="blank">
+          <i class="fab fa-telegram-plane fa-2x"></i>
+        </a>
+        <a class="social-icons__item" href="https://github.com/dmitriev-dmitrii/" target="blank">
+          <i class="fa fa-github fa-2x"></i>
+        </a>
+        <a class="social-icons__item" href="https://vk.com/mr.dmitrievdmitrii" target="blank">
+          <i class="fab fa-vk fa-2x"></i>
+        </a>
+
+      </div>
+    </div>
+  </div>
+  </footer>
+
 </body>
-</html>
