@@ -1,18 +1,16 @@
 
-
 document.querySelector(".form").onsubmit = (event) => 
 {
-  
+
 event.preventDefault();
 
 let message= event.target.querySelector('.status-message');
 let data = new FormData(event.target);
 
-message.innerHTML=(`Отправка формы...`)
+message.innerHTML=(`Отправка формы...`);
 message.style.cssText = 'color: #f9ae3f;';
 
 sendTelegramRequest(data)
-
 .then(data =>
 
 printStatusMessage(data,message)
@@ -24,7 +22,6 @@ printStatusMessage(data,message)
 
 function sendTelegramRequest(form) 
 {
-
   return fetch( 'send-message-to-telegram.php', {
 
     method: 'POST',
@@ -59,14 +56,12 @@ setTimeout(() =>
 {
           messageHtml.innerHTML=(``+response.statusMesage+``)
           messageHtml.style.cssText = 'color: #De5050;';
-
 }
 
 else 
 {
   messageHtml.innerHTML=('Что то пошло не так')
   messageHtml.style.cssText = 'color: #De5050;';
-
 }
 }
 
