@@ -1,4 +1,7 @@
 
+
+
+
 document.querySelector(".form").onsubmit = (event) => 
 {
 
@@ -19,7 +22,7 @@ printStatusMessage(data,message)
   .catch(err => console.log(err))
 }
 
-
+// отправка в php файл
 function sendTelegramRequest(form) 
 {
   return fetch( 'send-message-to-telegram.php', {
@@ -39,7 +42,9 @@ function sendTelegramRequest(form)
     })
   })
 }
+// отправка в php файл End
 
+// статус
 function printStatusMessage(response,messageHtml) 
 {
 
@@ -65,3 +70,5 @@ else
 }
 }
 
+
+// статус END

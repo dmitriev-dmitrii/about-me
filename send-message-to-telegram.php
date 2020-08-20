@@ -65,6 +65,6 @@ $chat_id = "-302509922";
         echo json_encode($msgs);
     }
 } else {
-  header ("Location: /");
+  // header ("Location: /");
 }
 ?>
