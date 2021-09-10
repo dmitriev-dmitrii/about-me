@@ -3,7 +3,7 @@
   <div class="form__wrapper">
     <form id="form-contact" method="POST" class="form" autocomplete="on" enctype="multipart/form-data">
       <legend>
-        <h2 class="title">Контакты</h2>
+        <h2 id="contacts" class="title">Контакты</h2>
         <p>Вы всегда можете со мной связаться
           <a target="blank" class="link" href="whatsapp://send?phone=79111795751">WhatsApp</a> или
           <a target="blank" class="link" href="https://t.me/Dmitrev_Dmitrii">Telegram</a>.

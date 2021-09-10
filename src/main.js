@@ -1,15 +1,16 @@
 import { createApp } from 'vue';
 import App from './App.vue';
-import router from './router';
+
+
+const app = createApp(App)
 
 // @ is an alias to /src
-
-const app = createApp(App).use(router);
 // global components
+
 import Description from '@/components/Description.vue';
 app.component('Description',Description);
 
-
+// end global components
 
 app.mount('#app');
 

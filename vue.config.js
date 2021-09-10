@@ -1,5 +1,17 @@
+'use strict';
+
+const path = require('path');
+
+function resolve(dir) {
+  return path.join(__dirname, dir);
+}
 
 module.exports = {
+
+	publicPath: process.env.NODE_ENV === 'production'
+    ? './'
+    : '/'
+	,
 
 	devServer: {
 		open: true,
@@ -16,6 +28,9 @@ module.exports = {
 	},
 	    // 
 
+// svg sprite
 
+
+// end  svg sprite
 
 };

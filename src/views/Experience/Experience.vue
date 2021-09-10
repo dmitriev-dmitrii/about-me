@@ -1,9 +1,9 @@
 <template>
-  <div>
+
 <WorkExperience/>
 
 <Portfolio/>
-</div>
+
 </template>
 
 <script>

@@ -1,16 +1,14 @@
 
 <template>
   <div class="portfolio">
-    <h2 class="title">Портфолио</h2>
+    <h2 id="experience" class="title">Портфолио</h2>
 
     <div class="portfolio__list contanier">
       <PortfolioItem />
       <PortfolioItem /> 
-      <PortfolioItem /> 
-      <PortfolioItem /> 
-      <PortfolioItem />
-      <PortfolioItem /> 
-      <PortfolioItem /> 
+
+
+
     </div>
   </div>
 </template>

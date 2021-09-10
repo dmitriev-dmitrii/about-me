@@ -16,8 +16,8 @@
 
 <script>
 
-import MyName from "@/views/Home/MyName.vue";
-import HardSkills from "@/views/Home/HardSkills.vue";
+import MyName from "@/views/AboutMe/MyName.vue";
+import HardSkills from "@/views/AboutMe/HardSkills.vue";
 
 
 export default {

@@ -4,9 +4,8 @@
 
     <nav id="nav" class="nav contanier ">
 	<ul class="nav__list">
-        <li class="nav__item ">  <router-link class="underline" to="/">Главная</router-link></li>
-        <li class="nav__item ">  <router-link class="underline"  to="/Experience">Опыт</router-link></li>
-        <li class="nav__item ">  <router-link class="underline"  to="/contacts" >Контакты</router-link></li>
+        <li class="nav__item ">  <a class="underline"  href="/#experience">Опыт</a></li>
+        <li class="nav__item ">  <a class="underline"  href="/#contacts" >Контакты</a></li>
         <li class="nav__item "><DarkThemeCheckBox/> </li>
     </ul>
 
@@ -65,17 +64,6 @@
 
 }
 
-.nav__item a.router-link-active 
-{
--webkit-text-stroke:.1rem ;
-text-shadow:0 0 .1rem #37f093 ;
-user-select: none;
-opacity: 0.5;
-pointer-events: none;
-background-size: 100% .3rem;
-
-outline-color: currentColor;
-}
 
 
 </style>

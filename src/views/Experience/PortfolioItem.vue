@@ -37,8 +37,6 @@
 {
 
 min-width: 30rem;
-flex:calc(33% -1rem);
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -64,6 +62,10 @@ overflow: hidden;
 &:focus-within
 {
       box-shadow:  0 0 0 0 transparent;
+}
+&:last-child
+{
+  margin-right: auto;
 }
 }
 
