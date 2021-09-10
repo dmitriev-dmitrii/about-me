@@ -1,10 +1,10 @@
 <template>
 
-<!-- 
-<Description/> -->
 
-<div class="description-wrapper contanier">
-<h3 class="title underline">ex</h3>
+
+
+<description></description>
+<!-- <h3 class="title underline">ex</h3>
 
 <ul class="description">
   <li><h3>Троицкий мост</h3></li>
@@ -18,9 +18,9 @@
 </ul>
 <p class="description">
 asdfghjkl
-</p>
+</p> -->
 
-</div>
+
 
 </template>
 

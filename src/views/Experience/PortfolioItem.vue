@@ -24,7 +24,7 @@
         </ul>
 
         <a class="portfolio__git-link " target="blank" href="https://github.com/dmitriev-dmitrii/weatherApp">
-        Код на GitHub </a>
+        <SvgIcon name="github"></SvgIcon> Код на GitHub </a>
       
       </div>
 
@@ -35,8 +35,11 @@
 
 .portfolio__item 
 {
+@supports not (gap:1em) {
+margin: 1em;
+}
 
-min-width: 30rem;
+ width: 30rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -49,24 +52,18 @@ min-width: 30rem;
 
   background:$bgColor2;
 
-color: white;
-overflow: hidden;
- margin-bottom: 1rem;
+  color: white;
+  overflow: hidden;
+
 
 
  transition: all .2s ease;
-@media (min-width: 575.98px){ 
-  margin: 1rem;
- }
 
 &:focus-within
 {
       box-shadow:  0 0 0 0 transparent;
 }
-&:last-child
-{
-  margin-right: auto;
-}
+
 }
 
 .portfolio__site-link 
@@ -212,6 +209,7 @@ font-weight: bold;
 transition: all .2s linear;
   border-radius: 0  0  .7rem  .7rem;
 
+
     &:hover,&:focus
   {
     color: $mainAccentColor;
@@ -224,5 +222,14 @@ box-shadow: 0 0 0 .3rem $mainAccentColor inset;
 outline: none;
 }
 
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.portfolio__git-link .svg-icon
+{
+
+height: 1.4em;
+width: 2em;
 }
 </style>

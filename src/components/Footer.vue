@@ -19,13 +19,13 @@
 
         <div class="footer__social-list">
           <a class="footer__social-item" href="https://t.me/Dmitrev_Dmitrii" target="blank">
-            <i class="fab fa-telegram-plane fa-2x"></i>
+                <SvgIcon name="telegram"></SvgIcon>
           </a>
           <a class="footer__social-item" href="https://github.com/dmitriev-dmitrii/" target="blank">
-            <i class="fa fa-github fa-2x"></i>
+              <SvgIcon name="github"></SvgIcon>
           </a>
           <a class="footer__social-item" href="https://vk.com/mr.dmitrievdmitrii" target="blank">
-            <i class="fab fa-vk fa-2x"></i>
+          <SvgIcon name="vk"></SvgIcon>
           </a>
         </div>
 
@@ -85,20 +85,31 @@
   display: flex;
 }
 .footer__social-item {
-  text-decoration: none;
-  margin: 0.3em;
-  color: #fff;
+height: 2em;
+width:  2em;
+margin: 0.3em;
 
+transition: all .2s linear;
   &:hover,
   &:focus {
     color: $minorAccentColor;
     text-shadow: 0 5px 7px;
+    filter: drop-shadow( 0 .5rem .7rem);
   }
 
   &:nth-of-type(even):hover,
-  &:focus {
+  &:nth-of-type(even):focus 
+    {
     color: #33c7ef;
   }
+
+}
+.footer__social-item .svg-icon
+
+{
+height: 90%;
+width: 90%;
+
 }
 
 </style>

@@ -4,31 +4,34 @@
       <h2 class="title">Технологии, инструменты</h2>
 
     <div class="skills__list contanier">
+        
 
       <div class="skills__item">
-        <i class="fab fa-html5 fa-3x"></i>
-        Html
+        <SvgIcon name="html5"></SvgIcon>
+        Html   
+      </div>
+          
+      <div class="skills__item">
+        <SvgIcon name="css"></SvgIcon>
+      Scss/postCss
+
       </div>
 
       <div class="skills__item">
-        <i class="fab fa-css3-alt fa-3x"></i>Css
+        <SvgIcon name="js"></SvgIcon> JS
+      </div>
+      <div class="skills__item">
+      <SvgIcon name="gulp"></SvgIcon>    Gulp
+      </div>
+      <div class="skills__item">
+      <SvgIcon name="webpack"></SvgIcon> Webpack
       </div>
 
       <div class="skills__item">
-        <i class="fab fa-sass fa-3x"></i>Scss
-      </div>
+  <SvgIcon name="vuejs"></SvgIcon> VueJS
+  </div>
 
-      <div class="skills__item">
-        <i class="fab fa-js fa-3x"></i>Java Script
-      </div>
 
-      <div class="skills__item">
-  <i class="fab fa-vuejs fa-3x"></i>VueJS
-</div>
-
-      <div class="skills__item">
-        WebpackLogo
-      </div>
     </div>
   </div>
 
@@ -78,5 +81,16 @@
   color: $titleTxtColor;
   border: 1px solid #efefef;
 }
+.skills__item .svg-icon
+{
+height: 3em;
+width: 3em;
+
+stroke:transparent;
+fill: currentColor;
+
+}
+
+
 
 </style>

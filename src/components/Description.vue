@@ -31,7 +31,7 @@ p here Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, ipsa
 }
 
 .description-wrapper .title {
-  margin: 1rem 0;
+
   display: inline-block;
 
   // перенастраивает свойства из класса 'underline'
@@ -45,7 +45,7 @@ p here Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, ipsa
     font-size: .9em;
   &:last-child{
   border-bottom: #efefef 1px solid;
-padding-bottom:1rem ;
+  padding-bottom:1rem ;
   }
 
 }
@@ -53,7 +53,7 @@ padding-bottom:1rem ;
 ul.description,p.description
 {
     line-height: 1.3em;
-    margin-bottom: 1em;
+    margin-top: 1em ;
 }
 
 ul.description > li

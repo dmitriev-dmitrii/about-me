@@ -2,14 +2,6 @@
 <MyName/>
 <HardSkills/>
 
-<Description/>
-
-<SvgSprite
-  symbol="icons-dashboard"
-  size="0 0 24 24"
-  role="presentation"
-  class="icon--inline"
-/>
 
 </template>
 
