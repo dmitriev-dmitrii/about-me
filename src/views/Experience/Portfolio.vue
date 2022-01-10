@@ -2,20 +2,20 @@
 <template>
   <div class="portfolio">
     <h2 id="experience" class="title">Портфолио</h2>
-<div class="contanier">
+    <div class="contanier">
     <div class="portfolio__list ">
-      <PortfolioItem />
-      <PortfolioItem /> 
-            <PortfolioItem />
-      <PortfolioItem /> 
-            <PortfolioItem />
-      <PortfolioItem /> 
+        <PortfolioItem />
+        <PortfolioItem /> 
+        <PortfolioItem />
+        <PortfolioItem /> 
+        <PortfolioItem />
+      </div>
     </div>
-</div>
   </div>
 </template>
 
 <script>
+
 import PortfolioItem from "@/views/Experience/PortfolioItem.vue";
 
 export default {

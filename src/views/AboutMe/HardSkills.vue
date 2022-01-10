@@ -1,11 +1,8 @@
 <template>
   <div class="skills">
-
-      <h2 class="title">Технологии, инструменты</h2>
-
+    <h2 class="title">Технологии, инструменты</h2>
     <div class="skills__list contanier">
         
-
       <div class="skills__item">
         <SvgIcon name="html5"></SvgIcon>
         Html   
@@ -14,9 +11,7 @@
       <div class="skills__item">
         <SvgIcon name="css"></SvgIcon>
       Scss/postCss
-
       </div>
-
       <div class="skills__item">
         <SvgIcon name="js"></SvgIcon> JS
       </div>
@@ -26,10 +21,9 @@
       <div class="skills__item">
       <SvgIcon name="webpack"></SvgIcon> Webpack
       </div>
-
       <div class="skills__item">
-  <SvgIcon name="vuejs"></SvgIcon> VueJS
-  </div>
+      <SvgIcon name="vuejs"></SvgIcon> VueJS
+    </div>
 
 
     </div>
@@ -90,7 +84,6 @@ stroke:transparent;
 fill: currentColor;
 
 }
-
 
 
 </style>
