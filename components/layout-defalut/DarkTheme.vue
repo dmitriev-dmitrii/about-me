@@ -1,61 +1,63 @@
 <template>
-  <label  id="darck-theme-label" :class="{ active : darkTheme }">
-    <input  v-model="darkTheme" aria-label="сменить расцветку сайта" type="checkbox"  @input="setTheme"   />
+  <label  id='darck-theme-label' :class='{ active : darkTheme }'>
+    <input  v-model='darkTheme' aria-label='сменить расцветку сайта' type='checkbox'   />
   </label>
 </template>
 
 <script>
 export default 
-
 {
-data: ()=> {
-  return{
-    darkTheme:true,
+data() {
+    return {
+        darkTheme:true,
+    }
+},
+
+mounted() {
+this.testDefalutTheme()
+},
+watch: {
+    darkTheme: function () {
+        // add/remove class to/from html tag
+        let htmlElement = document.documentElement;
+        if (this.darkTheme) {
+            localStorage.setItem('dark-theme', 'true');
+            htmlElement.setAttribute('dark-theme', 'true');
+        } else {
+            localStorage.setItem('dark-theme', 'false');
+            htmlElement.setAttribute('dark-theme', 'false');
+        }
+    }
+},
+methods:{
+  testDefalutTheme : function () {
+    let htmlElement = document.documentElement;
+    let localStorageDarkTheme = localStorage.getItem('dark-theme');
+    let isDarkDefalut = !!window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if ( localStorageDarkTheme === 'true') {
+        htmlElement.setAttribute('dark-theme', 'true');
+        this.darkTheme = true;
+        return;
+    } 
+    if ( localStorageDarkTheme === 'false') {
+        htmlElement.setAttribute('dark-theme', 'false');
+        this.darkTheme = false;
+        return;
+    }
+    if ( isDarkDefalut ){
+        htmlElement.setAttribute('dark-theme', `${isDarkDefalut}`);
+        this.darkTheme = isDarkDefalut;
+        return;
+    }
   }
-},
-mounted: ()=> {
-  // this.methods.setTheme();
-},
-methods: {
-  setTheme :()=>{
-    // if(this.darkTheme){
-    //     html.setAttribute('data-theme', 'dark');
-    //   }
-    // else{
-    //     html.setAttribute('data-theme', 'light');
-    //     }
-
-      }
-},
-
-// },
-
-// mounted : function () {
-  
-//     let isDarkDefalut = !!window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-//     if (isDarkDefalut && localStorage.isChecked != 'false') {
-
-//     document.documentElement.setAttribute('data-theme', 'dark');
-//     this.isChecked=true;
-//     localStorage.isChecked = true;
-
-//     }
-// }
-// ,
-
-  // watch:{
-    // isChecked() {
-    //   localStorage.isChecked = this.isChecked;
-    // }
-  // },
-
+}
 }
 
 </script>
 
 
-<style  lang="scss">
+<style  lang='scss'>
 
 $base: 1.6rem;
 

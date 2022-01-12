@@ -1,5 +1,5 @@
 <template>
-  <div id="__defalut-layout">
+  <div id="__layout-defalut" :class="{ 'dark-theme' : true }" >
     <h1>error.vue</h1>
   </div>
 </template>

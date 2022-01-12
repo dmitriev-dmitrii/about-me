@@ -1,13 +1,15 @@
 
-export const state = () => ({
-	language:'en',
-})
+// export const state = () => ({
+// 	darkTheme:true
+// })
 
-export const getters = {
-
-	getLanguage: (state)=>{
-		return state.language;
-	},
-	
-	}
-	
+// export const getters = {
+// 	getDarkTheme: (state)=>{
+// 		return state.darkTheme;
+// 	},
+// }
+// export const mutations = {
+// 	mutateDarkTheme: (state, isDark=true ) => {
+// 		state.darkTheme=isDark;
+// 	},
+// }

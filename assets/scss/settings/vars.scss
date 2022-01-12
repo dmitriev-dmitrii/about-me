@@ -15,7 +15,7 @@ html{
 	--lg: linear-gradient(to right, #2d9cdb, #37f093 66%, #33c7ef);
 }
 
-html[data-theme="dark"] {
+html[dark-theme="true"] {
 
 	--bg-color1: #111111;
 	--bg-color2: rgba(0, 0, 0, 0.1);
