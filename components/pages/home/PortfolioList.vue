@@ -16,9 +16,12 @@
 </template>
 
 <script>
-
+import PortfolioItem from '@/components/pages/home/PortfolioItem'
 
 export default {
+components:{
+  PortfolioItem
+}
 
 };
 </script>

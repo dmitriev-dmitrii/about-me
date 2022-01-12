@@ -19,7 +19,7 @@
       <label for="email">Email</label>
       <input  id="email" class="form__input" type="email" name="email">
       <label for="message">Сообщение</label>
-      <textarea name="message" class="form__input" id="message" cols="20" rows="5"></textarea>
+      <textarea id="message" name="message" class="form__input"  cols="20" rows="5"></textarea>
       <button class="button" type="submit">Отправить</button>
       <span class="status-message">status-message</span>
     </form>

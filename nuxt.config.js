@@ -3,7 +3,8 @@ export default {
   head: {
     title: 'dmitriev-dmitrii portfolio',
     htmlAttrs: {
-      lang: 'ru'
+      lang: 'ru',
+
     },
     meta: [
       { charset: 'utf-8' },

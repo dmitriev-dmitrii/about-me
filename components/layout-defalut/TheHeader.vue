@@ -5,6 +5,7 @@
     <nav id="nav" class="nav contanier ">
 	<ul class="nav__list">
         <li class="nav__item ">  <a class="underline"  href="/#experience">Опыт</a></li>
+        <li class="nav__item ">  <a class="underline"  href="/#portfolio">Портфолио</a></li>
         <li class="nav__item ">  <a class="underline"  href="/#contacts" >Контакты</a></li>
         <li class="nav__item "><DarkTheme/> </li>
     </ul>
@@ -57,7 +58,7 @@ export default {
 .nav__item a{
     padding: .5rem .2rem ;
   font-weight: 300;
-  color: var(--main-text-color);
+  color: $mainTxtColor;
   cursor: pointer;
 
 

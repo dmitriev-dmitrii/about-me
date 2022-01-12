@@ -1,5 +1,5 @@
 <template>
-  <div id="__layout-defalut">
+  <div id="__layout-defalut" ref="layout">
     <The-Header />
     <main >
       <nuxt />
