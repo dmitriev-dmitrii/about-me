@@ -69,7 +69,7 @@
 
 display: flex;
 align-items: flex-end;
-
+margin-bottom: 1em;
 @media (min-width: 413.98px){ 
  align-items:center;
  }
@@ -80,8 +80,11 @@ align-items: flex-end;
 
 }
 .my-name__about {
-
   padding:0  1rem ;
+@media (min-width: 575.98px){ 
+  flex-direction: column;
+  padding:0   ;
+  }
 & h2 {
   margin-bottom: 1rem;
 }

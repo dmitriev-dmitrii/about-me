@@ -65,15 +65,15 @@
   justify-content: center;
   flex-direction: column;
   padding: 0.5rem;
-  border-radius: 7px;
+  border-radius: .7rem;
   
-  background: var(--bg-color);
+  background:$bgColor1;
+
   width: 120px;
 }
 .skills__item {
-  box-shadow: 0 6px 8px rgba(102, 119, 136, 0.03), 0 1px 2px rgba(102, 119, 136, 0.3);
+  
   color: $titleTxtColor;
-  border: 1px solid #efefef;
 }
 .skills__item .svg-icon
 {
