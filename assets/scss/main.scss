@@ -26,11 +26,7 @@ body,#__nuxt,#__layout,#__layout ,.defalut-layout {
 	width: 100%;
 	max-width: #{$maxWidth}px;
 	margin: 0 auto;
-	padding:1em .5em;
-
-	@media (min-width: 767.98px){
-		padding: 1em ;
-    } 
+	padding: 2rem 1rem ;
 
 }
 

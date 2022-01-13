@@ -10,7 +10,7 @@
 
     <div class="experience__item ">
       <h3 class=" title ">Артис <a href="" class="link">artis.abc</a> </h3>
-      <h3 class=" title">Верстальщик</h3>
+      <h3 >Должность : <span class="title">Верстальщик</span> </h3>
       <p class="description experience__item-time">
         c января 2019 - февраяль 2022 (6 лет 2 месяца)
       </p>
@@ -56,22 +56,21 @@
   font-size: .8em;
   margin: .5em 0;
   width: 100%;
-  max-width: 40rem;
-
-  @media (min-width: 991.98px){
-
-    max-width: 45%;
-
+  max-width: 35rem;
+  text-align: center;
+  @media (min-width: 767.98px){
+    
+    max-width: 50%;
     align-self: flex-start;
-
+    text-align: left;
     &:nth-child(2){
     align-self: flex-end;
     text-align: right;
     }
-  }
+  } 
 
 }
-.experience__item >.title
+.experience__item .title
 {
   font-size: 1.1em;
 }

@@ -35,11 +35,6 @@
 
 .portfolio__item 
 {
-@supports not (gap:1em) {
-margin: 1em;
-}
-
- width: 30rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -53,11 +48,8 @@ margin: 1em;
   background:$bgColor2;
 
   color: white;
-  overflow: hidden;
 
-
-
- transition: all .2s ease;
+  transition: all .2s ease;
 
 &:focus-within
 {
