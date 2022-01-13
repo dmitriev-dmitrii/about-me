@@ -3,8 +3,7 @@ body {
 
 	background-color: $bgColor1;
 	color: $mainTxtColor;
-	min-height: 100vh;
-	height: 100%;
+
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
 	"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 	
@@ -13,7 +12,10 @@ body {
 	}
 
 body,#__nuxt,#__layout,#__layout ,.defalut-layout {
+	
 	min-height: 100vh;
+	height: 100%;
+
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
@@ -27,9 +29,14 @@ body,#__nuxt,#__layout,#__layout ,.defalut-layout {
 	padding:1em .5em;
 
 	@media (min-width: 767.98px){
-		padding: 1em;
+		padding: 1em ;
     } 
 
+}
+
+.block-border-bottom
+{
+	border-bottom: rgba(197, 197, 197, 0.2) 1px solid;
 }
 
 .link {
@@ -55,7 +62,7 @@ body,#__nuxt,#__layout,#__layout ,.defalut-layout {
 
 }
 
-.underline {
+.underline,.underline-static {
 	background-color: $mainAccentColor;
 	// background-color если не работает градиент в браузере
 	background: $lg;
@@ -73,6 +80,11 @@ body,#__nuxt,#__layout,#__layout ,.defalut-layout {
 		background-size: 100% .3rem;
 	}
 } 
+
+.underline-static
+{
+	background-size: 100% .3rem;
+}
 
 .button
 {

@@ -1,6 +1,6 @@
 <template>
-  <div class="my-name__wrapper contanier">
-    <div class="my-name">
+  <div class="my-name__wrapper   contanier">
+    <div class="my-name ">
       <picture>
         <source
           class="my-name__photo"
@@ -26,15 +26,13 @@
 
       "name": "dmitrii",<br />
       "surename":dmitriev,<br />
-      "age": "28",<br />
+      "age": "29",<br />
       "location:" Saint-Petersburg,<br />
-      "position":juniorFrontend,...<br />
+      "position":Frontend Developer,<br />
+      ...
       }
     </div>
   </div>
-
-
-
 
 
 </template>
@@ -47,11 +45,13 @@
 
 <style lang="scss">
 .my-name__wrapper {
+  margin-top: 1em;
+  margin-bottom: 2em;
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  padding: 2rem 1rem;
-     @media (min-width: 767.98px){
+
+  @media (min-width: 767.98px){
   flex-wrap: nowrap;
     } 
 }
@@ -70,9 +70,6 @@ align-items: center;
 
 .my-name__about {
   padding:  1rem ;
-@media (min-width: 767.98px){
-padding: 2rem ;
-    } 
 }
 
 .my-name__photo {
@@ -82,7 +79,7 @@ padding: 2rem ;
 
   max-width: 20rem;
   max-height: 30rem;
- 
+
 }
 
 .code {

@@ -1,6 +1,6 @@
 <template>
 
-  <div class="form__wrapper">
+  <div class="form__wrapper block-border-bottom">
     <form id="form-contact" method="POST" class="form" autocomplete="on" enctype="multipart/form-data">
       <legend>
         <h2 id="contacts" class="title">Контакты</h2>
@@ -33,7 +33,6 @@
 
 <style lang="scss">
 .form__wrapper{
-
 display: flex;
 justify-content: center;
 align-items: center;

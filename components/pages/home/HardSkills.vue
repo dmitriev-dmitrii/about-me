@@ -1,5 +1,5 @@
 <template>
-  <div class="skills">
+  <div class="skills block-border-bottom">
     <h2 class="title">Технологии, инструменты</h2>
     <div class="skills__list contanier">
         
@@ -43,7 +43,7 @@
 <style lang="scss">
 
 .skills{
-  background: var(--bg-color2);
+  background: $bgColor2;
   width: 100%;
   padding: 0.5rem 0;
   margin-top: 1rem;
@@ -54,7 +54,7 @@
 }
 .skills__list {
   display: flex;
-  justify-content: center;
+  justify-content:space-between;
   align-items: center;
   flex-wrap: wrap;
 }
@@ -66,7 +66,7 @@
   flex-direction: column;
   padding: 0.5rem;
   border-radius: 7px;
-  margin: 1rem;
+  
   background: var(--bg-color);
   width: 120px;
 }

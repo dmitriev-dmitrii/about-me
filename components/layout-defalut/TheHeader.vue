@@ -1,6 +1,6 @@
 <template>
 
-<header class="header">
+<header class="header block-border-bottom">
 
     <nav id="nav" class="nav contanier ">
 	<ul class="nav__list">
@@ -30,7 +30,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: #efefef 1px solid;
 }
 
 
@@ -45,8 +44,12 @@ export default {
 }
 
 .nav__item {
+
+font-size: .9em;
+&:not(:last-child)
+{
   margin:0 0.5em;
-  font-size: .9em;
+}
 
 }
 

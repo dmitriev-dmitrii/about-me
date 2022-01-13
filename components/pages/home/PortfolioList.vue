@@ -1,11 +1,9 @@
 
 <template>
-  <div class="portfolio">
-    <h2 id="experience" class="title">Портфолио</h2>
+  <div class="portfolio  block-border-bottom">
+    <h2 id="portfolio" class="title">Портфолио</h2>
 <div class="contanier">
     <div class="portfolio__list ">
-      <PortfolioItem />
-      <PortfolioItem /> 
       <PortfolioItem />
       <PortfolioItem /> 
       <PortfolioItem />
