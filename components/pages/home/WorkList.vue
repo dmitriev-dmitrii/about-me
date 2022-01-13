@@ -63,11 +63,10 @@
     max-width: 45%;
 
     align-self: flex-start;
-    
+
     &:nth-child(2){
     align-self: flex-end;
     text-align: right;
-    
     }
   }
 

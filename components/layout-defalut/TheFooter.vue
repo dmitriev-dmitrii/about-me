@@ -1,22 +1,19 @@
 <template>
   <footer class="footer">
 
-    <div class="footer__body">
-      <div class="footer__top">
-        <h4 class="title">
+    <div class="footer__body contanier">
+      <div class="footer__first ">
+        <h4 class="title" translate="no">
           <span class="first">Dmitriev</span>&nbsp;
           <span class="second">Dmitrii</span>
         </h4>
-        <p>
-          Санкт-Петербург, м. Садовая, готов к командировкам.<br>
+        <p translate="no">
+          Frontend Developer<br>
         </p>
-
       </div>
 
-      <div class="footer__bottom">
-        <h4 class="title">Контакты</h4>
-        <p>Вы сможете найти меня:</p>
-
+      <div class="footer__second">
+        <h5 class="title">Контакты</h5>
         <div class="footer__social-list">
           <a class="footer__social-item" href="https://t.me/Dmitrev_Dmitrii" target="blank">
             <SvgIcon name="telegram"></SvgIcon>
@@ -33,7 +30,6 @@
     </div>
   </footer>
   
- <!-- <h1>footer     <img alt="Vue logo" src="../assets/logo.png"></h1> -->
 </template>
 
 <script>
@@ -44,28 +40,46 @@
 
 .footer {
 
-
-  padding: 1em 2em 2em 2em;
   background: #0d0d0d;
   color: #dedede;
-
 }
 
 .footer__body {
-  max-width: 1200px;
-  margin: 0 auto;
+
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column-reverse;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+
+  @media (min-width: 575.98px){ 
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
 }
 
-.footer-top,
-.footer-bottom {
-  margin: 2rem;
+.footer__first,
+.footer__second {
+  margin-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @media (min-width: 575.98px){ 
+    margin-bottom: 0;
+  }
 }
 
-.footer__bottom .title 
+.footer__first {
+  @media (min-width: 575.98px){ 
+    align-items: flex-start;
+  }
+}
+
+
+.footer__second .title 
 {
   color: rgba(255, 255, 255, 0.96);
   // цвет скопирован из variables.scss для темной темы
@@ -87,29 +101,33 @@
 .footer__social-item {
 height: 2em;
 width:  2em;
-margin: 0.3em;
+margin:.25em .5em;
 
-transition: all .2s linear;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+transition: all .2s ease;
+
+filter: drop-shadow( 0 0 0);
   &:hover,
   &:focus {
-    color: $minorAccentColor;
-    text-shadow: 0 5px 7px;
+    color: $mainAccentColor;
     filter: drop-shadow( 0 .5rem .7rem);
   }
 
   &:nth-of-type(even):hover,
   &:nth-of-type(even):focus 
     {
-    color: #33c7ef;
+    color: $minorAccentColor;
   }
 
 }
-.footer__social-item .svg-icon
+.footer__social-item .icon
 
 {
 height: 90%;
 width: 90%;
-
 }
 
 </style>

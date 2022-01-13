@@ -34,10 +34,8 @@ components:{
 }
 .portfolio__list {
   display: flex;
+  justify-content:space-between;
+  align-items: center;
   flex-wrap: wrap;
-  justify-content: center;
-@supports  (gap:1em) {
-  gap:1em;
-  }
 }
 </style>

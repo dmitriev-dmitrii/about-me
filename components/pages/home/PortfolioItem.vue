@@ -226,7 +226,7 @@ display: flex;
 align-items: center;
 justify-content: center;
 }
-.portfolio__git-link .svg-icon
+.portfolio__git-link .icon
 {
 
 height: 1.4em;

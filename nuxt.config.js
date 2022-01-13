@@ -46,6 +46,7 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
+    '@nuxtjs/svg-sprite',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

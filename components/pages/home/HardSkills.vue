@@ -13,17 +13,20 @@
       Scss/postCss
       </div>
       <div class="skills__item">
-        <SvgIcon name="js"></SvgIcon> JS
+        <svg-icon name="js" />JS 
       </div>
       <div class="skills__item">
-      <SvgIcon name="gulp"></SvgIcon>    Gulp
+      <svg-icon name="gulp"/>    Gulp
       </div>
       <div class="skills__item">
-      <SvgIcon name="webpack"></SvgIcon> Webpack
+      <svg-icon name="webpack"/> Webpack
       </div>
       <div class="skills__item">
-      <SvgIcon name="vuejs"></SvgIcon> VueJS
-    </div>
+        <svg-icon name="nodejs"/> NodeJS
+      </div>
+      <div class="skills__item">
+      <svg-icon name="vuejs"/> VueJS/Nuxt
+      </div>
 
 
     </div>
@@ -65,17 +68,17 @@
   justify-content: center;
   flex-direction: column;
   padding: 0.5rem;
+  margin-bottom: 1em;
   border-radius: .7rem;
-  
+  box-shadow: 0 0 .5rem .01rem currentColor;
   background:$bgColor1;
 
-  width: 120px;
+  width: 12rem;
 }
 .skills__item {
-  
   color: $titleTxtColor;
 }
-.skills__item .svg-icon
+.skills__item .icon
 {
 height: 3em;
 width: 3em;
