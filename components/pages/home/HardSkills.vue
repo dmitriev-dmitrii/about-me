@@ -1,36 +1,18 @@
 <template>
-  <div class="skills block-border-bottom">
+<div class="skills block-border-bottom">
     <h2 class="title">Технологии, инструменты</h2>
-    <div class="skills__list contanier">
-        
-      <div class="skills__item">
-        <SvgIcon name="html5"></SvgIcon>
-        Html   
-      </div>
-          
-      <div class="skills__item">
-        <SvgIcon name="css"></SvgIcon>
-      Scss/postCss
-      </div>
-      <div class="skills__item">
-        <svg-icon name="js" />JS 
-      </div>
-      <div class="skills__item">
-      <svg-icon name="gulp"/>    Gulp
-      </div>
-      <div class="skills__item">
-      <svg-icon name="webpack"/> Webpack
-      </div>
-      <div class="skills__item">
-        <svg-icon name="nodejs"/> NodeJS
-      </div>
-      <div class="skills__item">
-      <svg-icon name="vuejs"/> VueJS/Nuxt
-      </div>
-
-
+    <div class="contanier">
+      <div class="skills__list">
+        <div class="skills__item"><svg-icon name="html5"></svg-icon> Html  </div>
+        <div class="skills__item"><svg-icon name="css"></svg-icon> Scss/postCss</div>
+        <div class="skills__item"> <svg-icon name="js" />JS </div>
+        <div class="skills__item"><svg-icon name="gulp"/>    Gulp</div>
+        <div class="skills__item"><svg-icon name="webpack"/> Webpack</div>
+        <div class="skills__item">  <svg-icon name="nodejs"/> NodeJS</div>
+        <div class="skills__item"><svg-icon name="vuejs"/> VueJS/Nuxt</div>
     </div>
   </div>
+</div>
 
 </template>
 
@@ -48,19 +30,46 @@
 .skills{
   background: $bgColor2;
   width: 100%;
-  padding: 0.5rem 0;
-  margin-top: 1rem;
 }
 .skills .title
 {
   text-align: center;
 }
-.skills__list {
+
+.skills{
+  $base-margin:1rem;
+  $cards:1;
+  // количество карточек при медиазапросе
+  &__list{
   display: flex;
-  justify-content:space-between;
-  align-items: center;
   flex-wrap: wrap;
+  margin-left: - $base-margin ;
+  margin-right: - $base-margin ;
+  }
+  &__item {
+     // 2cards
+  $cards:2;
+  width:calc( ( 100% - $base-margin * ($cards * 2) )  / $cards ) ;
+  margin: $base-margin ;
+  @media (min-width: 413.98px){
+  $cards:3;
+  width:calc( ( 100% - $base-margin * ($cards * 2) )  / $cards ) ;
+  }
+  @media (min-width: 575.98px){
+  $cards:4;
+  width:calc( ( 100% - $base-margin * ($cards * 2) )  / $cards ) ;
+  }
+  @media (min-width: 767.98px){
+  $cards:6;
+  width:calc( ( 100% - $base-margin * ($cards * 2) )  / $cards ) ;
+  }
+  @media (min-width: 991.98px){
+  $cards:7;
+  width:calc( ( 100% - $base-margin * ($cards * 2) )  / $cards ) ;
+  }
 }
+  }
+
 
 .skills__item {
   display: flex;
@@ -73,7 +82,7 @@
   box-shadow: 0 0 .5rem .01rem currentColor;
   background:$bgColor1;
 
-  width: 12rem;
+
 }
 .skills__item {
   color: $titleTxtColor;

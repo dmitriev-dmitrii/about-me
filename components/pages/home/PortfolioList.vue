@@ -64,14 +64,13 @@ components:{
     // получаем такой код
     // width:calc( ( 100% - 4rem )  / 2 ) ;
     // margin: 1rem ;
-
     max-width: none;
   }
 
   @media (min-width: 767.98px)
     {
       $cards:3;
-      // 2cards
+      // 3cards
       width:calc( ( 100% - $base-margin * ($cards * 2) )  / $cards ) ;
     } 
   }

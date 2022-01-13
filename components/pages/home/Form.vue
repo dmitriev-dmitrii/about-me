@@ -7,7 +7,7 @@
       </legend>
 
       <label for="name">Ваше имя</label>
-      <input id="name" class="form__input" name="name" type="text" placeholder="*">
+      <input id="name" class="form__input" name="name" type="text" placeholder="*" >
       <label for="phone">Телефон</label>
       <input id="phone" class="form__input"  name="phone" type="tel" placeholder="*" 
         pattern="^[+ 0-9]+$"

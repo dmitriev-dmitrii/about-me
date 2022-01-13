@@ -4,8 +4,8 @@
     <div class="footer__body contanier">
       <div class="footer__first ">
         <h4 class="title" translate="no">
-          <span class="first">Dmitriev</span>&nbsp;
-          <span class="second">Dmitrii</span>
+          <span >Dmitriev</span>&nbsp;
+          <span >Dmitrii</span>
         </h4>
         <p translate="no">
           Frontend Developer<br>
@@ -39,7 +39,6 @@
 <style scoped lang="scss">
 
 .footer {
-
   background: #0d0d0d;
   color: #dedede;
 }
@@ -84,16 +83,13 @@
   color: rgba(255, 255, 255, 0.96);
   // цвет скопирован из variables.scss для темной темы
 }
-
-.first {
-  background: var(--lg);
+.footer__first>h4
+{
+  background: $lg;
   background-clip: text;
   color: transparent;
 }
 
-.second {
-  color: #37f093;
-}
 
 .footer__social-list {
   display: flex;
