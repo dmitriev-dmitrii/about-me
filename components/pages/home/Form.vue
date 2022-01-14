@@ -15,7 +15,7 @@
       <label for="email">Email</label>
       <input  id="email" class="form__input" type="email" name="email">
       <label for="message">Сообщение</label>
-      <textarea id="message" name="message" class="form__input"  cols="20" rows="5"></textarea>
+      <textarea id="message" name="message" class="form__input"  cols="20" rows="4"></textarea>
       <span class="status-message">status-message</span>
       <button class="button" type="submit">Отправить</button>
     </form>
@@ -72,7 +72,7 @@ width: 100%;
   border-radius: .7rem;
   padding: 0.5em;
   font-size: 1.1em;
-  margin-bottom: 1em;
+  margin-bottom: 1rem;
   box-shadow: 0  0 .5rem .1rem  ;
 
   background-color: $bgColor1;
@@ -92,7 +92,7 @@ width: 100%;
 }
 
 .form button[type=submit] {
-align-self: flex-end;
+  align-self: flex-end;
 }
 
 .status-message {
