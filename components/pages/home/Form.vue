@@ -68,22 +68,21 @@ width: 100%;
 .form__input {
   width: 100%;
   display: block;
-  outline: none;
-  border: .1rem solid #c5c5c5;
+  border: none;
   border-radius: .7rem;
   padding: 0.5em;
   font-size: 1.1em;
   margin-bottom: 1em;
-  box-shadow: 0 .3rem .6rem rgba(102, 119, 136, 0.03), 0 1px 1px rgba(102, 119, 136, 0.4);
+  box-shadow: 0  0 .5rem .1rem  ;
 
   background-color: $bgColor1;
   caret-color: $mainTxtColor;
   color: $mainTxtColor;
-  transition: all 0.2s linear;
-  &:focus {
-  border: .1rem solid $mainAccentColor;
-  box-shadow: 0 0 .1rem .1rem rgba(0, 0, 0, 0.1), 0 0 .7rem .3rem rgba(146, 224, 246, 0.9);
-}
+
+  transition: all 0.2s ease;
+  &:focus{
+    box-shadow: 0  0 .5rem .1rem $mainAccentColor ;
+  }
 }
 
 .form label {

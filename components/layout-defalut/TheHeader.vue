@@ -2,7 +2,7 @@
 
 <header class="header block-border-bottom">
 
-    <nav id="nav" class="nav contanier ">
+    <nav id="nav" class="nav contanier  ">
 	<ul class="nav__list">
         <li class="nav__item ">  <a class="underline"  href="/#experience">Опыт</a></li>
         <li class="nav__item ">  <a class="underline"  href="/#portfolio">Портфолио</a></li>
@@ -31,10 +31,12 @@ export default {
   justify-content: center;
   align-items: center;
 }
+.nav{
 
-
+}
 
 .nav__list {
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,9 +48,10 @@ export default {
 .nav__item {
 
 font-size: .9em;
-&:not(:last-child)
+margin:0 1rem;
+&:last-child
 {
-  margin:0 0.5em;
+  margin-right:0 ;
 }
 
 }
@@ -59,17 +62,16 @@ font-size: .9em;
 }
 
 .nav__item a{
-    padding: .5rem .2rem ;
+
   font-weight: 300;
   color: $mainTxtColor;
   cursor: pointer;
-
 
 @media (min-width: 767.98px){ 
   &:hover
 
   {
-        background-size: 100% .3rem;
+      background-size: 100% .3rem;
   }
 
 }

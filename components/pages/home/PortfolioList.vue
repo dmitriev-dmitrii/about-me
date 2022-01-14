@@ -30,7 +30,7 @@ components:{
   text-align: center;
 }
 .portfolio {
-  background: $bgColor1;
+  background-color: $bgColor1;
   width: 100%;
 }
 

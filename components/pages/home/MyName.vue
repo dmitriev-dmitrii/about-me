@@ -53,9 +53,6 @@
   align-items: flex-start;
   }
 
-  @media (min-width: 767.98px){
-
-    } 
 }
 
 .my-name {
@@ -75,13 +72,14 @@ margin-bottom: 1em;
 .my-name__about {
   width: 100%;
   padding-left: 1rem ;
-  @media (min-width: 575.98px){ 
-  flex-direction: column;
-  padding:0 ;
+    @media (min-width: 575.98px){ 
+      text-align: center;
+      flex-direction: column;
+      padding:0 ;
+    }
+  & .title {
+    margin: 1rem 0;
   }
-& h2 {
-  margin-bottom: 1rem;
-}
   justify-content: space-between;
   & .button {
     width: 100%;

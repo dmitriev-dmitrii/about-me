@@ -80,7 +80,7 @@
   margin-bottom: 1em;
   border-radius: .7rem;
   box-shadow: 0 0 .5rem .01rem currentColor;
-  background:$bgColor1;
+  background-color:$bgColor1;
 
 
 }
