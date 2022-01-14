@@ -2,9 +2,9 @@
 
   <div class="form__wrapper block-border-bottom ">
     <form id="form-contact" method="POST" class="form" autocomplete="on" enctype="multipart/form-data">
-      <legend id="contacts" class="title">
+      <h4 id="contacts" class="title">
         Отправить Сообщение
-      </legend>
+      </h4>
 
       <label for="name">Ваше имя</label>
       <input id="name" class="form__input" name="name" type="text" placeholder="*" >

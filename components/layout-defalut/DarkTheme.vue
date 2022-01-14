@@ -115,10 +115,16 @@ $base: 1.6rem;
   -webkit-appearance: none;
   -moz-appearance: none;
   -ms-appearance: none;
+  
   appearance: none;
-  z-index: 1;
+
+  z-index: 0;
+
   position: absolute;
 
+  border: none;
+
+  border-radius: $base;
   top: 0;
   left: 0;
 

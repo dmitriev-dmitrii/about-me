@@ -38,7 +38,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-   @media (min-width: 767.98px){
+  @media (min-width: 767.98px){
   justify-content: flex-end;
   } 
 }

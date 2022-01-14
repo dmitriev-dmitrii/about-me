@@ -9,7 +9,7 @@
 <div class="experience__list contanier">
 
     <div class="experience__item ">
-      <h3 class=" title ">Артис <a href="" class="link">artis.abc</a> </h3>
+      <h3 class=" title ">Артис <a href="http://artis-ltd.ru/" class="link">artis-ltd.ru</a> </h3>
       <h3 >Должность : <span class="title">Верстальщик</span> </h3>
       <p class="description experience__item-time">
         c января 2019 - февраяль 2022 (6 лет 2 месяца)
@@ -18,18 +18,7 @@
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur architecto alias dolorum voluptatem doloremque optio aperiam explicabo hic ut, quo non voluptate excepturi sit deserunt ullam recusandae officiis voluptatibus praesentium iusto provident dolore illo ea sunt repellendus? Tempore, minus sint incidunt, ab, alias iusto aperiam ut necessitatibus inventore natus eius?
       </the-details>
     </div>
-
-      <div class="experience__item" >
-      <h3 class=" title">Артис <a href="" target="blank" class="link">artis.abc</a> </h3>
-      <h3 class=" title">Верстальщик</h3>
-      <p class="description experience__item-time">
-        c января 2019 - февраяль 2022 (6 лет 2 месяца)
-      </p>
-      <the-details>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas, pariatur? Rerum commodi dignissimos quasi enim sint earum, ratione doloremque, in nisi perspiciatis minima et ab aperiam vel, totam nihil magnam. 
-      </the-details>
-    </div>
-
+    
 </div>
 
 </div>

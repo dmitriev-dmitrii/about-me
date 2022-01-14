@@ -11,23 +11,12 @@ body {
 	
 	}
 
-body,#__nuxt,#__layout,#__layout ,.defalut-layout {
 	
-	min-height: 100vh;
-	height: 100%;
-
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	flex-direction: column;
-}
-
 .contanier {
 	width: 100%;
 	max-width: #{$maxWidth}px;
 	margin: 0 auto;
 	padding: 2rem 1rem ;
-
 }
 
 .block-border-bottom
@@ -89,6 +78,7 @@ $bgc:$lg;
 	outline-color: $mainAccentColor;
 	margin-top: 1rem;
 	margin-bottom: 1rem;
+
 	background-color: $mainAccentColor;
 	// background-color если не работает градиент в браузере
 

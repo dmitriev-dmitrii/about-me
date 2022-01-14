@@ -1,16 +1,9 @@
 <template>
   <div class="my-name__wrapper   contanier">
     <div class="my-name ">
-      <picture >
-        <source
-          class="my-name__photo"
-          srcset="@/static/img/dmitriev__dmitrii.webp"
-          type="image/webp"
-        />
-        <img
-          class="my-name__photo"
-          alt="dmitriev__dmitrii"
-          src="@/static/img/dmitriev__dmitrii.jpg"/>
+      <picture class="my-name__photo">
+        <source  srcset="@/static/img/dmitriev__dmitrii.webp"  type="image/webp" />
+        <img alt="dmitriev__dmitrii"  src="@/static/img/dmitriev__dmitrii.jpg"/>
       </picture>
 
       <div class="my-name__about" >
@@ -53,12 +46,12 @@
   justify-content: space-evenly;
   flex-direction: column;
   align-items: center;
- 
+
 @media (min-width: 575.98px){ 
   justify-content: space-between;
   flex-direction: row;
   align-items: flex-start;
- }
+  }
 
   @media (min-width: 767.98px){
 
@@ -71,19 +64,20 @@ display: flex;
 align-items: flex-end;
 margin-bottom: 1em;
 @media (min-width: 413.98px){ 
- align-items:center;
- }
- 
+  align-items:center;
+  }
+
 @media (min-width: 575.98px){ 
- flex-direction: column;
- }
+  flex-direction: column;
+  }
 
 }
 .my-name__about {
-  padding:0  1rem ;
-@media (min-width: 575.98px){ 
+  width: 100%;
+  padding-left: 1rem ;
+  @media (min-width: 575.98px){ 
   flex-direction: column;
-  padding:0   ;
+  padding:0 ;
   }
 & h2 {
   margin-bottom: 1rem;
@@ -91,6 +85,7 @@ margin-bottom: 1em;
   justify-content: space-between;
   & .button {
     width: 100%;
+    margin-bottom: 0;
   }
 
 }
@@ -98,11 +93,21 @@ margin-bottom: 1em;
 .my-name__photo {
   border-radius: .7rem;
   box-shadow: -.2rem .2rem 1rem .1rem currentColor;
-  object-fit: cover;
+  display: block;
+  overflow:hidden;
   width: 100%;
-  max-width: 100%;
+
+  max-width: 25rem;
   max-height: 35rem;
+
 }
+.my-name__photo source,img
+{
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+}
+
 
 .code {
 
