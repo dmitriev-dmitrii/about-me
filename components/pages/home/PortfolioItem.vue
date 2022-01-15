@@ -11,8 +11,9 @@
           </div>
 
           <picture>
-            <!-- <source class="portfolio__img" :srcset="`/_nuxt/static/img/portfolio/${item.imgName}.webp`" type="image/webp"> -->
-            <img  class="portfolio__img" :src="`/_nuxt/static/img/portfolio/${item.imgName}.png`" :alt="item.imgName">
+            <source class="portfolio__img" :srcset="require(`@/static/img/portfolio/${item.imgName}.webp`)" type="image/webp">
+
+            <img  class="portfolio__img"  :src="require(`@/static/img/portfolio/${item.imgName}.png`)" :alt="item.imgName">
           </picture>
 
         </a>
