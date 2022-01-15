@@ -27,9 +27,9 @@ components:{
     this.portfolioList =  this.$store.state.portfolio.list;
   },
 
-mounted :function (){
-  console.log(this.$store.state.portfolio.list);
-}
+  // mounted :function (){
+  // console.log(this.$store.state.portfolio.list);
+  // }
 };
 
 </script>

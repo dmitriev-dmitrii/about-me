@@ -66,6 +66,16 @@ a {
 	text-decoration: none;
 }
 
+
+picture img
+{
+	display: block;
+	width: 100%;
+	max-width: 100%;
+	max-height: 100%;
+}
+
+
 input::-webkit-input-placeholder       {opacity: 1; transition: opacity 0.2s ease;}
 input::-moz-placeholder                {opacity: 1; transition: opacity 0.2s ease;}
 input:-moz-placeholder                 {opacity: 1; transition: opacity 0.2s ease;}

@@ -7,18 +7,13 @@
 
           <div class="portfolio__title-wrapper">
             <h3 class="portfolio__title">{{item.title}}</h3>
-          <span class="portfolio__subtitle">{{item.description}}</span>
+            <span class="portfolio__subtitle">{{item.description}}</span>
           </div>
-
-          <picture>
-            <source class="portfolio__img" :srcset="require(`@/static/img/portfolio/${item.imgName}.webp`)" type="image/webp">
-
-            <img  class="portfolio__img"  :src="require(`@/static/img/portfolio/${item.imgName}.png`)" :alt="item.imgName">
-          </picture>
+          <nuxt-picture class="portfolio__img" :src="`portfolio/${item.imgName}.png`"  :alt="item.imgName+'-image'" />
 
         </a>
 
-        <ul class="portfolio__item-about-list">
+        <ul class="portfolio__item-about-list block-border-bottom">
           <li class="portfolio__item-about" v-for="stackElement in item.stack" :key="stackElement">{{stackElement}}</li>
         </ul>
 
@@ -45,6 +40,7 @@ export default{
 
 
 <style lang="scss">
+
 
 .portfolio__item 
 {
@@ -109,8 +105,8 @@ filter: brightness(25%);
 .portfolio__title-wrapper
 {
   position: absolute;
-    left: 0;
-    top: 0;
+  left: 0;
+  top: 0;
   z-index: 3;
 
   padding: 1.5rem ;
@@ -120,9 +116,12 @@ filter: brightness(25%);
   font-weight: bold;
 
   display: flex;
-  justify-content: center;
   flex-direction: column;
 
+  background: linear-gradient(15deg, rgba(0, 0, 0, 0.9)30%, transparent ) ;
+
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .portfolio__title,.portfolio__subtitle 
@@ -131,17 +130,21 @@ filter: brightness(25%);
   transition: all 0.2s ease;
 }
 
-
 .portfolio__title 
 {
-  margin-bottom: 1.5rem;
   text-decoration: underline transparent;
   font-size: 1.2em;
+  margin-bottom: 1rem;
+
+  align-self: flex-start;
+
 }
 
 .portfolio__subtitle 
 {
 font-size: .8em;
+align-self: flex-end;
+align-self: flex-start;
 }
 
 .portfolio__img
@@ -151,12 +154,12 @@ font-size: .8em;
   top: 0;
   left: 0;
   width: 100%;
-  object-fit:  cover;
-height: 100%;
-transition: all 0.2s ease;
-background: #000;
-filter: brightness(60%);
-
+  // object-fit:  cover;
+  min-height: 100%;
+  height: auto;
+  transition: all 0.2s ease;
+  background: #000;
+  // filter: brightness(20%);
 
 }
 

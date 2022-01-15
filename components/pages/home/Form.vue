@@ -36,7 +36,6 @@
 .form {
 
   width: 100%;
-  max-width: 90%;
   margin: 0 auto;
   padding: 1em;
 
@@ -70,21 +69,16 @@ width: 100%;
   display: block;
   border: none;
   border-radius: .7rem;
-  border: .1rem solid currentColor;
+  border: .1rem solid rgba(197, 197, 197, 0.3);
   padding: 0.5em;
   font-size: 1.1em;
   margin-bottom: 1rem;
-  box-shadow: 0  0 .5rem .1rem  ;
-
   background-color: $bgColor1;
   caret-color: $mainTxtColor;
   color: $mainTxtColor;
-
+  box-shadow: 0 0 .1rem .1rem rgba(0,0,0,.1),0 0 .7rem .3rem rgba(146,224,246,.9);
   transition: all 0.2s ease;
-  &:focus{
-    border: .1rem solid $mainAccentColor;
-    box-shadow: 0  0 .5rem .1rem $mainAccentColor ;
-  }
+
 }
 
 .form label {

@@ -1,10 +1,7 @@
 <template>
   <div class="my-name__wrapper   contanier">
     <div class="my-name ">
-      <picture class="my-name__photo">
-        <source  srcset="@/static/img/dmitriev__dmitrii.webp"  type="image/webp" />
-        <img alt="dmitriev__dmitrii"  src="@/static/img/dmitriev__dmitrii.jpg"/>
-      </picture>
+      <nuxt-picture class="my-name__photo" src="dmitriev-dmitrii.jpg"  alt="dmitriev-dmitrii" />
 
       <div class="my-name__about" >
         <h2 translate="no" class="title">Dmitriev Dmitrii</h2>
@@ -32,7 +29,9 @@
 
 
 <script>
+export default{
 
+}
 </script>
 
 
@@ -99,12 +98,7 @@ margin-bottom: 1em;
   max-height: 35rem;
 
 }
-.my-name__photo source,img
-{
-  display: block;
-  max-width: 100%;
-  max-height: 100%;
-}
+
 
 
 .code {

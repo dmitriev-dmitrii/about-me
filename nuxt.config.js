@@ -23,10 +23,17 @@ export default {
     '@/assets/scss/index.scss',
   ],
 
+  // https://image.nuxtjs.org/
+  image: {
+    dir: 'static/img/',
+    staticFilename: 'img/[name]-[hash][ext]'
+  },
+
+  // https://github.com/nuxt-community/style-resources-module
   styleResources: {
     scss: [
         '@/assets/scss/settings/vars.scss',
-            // пушиться в каждый компонент поэтому импортируем отдельно
+        // пушиться в каждый компонент поэтому импортируем отдельно
     ]
 },
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -38,7 +45,7 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-
+    '@nuxt/image',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -47,6 +54,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
     '@nuxtjs/svg-sprite',
+    '@nuxt/image',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
