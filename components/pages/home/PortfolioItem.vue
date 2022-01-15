@@ -6,7 +6,7 @@
         <a class="portfolio__site-link" target="blank" :href="item.link">
 
           <div class="portfolio__title-wrapper">
-            <h3 class="portfolio__title">{{item.title}}</h3>
+            <h3 class="portfolio__title title">{{item.title}}</h3>
             <span class="portfolio__subtitle">{{item.description}}</span>
           </div>
           <nuxt-picture class="portfolio__img" :src="`portfolio/${item.imgName}.png`"  :alt="item.imgName+'-image'" />
@@ -48,9 +48,7 @@ export default{
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  
-  box-shadow: 0 .05rem .3rem .1rem $mainTxtColor;
-
+  box-shadow: 0 .05rem .3rem .1rem rgba(197, 197, 197, 0.5);
   border-radius: .7rem;
   overflow: hidden;
 
@@ -126,14 +124,14 @@ filter: brightness(25%);
 
 .portfolio__title,.portfolio__subtitle 
 {
-  color: inherit;
+  // color: inherit;
   transition: all 0.2s ease;
 }
 
 .portfolio__title 
 {
   text-decoration: underline transparent;
-  font-size: 1.2em;
+  font-size: 1.1em;
   margin-bottom: 1rem;
 
   align-self: flex-start;
@@ -142,7 +140,7 @@ filter: brightness(25%);
 
 .portfolio__subtitle 
 {
-font-size: .8em;
+font-size: .7em;
 align-self: flex-end;
 align-self: flex-start;
 }
@@ -154,7 +152,7 @@ align-self: flex-start;
   top: 0;
   left: 0;
   width: 100%;
-  // object-fit:  cover;
+
   min-height: 100%;
   height: auto;
   transition: all 0.2s ease;
