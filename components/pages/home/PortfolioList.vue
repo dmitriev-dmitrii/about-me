@@ -3,12 +3,8 @@
   <div class="portfolio  block-border-bottom">
     <h2 id="portfolio" class="title">Портфолио</h2>
     <div class="contanier">
-    <div class="portfolio__list  ">
-      <PortfolioItem />
-      <PortfolioItem /> 
-      <PortfolioItem />
-      <PortfolioItem /> 
-      <PortfolioItem /> 
+    <div class="portfolio__list ">
+      <PortfolioItem :item=item v-for="item in portfolioList" :key="item.id"/>
     </div>
     </div>
   </div>
@@ -18,11 +14,24 @@
 import PortfolioItem from '@/components/pages/home/PortfolioItem'
 
 export default {
+  data:()=>{
+    return {
+      portfolioList:[]
+    }
+  },
 components:{
   PortfolioItem
-}
+  },
 
+  fetch() {
+    this.portfolioList =  this.$store.state.portfolio.list;
+  },
+
+mounted :function (){
+  console.log(this.$store.state.portfolio.list);
+}
 };
+
 </script>
 
 <style lang="scss">

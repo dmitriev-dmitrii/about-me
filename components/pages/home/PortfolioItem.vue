@@ -3,32 +3,44 @@
 
       <div class="portfolio__item">
         
-        <a class="portfolio__site-link" target="blank" href="#">
+        <a class="portfolio__site-link" target="blank" :href="item.link">
 
           <div class="portfolio__title-wrapper">
-          <h3 class="portfolio__title">weatherApp</h3>
-          <span class="portfolio__subtitle">Приложение погоды VueJS</span>
+            <h3 class="portfolio__title">{{item.title}}</h3>
+          <span class="portfolio__subtitle">{{item.description}}</span>
           </div>
 
           <picture>
-            <source class="portfolio__img" srcset="@/static/img/poland-travel.webp" type="image/webp">
-            <img class="portfolio__img" alt="diceGame" src="@/static/img/poland-travel.png">
+            <!-- <source class="portfolio__img" :srcset="`/_nuxt/static/img/portfolio/${item.imgName}.webp`" type="image/webp"> -->
+            <img  class="portfolio__img" :src="`/_nuxt/static/img/portfolio/${item.imgName}.png`" :alt="item.imgName">
           </picture>
+
         </a>
 
         <ul class="portfolio__item-about-list">
-          <li class="portfolio__item-about">Геолокация</li>
-          <li class="portfolio__item-about"> Api</li>
-          <li class="portfolio__item-about">VueJS</li>
-
+          <li class="portfolio__item-about" v-for="stackElement in item.stack" :key="stackElement">{{stackElement}}</li>
         </ul>
 
-        <a class="portfolio__git-link " target="blank" href="https://github.com/dmitriev-dmitrii/weatherApp">
-        <SvgIcon name="github"></SvgIcon> Код на GitHub </a>
+        <a class="portfolio__git-link " target="blank" :href="item.linkGit">
+          <svg-icon name="github"></svg-icon> Код на GitHub 
+        </a>
       
       </div>
 
 </template>
+
+<script>
+
+
+export default{
+  props:{
+    item:{
+        type: Object,
+        required: true,
+    }
+  }
+}
+</script>
 
 
 <style lang="scss">
@@ -77,16 +89,6 @@ outline: none;
 }
 }
 
-.portfolio__site-link.portfolio__site-link:hover .portfolio__title-wrapper,
-.portfolio__site-link.portfolio__site-link:focus .portfolio__title-wrapper
-{
-
-&:before
-{
-color: white;
-}
-
-}
 
 .portfolio__site-link.portfolio__site-link:hover .portfolio__title,
 .portfolio__site-link.portfolio__site-link:focus .portfolio__title
@@ -114,27 +116,12 @@ filter: brightness(25%);
   width: 100%;
   height: 100%;
 
-font-weight: bold;
+  font-weight: bold;
 
-display: flex;
-justify-content: center;
-flex-direction: column;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 
-&::before
-{
-
-  transition: all 0.2s ease;
-  content: 'перейти на сайт';
-  color: transparent;
-font-size: .7em;
-letter-spacing: .1rem;
-
-  position: absolute;
-
-    right: 1rem;
-    bottom: 1rem;
-  z-index: 3;
-}
 }
 
 .portfolio__title,.portfolio__subtitle 
@@ -165,7 +152,7 @@ font-size: .8em;
   width: 100%;
   object-fit:  cover;
 height: 100%;
-transition: all 0.4s linear;
+transition: all 0.2s ease;
 background: #000;
 filter: brightness(60%);
 

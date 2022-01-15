@@ -70,6 +70,7 @@ width: 100%;
   display: block;
   border: none;
   border-radius: .7rem;
+  border: .1rem solid currentColor;
   padding: 0.5em;
   font-size: 1.1em;
   margin-bottom: 1rem;
@@ -81,6 +82,7 @@ width: 100%;
 
   transition: all 0.2s ease;
   &:focus{
+    border: .1rem solid $mainAccentColor;
     box-shadow: 0  0 .5rem .1rem $mainAccentColor ;
   }
 }
