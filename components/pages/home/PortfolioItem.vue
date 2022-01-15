@@ -133,7 +133,7 @@ filter: brightness(25%);
   text-decoration: underline transparent;
   font-size: 1.1em;
   margin-bottom: 1rem;
-
+  color: inherit;
   align-self: flex-start;
 
 }
