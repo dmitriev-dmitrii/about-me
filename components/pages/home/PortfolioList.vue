@@ -3,9 +3,9 @@
   <div class="portfolio  block-border-bottom">
     <h2 id="portfolio" class="title">Портфолио</h2>
     <div class="contanier">
-    <div class="portfolio__list ">
-      <PortfolioItem :item=item v-for="item in portfolioList" :key="item.id"/>
-    </div>
+      <div class="portfolio__list ">
+        <PortfolioItem :item=item v-for="item in portfolioList" :key="item.id"/>
+      </div>
     </div>
   </div>
 </template>
@@ -24,7 +24,7 @@ components:{
   },
 
   fetch() {
-    this.portfolioList =  this.$store.state.portfolio.list;
+    this.portfolioList =  this.$store.state.portfolio.list.reverse();
   },
 
   // mounted :function (){

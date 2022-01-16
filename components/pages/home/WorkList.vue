@@ -2,37 +2,45 @@
 
 <div class="experience block-border-bottom  ">
 
-<!-- <description></description> -->
-
   <h2 id="experience" class="title">Опыт работы</h2>
 
-<div class="experience__list contanier">
-
-    <div class="experience__item ">
-      <h3 class=" title ">Артис <a href="http://artis-ltd.ru/" class="link">artis-ltd.ru</a> </h3>
-      <h3 >Должность : <span class="title">Верстальщик</span> </h3>
-      <p class="description experience__item-time">
-        c января 2019 - февраяль 2022 (6 лет 2 месяца)
-      </p>
-      <the-details>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur architecto alias dolorum voluptatem doloremque optio aperiam explicabo hic ut, quo non voluptate excepturi sit deserunt ullam recusandae officiis voluptatibus praesentium iusto provident dolore illo ea sunt repellendus? Tempore, minus sint incidunt, ab, alias iusto aperiam ut necessitatibus inventore natus eius?
-      </the-details>
-    </div>
-    
-</div>
+  <div class="experience__list contanier">
+    <work-item :item=item v-for="item in workList" :key="item.id"></work-item>
+  </div>
 
 </div>
 
 </template>
 
 <script>
+import WorkItem from '@/components/pages/home/WorkItem';
+
+export default {
+
+  data:()=>{
+    return {
+      workList:[]
+    }
+  },
+
+  fetch() {
+    this.workList =  this.$store.state.work.list.reverse();
+  },
+
+  components : {
+    WorkItem
+  },
+
+}
 
 </script>
 
 <style lang="scss">
+
 .experience >.title {
   text-align: center;
 }
+
 .experience__list{
   display: flex;
   flex-wrap: wrap;
@@ -41,31 +49,4 @@
   justify-content: center;
 }
 
-.experience__item{
-  font-size: .8em;
-  margin: .5em 0;
-  width: 100%;
-  max-width: 35rem;
-  text-align: center;
-  @media (min-width: 767.98px){
-    
-    max-width: 50%;
-    align-self: flex-start;
-    text-align: left;
-    &:nth-child(2){
-    align-self: flex-end;
-    text-align: right;
-    }
-  } 
-
-}
-.experience__item .title
-{
-  font-size: 1.1em;
-}
-
-.experience__item-time
-{
-
-}
 </style>

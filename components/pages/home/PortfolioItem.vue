@@ -1,7 +1,7 @@
 
 <template>
 
-      <div class="portfolio__item">
+      <div v-if="item.isActive" class="portfolio__item">
         
         <a class="portfolio__site-link" target="blank" :href="item.link">
 
@@ -13,7 +13,7 @@
 
         </a>
 
-        <ul class="portfolio__item-about-list block-border-bottom">
+        <ul class="portfolio__item-about-list ">
           <li class="portfolio__item-about" v-for="stackElement in item.stack" :key="stackElement">{{stackElement}}</li>
         </ul>
 
@@ -54,14 +54,14 @@ export default{
 
   background:$bgColor2;
 
-  color: white;
+  color: rgba(255, 255, 255, 0.8);
 
   transition: all .2s ease;
 
-&:focus-within
-{
+  &:focus-within
+  {
       box-shadow:  0 0 0 0 transparent;
-}
+  }
 
 }
 
@@ -180,14 +180,14 @@ list-style: inside;
 .portfolio__git-link 
 {
   width: 100%;
-  
-color: $mainTxtColor;
-font-weight: bold;
+  border-top: rgba(197, 197, 197, 0.2) 1px solid;
+  color: inherit;
+  font-weight: bold;
   background: #000;
   text-align: center;
   padding: 0.7rem 1rem;
   font-size: .75em;
-transition: all .2s linear;
+  transition: all .2s ease;
   border-radius: 0  0  .7rem  .7rem;
 
 

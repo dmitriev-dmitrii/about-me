@@ -14,7 +14,7 @@ export const state = () => ({
         },
         {
             id:2,
-            isActive:true,
+            isActive:false,
             title:'Cliсker-Game',
             description:'игра на скорость кликов',
             stack:['js','css'],
@@ -34,7 +34,7 @@ export const state = () => ({
         },
         {
             id:5,
-            isActive:true,
+            isActive:false,
             title:'Drag-Drop Cards',
             description:'перетаскиваем карточки',
             stack:['js'],
@@ -54,7 +54,7 @@ export const state = () => ({
         },
         {
             id:7,
-            isActive:true,
+            isActive:false,
             title:'advocatus',
             description:'перетаскиваем карточки',
             stack:['js'],
