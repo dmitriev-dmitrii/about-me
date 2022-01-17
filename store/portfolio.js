@@ -4,7 +4,7 @@ export const state = () => ({
     list:[
         {
             id:1,
-            isActive:true,
+            isActive:false,
             title:'Poland-Travel',
             description:'landing page ',
             stack:['Webpack 5','sCss postCss'],
@@ -44,7 +44,7 @@ export const state = () => ({
         },
         {
             id:6,
-            isActive:true,
+            isActive:false,
             title:'Wheather App',
             description:'приложение погоды с геолокацией',
             stack:['VueJS','Rest Api'],
@@ -77,7 +77,7 @@ export const state = () => ({
             isActive:true,
             title:'Vue-Todo',
             description:'Приложение  списка дел с сортировкой',
-            stack:['VueJS 3','tailwindCss','Rest Api'],
+            stack:['VueJS 3 , Vuex','tailwindCss','Rest Api'],
             imgName:'vue-todo',
             linkGit:'https://github.com/dmitriev-dmitrii/vue-todo',
             link:'https://dmitriev-dmitrii.github.io/vue-todo/dist/',
@@ -87,7 +87,7 @@ export const state = () => ({
             isActive:true,
             title:'Nuxt-Movies',
             description:'Аналог сайта КиноПоиск',
-            stack:['Nuxt','TailwindCss','Rest Api'],
+            stack:['Nuxt, Vuex, Router','TailwindCss','Rest Api',],
             imgName:'nuxt-movies',
             linkGit:'https://github.com/dmitriev-dmitrii/vue-nuxt-movies/',
             link:'https://vue-nuxt-movies.herokuapp.com/movies',
