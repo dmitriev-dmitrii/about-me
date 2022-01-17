@@ -9,9 +9,7 @@
       <label for="name">Ваше имя</label>
       <input id="name" class="form__input" v-model="form.name"  type="text" placeholder="*" >
       <label for="phone">Телефон</label>
-      <input id="phone" class="form__input"  v-model="form.phone" type="tel" placeholder="*" 
-        pattern="^[+ 0-9]+$"
-        title="89111795751">
+      <input id="phone" class="form__input" v-model="form.phone" minlength="10" pattern="\+7\-[0-9]{3}\-[0-9]{3}\-[0-9]{2}\-[0-9]{2}" autocomplete="tel"  type="tel" placeholder="*" >
       <label for="email">Email</label>
       <input  id="email" class="form__input" type="email" v-model="form.email">
       <label for="message">Сообщение</label>
@@ -21,10 +19,10 @@
           {{message}}<br>
         </span>
         <span  class="success">
-          {{status}}
+          {{status}}<br>
         </span>
         <span v-if="loading">
-        Отправка формы
+        Отправка формы<br>
         </span>
       </div>
       <button class="button" :disabled="loading" type="submit">Отправить</button>
@@ -35,10 +33,12 @@
 
 <script>
 import axios from 'axios'
+
 export default {
 
   data:() => {
     return{
+
       form:{
         name:'',
         phone:'',
@@ -52,6 +52,7 @@ export default {
     }
   },
   methods:{
+
     testForm:function () {
       this.errors=[];
       if (!this.form.name.length > 0) { 
@@ -79,7 +80,15 @@ export default {
     this.loading=true;
     const url  = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatID}&parse_mode=html&text=${stringMessage}`;
     axios.get(url).then((e)=>{
-      if (e.status==200) { this.status='Oтправленно!' }
+      if (e.status==200) { 
+        this.status='Oтправленно!'
+        this.form = {
+        name:'',
+        phone:'',
+        email:'',
+        message:'',
+      }
+        }
       else { this.errors.push('Что то пошло не так...') }
       this.loading=false;
     })
