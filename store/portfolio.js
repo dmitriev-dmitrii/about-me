@@ -89,8 +89,8 @@ export const state = () => ({
             description:'Аналог сайта КиноПоиск',
             stack:['Nuxt','TailwindCss','Rest Api'],
             imgName:'nuxt-movies',
-            linkGit:'https://github.com/dmitriev-dmitrii/vue-nuxt-movies',
-            link:'https://vue-nuxt-movies.herokuapp.com/',
+            linkGit:'https://github.com/dmitriev-dmitrii/vue-nuxt-movies/',
+            link:'https://vue-nuxt-movies.herokuapp.com/movies',
         },
     ],
 
