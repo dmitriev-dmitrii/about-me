@@ -7,7 +7,7 @@
         {{item.time}}
       </p>
       <the-details class="experience__item-description">
-        <p v-html="item.description"></p> 
+        <div v-html="item.description"></div> 
       </the-details>
     </div>
     
@@ -31,7 +31,7 @@ export default{
   margin: .5em 0;
   width: 100%;
   max-width: 35rem;
-  text-align: center;
+
   @media (min-width: 767.98px){
     
     max-width: 50%;

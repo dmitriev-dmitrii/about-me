@@ -1,27 +1,93 @@
 <template>
 
   <div class="form__wrapper block-border-bottom ">
-    <form id="form-contact" method="POST" class="form" autocomplete="on" enctype="multipart/form-data">
+    <form id="form-contact" @submit.prevent="testForm" class="form" autocomplete="on" enctype="multipart/form-data">
       <h4 id="contacts" class="title">
         Отправить Сообщение
       </h4>
 
       <label for="name">Ваше имя</label>
-      <input id="name" class="form__input" name="name" type="text" placeholder="*" >
+      <input id="name" class="form__input" v-model="form.name"  type="text" placeholder="*" >
       <label for="phone">Телефон</label>
-      <input id="phone" class="form__input"  name="phone" type="tel" placeholder="*" 
+      <input id="phone" class="form__input"  v-model="form.phone" type="tel" placeholder="*" 
         pattern="^[+ 0-9]+$"
         title="89111795751">
       <label for="email">Email</label>
-      <input  id="email" class="form__input" type="email" name="email">
+      <input  id="email" class="form__input" type="email" v-model="form.email">
       <label for="message">Сообщение</label>
-      <textarea id="message" name="message" class="form__input"  cols="20" rows="4"></textarea>
-      <span class="status-message">status-message</span>
-      <button class="button" type="submit">Отправить</button>
+      <textarea id="message" v-model="form.message" class="form__input"  cols="20" rows="4"></textarea>
+      <div class="status-message">
+        <span class="error" v-for="message in errors" :key=message>
+          {{message}}<br>
+        </span>
+        <span  class="success">
+          {{status}}
+        </span>
+        <span v-if="loading">
+        Отправка формы
+        </span>
+      </div>
+      <button class="button" :disabled="loading" type="submit">Отправить</button>
     </form>
   </div>
 
 </template>
+
+<script>
+import axios from 'axios'
+export default {
+
+  data:() => {
+    return{
+      form:{
+        name:'',
+        phone:'',
+        email:'',
+        message:'',
+      },
+
+      loading:false,
+      status:'',
+      errors:[],
+    }
+  },
+  methods:{
+    testForm:function () {
+      this.errors=[];
+      if (!this.form.name.length > 0) { 
+        this.errors.push('поле "Имя" обязательное')
+        }
+      if (!this.form.phone.length > 0) { 
+        this.errors.push('поле "Телефон" обязательное')
+        }
+
+      if (this.errors.length == 0) { this.sendMessage() }
+
+    },
+    sendMessage:function () {
+
+      const token = "911702492:AAHG0Vm3jGvHaoG2WkTEF-sf3Zf4gKH_w5g";
+      const chatID = "-302509922";
+
+      let stringMessage = [];
+
+      for ( let item in this.form ) {
+        const row =`<b>${item}</b>:%20${this.form[item]}%0A`;
+        stringMessage.push(row)
+      }
+      stringMessage=stringMessage.join('');
+    this.loading=true;
+    const url  = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatID}&parse_mode=html&text=${stringMessage}`;
+    axios.get(url).then((e)=>{
+      if (e.status==200) { this.status='Oтправленно!' }
+      else { this.errors.push('Что то пошло не так...') }
+      this.loading=false;
+    })
+
+    }
+  }
+}
+</script>
 
 
 <style lang="scss">
@@ -95,9 +161,14 @@ width: 100%;
   display: block;
   transition: all 0.2s ease;
   font-weight: bold;
-  color: transparent;
   user-select: none;
   text-shadow: 0 0 .1rem;
+}
+.error {
+  color: $errorColor;
+}
+.success{
+  color: $succesColor;
 }
 
 </style>
