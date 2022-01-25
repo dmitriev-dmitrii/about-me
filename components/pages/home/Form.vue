@@ -128,7 +128,8 @@ export default {
   }
 
 }
-.form legend
+
+.form .title
 {
 text-align: center;
 width: 100%;
