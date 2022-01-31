@@ -24,7 +24,7 @@ export const state = () => ({
         },
         {
             id:3,
-            isActive:true,
+            isActive:false,
             title:'Dice-Game',
             description:'Игра в кости',
             stack:['js','анимации css'],
