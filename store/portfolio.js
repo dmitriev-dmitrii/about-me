@@ -74,7 +74,7 @@ export const state = () => ({
         },
         {
             id:19,
-            isActive:true,
+            isActive:false,
             title:'Vue-Todo',
             description:'Приложение  списка дел с сортировкой',
             stack:['VueJS 3 , Vuex','tailwindCss','Rest Api'],
