@@ -2,8 +2,11 @@
   "name": "portfolio",
   "version": "3.2.0",
   "private": true,
+  "engines": {
+    "node": ">=16.0.0 <17.0.0"
+  },
   "scripts": {
-    "serve": "nuxt --open",
+    "dev": "nuxt --open",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
@@ -18,7 +21,6 @@
     "css": "^3.0.0",
     "normalize.css": "^8.0.1",
     "nuxt": "^2.15.7"
-
   },
   "devDependencies": {
     "@nuxt/image": "^0.6.0",
