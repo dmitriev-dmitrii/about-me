@@ -2,8 +2,11 @@
   "name": "portfolio",
   "version": "3.2.0",
   "private": true,
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
-    "serve": "nuxt --open",
+    "dev": "nuxt --open",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
