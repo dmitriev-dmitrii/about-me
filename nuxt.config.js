@@ -13,7 +13,8 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: '/gitlab-ui.css' }
     ]
   },
 
@@ -21,6 +22,10 @@ export default {
   css: [
     'normalize.css/normalize.css',
     '@/assets/scss/index.scss',
+  ],
+
+  plugins: [
+    { src: '@/plugins/gitlab-ui', mode: 'client' }
   ],
 
   // https://image.nuxtjs.org/
@@ -60,5 +65,16 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    postcss: {
+      preset: {
+        features: {
+          customProperties: false
+        }
+      }
+    },
+    extend (config) {
+      config.resolve.alias['@gitlab/ui'] = '@gitlab/ui/dist'
+      config.resolve.alias['@gitlab/ui/components'] = '@gitlab/ui/dist/components'
+    }
   }
 }

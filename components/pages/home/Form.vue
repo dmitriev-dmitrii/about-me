@@ -25,7 +25,7 @@
         Отправка формы<br>
         </span>
       </div>
-      <button class="button" :disabled="loading" type="submit">Отправить</button>
+      <gl-button class="button" :disabled="loading" type="submit">Отправить</gl-button>
     </form>
   </div>
 
