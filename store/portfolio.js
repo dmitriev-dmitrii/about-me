@@ -4,7 +4,7 @@ export const state = () => ({
     list:[
         {
             id:1,
-            isActive:false,
+            isActive: true,
             title:'Poland-Travel',
             description:'landing page ',
             stack:['Webpack 5','sCss postCss'],
@@ -14,7 +14,7 @@ export const state = () => ({
         },
         {
             id:2,
-            isActive:false,
+            isActive: true,
             title:'Cliсker-Game',
             description:'игра на скорость кликов',
             stack:['js','css'],
@@ -24,7 +24,7 @@ export const state = () => ({
         },
         {
             id:3,
-            isActive:false,
+            isActive: true,
             title:'Dice-Game',
             description:'Игра в кости',
             stack:['js','анимации css'],
@@ -34,7 +34,7 @@ export const state = () => ({
         },
         {
             id:5,
-            isActive:false,
+            isActive: true,
             title:'Drag-Drop Cards',
             description:'перетаскиваем карточки',
             stack:['js'],
@@ -44,7 +44,7 @@ export const state = () => ({
         },
         {
             id:6,
-            isActive:false,
+            isActive: true,
             title:'Wheather App',
             description:'приложение погоды с геолокацией',
             stack:['VueJS','Rest Api'],
@@ -54,9 +54,9 @@ export const state = () => ({
         },
         {
             id:7,
-            isActive:false,
+            isActive: true,
             title:'advocatus',
-            description:'asd',
+            description:'landing page по сериалу',
             stack:['js'],
             imgName:'advocatus',
             linkGit:'https://github.com/dmitriev-dmitrii/advocatus',
@@ -64,7 +64,7 @@ export const state = () => ({
         },
         {
             id:99,
-            isActive:false,
+            isActive: true,
             title:'Jug',
             description:'landing page not linked',
             stack:['gulp','js','css'],
@@ -74,7 +74,7 @@ export const state = () => ({
         },
         {
             id:19,
-            isActive:false,
+            isActive: true,
             title:'Vue-Todo',
             description:'Приложение  списка дел с сортировкой',
             stack:['VueJS 3 , Vuex','tailwindCss','Rest Api'],
