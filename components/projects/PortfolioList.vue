@@ -1,10 +1,9 @@
-
 <template>
-  <div class="portfolio  block-border-bottom">
+  <div class="portfolio block-border-bottom">
     <h2 id="portfolio" class="title">Портфолио</h2>
     <div class="container">
-      <div class="portfolio__list ">
-        <PortfolioItem :item=item v-for="item in portfolioList" :key="item.id"/>
+      <div class="portfolio__list">
+        <PortfolioItem v-for="item in portfolioList" :key="item.id" :item="item" />
       </div>
     </div>
   </div>
@@ -14,64 +13,60 @@
 import PortfolioItem from '~/components/projects/PortfolioItem.vue'
 
 export default {
-  data:()=>{
-    return {
-      portfolioList:[]
-    }
+  components: {
+    PortfolioItem,
   },
-components:{
-  PortfolioItem
+  data: () => {
+    return {
+      portfolioList: [],
+    }
   },
 
   fetch() {
-    this.portfolioList =  [...this.$store.state.portfolio.list].reverse();
+    this.portfolioList = [...this.$store.state.portfolio.list].reverse()
   },
 
   // mounted :function (){
   // console.log(this.$store.state.portfolio.list);
   // }
-};
-
+}
 </script>
 
 <style>
 .portfolio .title {
   text-align: center;
 }
+
 .portfolio {
   background-color: var(--bg-color1);
   width: 100%;
 }
 
-.portfolio__list{
+.portfolio__list {
   display: flex;
   flex-wrap: wrap;
-  margin-left: -1rem ;
-  margin-right: -1rem ;
+  margin-left: -1rem;
+  margin-right: -1rem;
 }
 
 .portfolio__item {
   margin: 1rem auto;
-  width:calc( 100% - 2rem ) ;
-
+  width: calc(100% - 2rem);
   max-width: 35rem;
 }
 
-@media (min-width: 575.98px)
-  { 
-    .portfolio__item {
-    width:calc( ( 100% - 4rem )  / 2 ) ;
-    margin: 1rem ;
+@media (min-width: 575.98px) {
+  .portfolio__item {
+    width: calc((100% - 4rem) / 2);
+    margin: 1rem;
     max-width: none;
-    }
   }
+}
 
-@media (min-width: 767.98px)
-    {
-      .portfolio__item {
-      width:calc( ( 100% - 6rem )  / 3 ) ;
-      margin: 1rem ;
-      }
-    }
-
+@media (min-width: 767.98px) {
+  .portfolio__item {
+    width: calc((100% - 6rem) / 3);
+    margin: 1rem;
+  }
+}
 </style>

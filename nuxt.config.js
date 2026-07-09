@@ -1,14 +1,14 @@
 export default {
-    target: 'static',
-    loading: false,
-    router: {
-        base: process.env.NODE_ENV === 'production' ? '/about-me/' : '/',
-        prefetchLinks: false
-    },
-    generate: {
-        fallback: true,
-    },
-    ssr: false,
+  target: 'static',
+  loading: false,
+  router: {
+    base: process.env.NODE_ENV === 'production' ? '/about-me/' : '/',
+    prefetchLinks: false,
+  },
+  generate: {
+    fallback: true,
+  },
+  ssr: false,
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -20,23 +20,18 @@ export default {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { name: 'format-detection', content: 'telephone=no' },
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-    'normalize.css/normalize.css',
-    '@/assets/css/index.css',
-  ],
+  css: ['normalize.css/normalize.css', '@/assets/css/index.css'],
 
   // https://image.nuxtjs.org/
   image: {
     dir: 'static/img/',
-    staticFilename: 'img/[name]-[hash][ext]'
+    staticFilename: 'img/[name]-[hash][ext]',
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -45,9 +40,7 @@ export default {
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [
-    '@nuxt/image',
-  ],
+  buildModules: ['@nuxt/image'],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
@@ -61,8 +54,5 @@ export default {
   axios: {},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-  }
-
-
+  build: {},
 }

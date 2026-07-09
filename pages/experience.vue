@@ -1,16 +1,15 @@
 <template>
   <div>
-    <WorkList/>
+    <WorkList />
   </div>
 </template>
 
 <script>
-
-import WorkList from "../components/experience/WorkList.vue";
+import WorkList from '../components/experience/WorkList.vue'
 
 export default {
   components: {
-    WorkList
-  }
+    WorkList,
+  },
 }
 </script>

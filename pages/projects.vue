@@ -1,18 +1,15 @@
 <template>
-<div>
-  <PortfolioList/>
-</div>
+  <div>
+    <PortfolioList />
+  </div>
 </template>
 
 <script>
-
-
-import PortfolioList from '~/components/projects/PortfolioList.vue';
-
+import PortfolioList from '~/components/projects/PortfolioList.vue'
 
 export default {
-components:{
-  PortfolioList,
-}
+  components: {
+    PortfolioList,
+  },
 }
 </script>

@@ -1,73 +1,71 @@
-<template >
-
-    <div class="experience__item ">
-      <h3 class=" title ">{{item.title}} <a :href="item.link" class="link">{{item.linkTxt}}</a> </h3>
-      <h3 >Должность : <span class="title">{{item.position}}</span> </h3>
-      <p class="description experience__item-time">
-        {{item.time}}
-      </p>
-      <AppDetails class="experience__item-description">
-        <div v-html="item.description"></div> 
-      </AppDetails>
-    </div>
-    
+<template>
+  <div class="experience__item">
+    <h3 class="title">
+      {{ item.title }} <a :href="item.link" class="link">{{ item.linkTxt }}</a>
+    </h3>
+    <h3>
+      Должность : <span class="title">{{ item.position }}</span>
+    </h3>
+    <p class="description experience__item-time">
+      {{ item.time }}
+    </p>
+    <AppDetails class="experience__item-description">
+      <div v-html="item.description"></div>
+    </AppDetails>
+  </div>
 </template>
 
 <script>
-import AppDetails from "~/components/global/AppDetails.vue";
+import AppDetails from '~/components/global/AppDetails.vue'
 
-export default{
-  components: {AppDetails},
-    props:{
-    item:{
-        type: Object,
-        required: true,
-    }
-  }
+export default {
+  components: { AppDetails },
+  props: {
+    item: {
+      type: Object,
+      required: true,
+    },
+  },
 }
 </script>
 
 <style>
-
-.experience__item{
-  font-size: .8em;
-  margin: .5em 0;
+.experience__item {
+  font-size: 0.8em;
+  margin: 0.5em 0;
   width: 100%;
   max-width: 35rem;
 
-  @media (min-width: 767.98px){
-    
+  @media (min-width: 767.98px) {
     max-width: 50%;
     align-self: flex-start;
     text-align: left;
-    &:nth-child(2){
-    align-self: flex-end;
-    text-align: right;
-    }
-  } 
 
+    &:nth-child(2) {
+      align-self: flex-end;
+      text-align: right;
+    }
+  }
 }
-.experience__item .title
-{
+
+.experience__item .title {
   font-size: 1.1em;
 }
 
-.experience__item-time
-{
-
+.experience__item-time {
 }
-.experience__item-description 
-{
+
+.experience__item-description {
   line-height: 1.3em;
+}
 
+.experience__item-description p,
+ul {
+  padding: 0.5rem;
 }
-.experience__item-description p,ul
-{
-  padding: .5rem;
-}
-.experience__item-description ul>li
-{
+
+.experience__item-description ul > li {
   list-style: inside;
-  padding: .25rem;
+  padding: 0.25rem;
 }
 </style>

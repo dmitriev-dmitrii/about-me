@@ -1,17 +1,16 @@
 // import axios from 'axios';
 
 export const state = () => ({
-    list:[ 
-        
-        {
-            id:1,
-            isActive:true,
-            title:'Артис',
-            position:'Верстальщик',
-            link:'http://artis-ltd.ru/',
-            linkTxt:'artis-ltd.ru',
-            time:'c сентября 2020 2020 - по настоящее время',
-            description:`<p> В основные задачи входили: поддержка, разработка, рефакторинг старого кода сайтов компании.<br>
+  list: [
+    {
+      id: 1,
+      isActive: true,
+      title: 'Артис',
+      position: 'Верстальщик',
+      link: 'http://artis-ltd.ru/',
+      linkTxt: 'artis-ltd.ru',
+      time: 'c сентября 2020 2020 - по настоящее время',
+      description: `<p> В основные задачи входили: поддержка, разработка, рефакторинг старого кода сайтов компании.<br>
             Создание новых разделов , посадка верстки на php.
         <ul>
             <li>Разработал приложение на  Node JS для пакетной обработки картинок</li>
@@ -27,20 +26,12 @@ export const state = () => ({
             <li><a class="link" target="blank" href="http://artis-ltd.ru/">artis-ltd.ru</a></li>
         </ul>
         </p>`,
-        },
+    },
+  ],
+})
 
-    ],
+export const getters = {}
 
-});
+export const mutations = {}
 
-export const getters = {
-
-};
-
-export const mutations = {
-
-};
-
-export const actions = {
-
-};
+export const actions = {}

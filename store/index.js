@@ -1,4 +1,3 @@
-
 // export const state = () => ({
 // 	language:'en',
 // })

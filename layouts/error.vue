@@ -1,23 +1,24 @@
 <template>
   <div class="error-page">
     <div class="container">
-      <h1 >
+      <h1>
         {{ error.statusCode }}
       </h1>
-      <h2>{{ error.message || 'Unexpected Error' }}</h2>
+      <h2>{{ error.message }}</h2>
 
-
-      <NuxtLink to="/" class="button">
-        На главную
-      </NuxtLink>
+      <NuxtLink to="/" class="button"> На главную </NuxtLink>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['error'],
-  layout: 'error'
+  layout: 'error',
+  error: {
+    type: Object,
+    required: true,
+    default: () => ({ statusCode: 500, message: 'Unexpected Error' }),
+  },
 }
 </script>
 

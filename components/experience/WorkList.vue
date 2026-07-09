@@ -1,54 +1,40 @@
 <template class="">
+  <div class="experience block-border-bottom">
+    <h2 id="experience" class="title">Опыт работы</h2>
 
-<div class="experience block-border-bottom  ">
-
-  <h2 id="experience" class="title">Опыт работы</h2>
-
-  <div class="experience__list container">
-    <WorkItem :item=item v-for="item in workList" :key="item.id"></WorkItem>
+    <div class="experience__list container">
+      <WorkItem v-for="item in workList" :key="item.id" :item="item"></WorkItem>
+    </div>
   </div>
-
-</div>
-
 </template>
 
 <script>
-
-
-
-import WorkItem from "./WorkItem.vue";
+import WorkItem from './WorkItem.vue'
 
 export default {
-  components: {WorkItem},
+  components: { WorkItem },
 
-  data:()=>{
+  data: () => {
     return {
-      workList:[]
+      workList: [],
     }
   },
 
   fetch() {
-    this.workList =  [...this.$store.state.work.list].reverse();
+    this.workList = [...this.$store.state.work.list].reverse()
   },
-
-
-
 }
-
 </script>
 
 <style>
-
-.experience >.title {
+.experience > .title {
   text-align: center;
 }
 
-.experience__list{
+.experience__list {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
+  flex-flow: column wrap;
   align-items: center;
   justify-content: center;
 }
-
 </style>

@@ -1,45 +1,53 @@
 <template>
-
-  <div class="form__wrapper block-border-bottom ">
-    <form id="form-contact" @submit.prevent="testForm" class="form" autocomplete="on" enctype="multipart/form-data">
-      <h4 id="contacts" class="title">
-        Отправить Сообщение
-      </h4>
+  <div class="form__wrapper block-border-bottom">
+    <form
+      id="form-contact"
+      class="form"
+      autocomplete="on"
+      enctype="multipart/form-data"
+      @submit.prevent="testForm"
+    >
+      <h4 id="contacts" class="title">Отправить Сообщение</h4>
 
       <label for="name">Ваше имя</label>
-      <input id="name" class="form__input" v-model="form.name" type="text" placeholder="*">
+      <input id="name" v-model="form.name" class="form__input" type="text" placeholder="*" />
       <label for="phone">Телефон</label>
-      <input id="phone" class="form__input" v-model="form.phone" minlength="10"
-             pattern="\+7\-[0-9]{3}\-[0-9]{3}\-[0-9]{2}\-[0-9]{2}" autocomplete="tel" type="tel" placeholder="*">
+      <input
+        id="phone"
+        v-model="form.phone"
+        class="form__input"
+        minlength="10"
+        pattern="\+7\-[0-9]{3}\-[0-9]{3}\-[0-9]{2}\-[0-9]{2}"
+        autocomplete="tel"
+        type="tel"
+        placeholder="*"
+      />
       <label for="email">Email</label>
-      <input id="email" class="form__input" type="email" v-model="form.email">
+      <input id="email" v-model="form.email" class="form__input" type="email" />
       <label for="message">Сообщение</label>
-      <textarea id="message" v-model="form.message" class="form__input" cols="20" rows="4"></textarea>
+      <textarea
+        id="message"
+        v-model="form.message"
+        class="form__input"
+        cols="20"
+        rows="4"
+      ></textarea>
       <div class="status-message">
-        <span class="error" v-for="message in errors" :key=message>
-          {{ message }}<br>
-        </span>
-        <span class="success">
-          {{ status }}<br>
-        </span>
-        <span v-if="loading">
-        Отправка формы<br>
-        </span>
+        <span v-for="message in errors" :key="message" class="error"> {{ message }}<br /> </span>
+        <span class="success"> {{ status }}<br /> </span>
+        <span v-if="loading"> Отправка формы<br /> </span>
       </div>
       <button class="button" :disabled="loading" type="submit">Отправить</button>
     </form>
   </div>
-
 </template>
 
 <script>
 import axios from 'axios'
 
 export default {
-
   data: () => {
     return {
-
       form: {
         name: '',
         phone: '',
@@ -53,9 +61,8 @@ export default {
     }
   },
   methods: {
-
     testForm: function () {
-      this.errors = [];
+      this.errors = []
       if (!this.form.name.length > 0) {
         this.errors.push('поле "Имя" обязательное')
       }
@@ -66,22 +73,20 @@ export default {
       if (this.errors.length == 0) {
         this.sendMessage()
       }
-
     },
     sendMessage: function () {
+      const token = '911702492:AAHG0Vm3jGvHaoG2WkTEF-sf3Zf4gKH_w5g'
+      const chatID = '-302509922'
 
-      const token = "911702492:AAHG0Vm3jGvHaoG2WkTEF-sf3Zf4gKH_w5g";
-      const chatID = "-302509922";
-
-      let stringMessage = [];
+      let stringMessage = []
 
       for (let item in this.form) {
-        const row = `<b>${item}</b>:%20${this.form[item]}%0A`;
+        const row = `<b>${item}</b>:%20${this.form[item]}%0A`
         stringMessage.push(row)
       }
-      stringMessage = stringMessage.join('');
-      this.loading = true;
-      const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatID}&parse_mode=html&text=${stringMessage}`;
+      stringMessage = stringMessage.join('')
+      this.loading = true
+      const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatID}&parse_mode=html&text=${stringMessage}`
       axios.get(url).then((e) => {
         if (e.status == 200) {
           this.status = 'Oтправленно!'
@@ -94,17 +99,14 @@ export default {
         } else {
           this.errors.push('Что то пошло не так...')
         }
-        this.loading = false;
+        this.loading = false
       })
-
-    }
-  }
+    },
+  },
 }
 </script>
 
-
 <style>
-
 .form__wrapper {
   display: flex;
   justify-content: center;
@@ -113,11 +115,9 @@ export default {
 }
 
 .form {
-
   width: 100%;
   margin: 0 auto;
   padding: 1em;
-
   display: flex;
   flex-direction: column;
 }
@@ -153,18 +153,18 @@ export default {
 .form__input {
   width: 100%;
   display: block;
-  border: none;
-  border-radius: .7rem;
-  border: .1rem solid rgba(197, 197, 197, 0.3);
+  border-radius: 0.7rem;
+  border: 0.1rem solid rgb(197 197 197 / 30%);
   padding: 0.5em;
   font-size: 1.1em;
   margin-bottom: 1rem;
   background-color: var(--bg-color1);
   caret-color: var(--main-text-color);
   color: var(--main-text-color);
-  box-shadow: 0 0 .1rem .1rem rgba(0, 0, 0, .1), 0 0 .7rem .3rem rgba(146, 224, 246, .9);
+  box-shadow:
+    0 0 0.1rem 0.1rem rgb(0 0 0 / 10%),
+    0 0 0.7rem 0.3rem rgb(146 224 246 / 90%);
   transition: all 0.2s ease;
-
 }
 
 .form label {
@@ -173,7 +173,7 @@ export default {
   margin: 0.5em 0;
 }
 
-.form button[type=submit] {
+.form button[type='submit'] {
   align-self: flex-end;
 }
 
@@ -182,7 +182,7 @@ export default {
   transition: all 0.2s ease;
   font-weight: bold;
   user-select: none;
-  text-shadow: 0 0 .1rem;
+  text-shadow: 0 0 0.1rem;
 }
 
 .error {
@@ -192,5 +192,4 @@ export default {
 .success {
   color: var(--succes-color);
 }
-
 </style>
