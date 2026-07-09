@@ -1,7 +1,7 @@
 export default {
     target: 'static',
     router: {
-        base: '/',
+        base: '/about-me/',
         prefetchLinks: false
     },
 
