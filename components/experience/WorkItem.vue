@@ -6,15 +6,18 @@
       <p class="description experience__item-time">
         {{item.time}}
       </p>
-      <the-details class="experience__item-description">
+      <AppDetails class="experience__item-description">
         <div v-html="item.description"></div> 
-      </the-details>
+      </AppDetails>
     </div>
     
 </template>
 
 <script>
+import AppDetails from "~/components/global/AppDetails.vue";
+
 export default{
+  components: {AppDetails},
     props:{
     item:{
         type: Object,

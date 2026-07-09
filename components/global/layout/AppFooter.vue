@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
 
-    <div class="footer__body contanier">
+    <div class="footer__body container">
       <div class="footer__first ">
         <h4 class="title" translate="no">
           <span >Dmitriev</span>&nbsp;

@@ -2,13 +2,13 @@
 
 <header class="header block-border-bottom">
 
-    <nav id="nav" class="nav contanier  ">
+    <nav id="nav" class="nav container  ">
 	<ul class="nav__list">
     <li class="nav__item "> <NuxtLink class="underline" to="/">Обо мне</NuxtLink></li>
         <li class="nav__item "> <NuxtLink class="underline" to="/experience">Опыт</NuxtLink></li>
         <li class="nav__item "><NuxtLink class="underline" to="/projects">Проекты</NuxtLink>  </li>
         <li class="nav__item "> <NuxtLink class="underline" to="/contacts">Контакты</NuxtLink></li>
-        <li class="nav__item "><DarkTheme/> </li>
+        <li class="nav__item "><DarkThemeToggle/> </li>
     </ul>
     </nav>
 
@@ -17,10 +17,10 @@
 </template>
 <script>
 
-import DarkTheme from "@/components/layout-defalut/DarkTheme.vue";
+import DarkThemeToggle from "~/components/global/layout/DarkThemeToggle.vue";
 export default {
   components: {
-    DarkTheme,
+    DarkThemeToggle
   },
 };
 </script>

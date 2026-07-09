@@ -9,7 +9,7 @@
             <h3 class="portfolio__title title">{{item.title}}</h3>
             <span class="portfolio__subtitle">{{item.description}}</span>
           </div>
-          <nuxt-picture class="portfolio__img" :src="`portfolio/${item.imgName}.png`"  :alt="item.imgName+'-image'" />
+          <NuxtPicture class="portfolio__img" :src="`portfolio/${item.imgName}.png`"  :alt="item.imgName+'-image'" />
 
         </a>
 
@@ -18,7 +18,7 @@
         </ul>
 
         <a class="portfolio__git-link " target="blank" :href="item.linkGit">
-          <svg-icon name="github"></svg-icon> Код на GitHub 
+          <SvgIcon name="github"/> Код на GitHub
         </a>
       
       </div>

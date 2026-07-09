@@ -2,7 +2,7 @@
 <template>
   <div class="portfolio  block-border-bottom">
     <h2 id="portfolio" class="title">Портфолио</h2>
-    <div class="contanier">
+    <div class="container">
       <div class="portfolio__list ">
         <PortfolioItem :item=item v-for="item in portfolioList" :key="item.id"/>
       </div>
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import PortfolioItem from '@/components/pages/home/PortfolioItem'
+import PortfolioItem from '~/components/projects/PortfolioItem.vue'
 
 export default {
   data:()=>{

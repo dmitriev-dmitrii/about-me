@@ -13,12 +13,9 @@ data() {
     }
 },
 
-mounted() {
-this.testDefalutTheme()
-},
+
 watch: {
     darkTheme: function () {
-        // add/remove class to/from html tag
         let htmlElement = document.documentElement;
         if (this.darkTheme) {
             localStorage.setItem('dark-theme', 'true');
@@ -39,7 +36,7 @@ methods:{
         htmlElement.setAttribute('dark-theme', 'true');
         this.darkTheme = true;
         return;
-    } 
+    }
     if ( localStorageDarkTheme === 'false') {
         htmlElement.setAttribute('dark-theme', 'false');
         this.darkTheme = false;
@@ -48,10 +45,12 @@ methods:{
     if ( isDarkDefalut ){
         htmlElement.setAttribute('dark-theme', `${isDarkDefalut}`);
         this.darkTheme = isDarkDefalut;
-        return;
     }
   }
-}
+},
+  created() {
+    this.testDefalutTheme()
+  },
 }
 
 </script>

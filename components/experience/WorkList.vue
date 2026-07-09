@@ -4,7 +4,7 @@
 
   <h2 id="experience" class="title">Опыт работы</h2>
 
-  <div class="experience__list contanier">
+  <div class="experience__list container">
     <WorkItem :item=item v-for="item in workList" :key="item.id"></WorkItem>
   </div>
 
@@ -14,7 +14,9 @@
 
 <script>
 
-import WorkItem from "~/components/pages/home/WorkItem.vue";
+
+
+import WorkItem from "./WorkItem.vue";
 
 export default {
   components: {WorkItem},

@@ -9,14 +9,14 @@
 </template>
 
 <script>
-import TheHeader from '@/components/layout-defalut/TheHeader';
-import TheFooter from '@/components/layout-defalut/TheFooter';
+import AppHeader from '~/components/global/layout/AppHeader.vue';
+import AppFooter from '~/components/global/layout/AppFooter.vue';
 
 
 export default {
 components:{
-  TheHeader,
-  TheFooter,
+  TheHeader: AppHeader,
+  TheFooter: AppFooter,
 },
 };
 
