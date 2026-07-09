@@ -1,3 +1,4 @@
+
 html
 {
 scroll-behavior: smooth;
@@ -6,17 +7,15 @@ font-size: 62.5%;
 
 * {
 	box-sizing: border-box;
-	&::before,
-	&::after {
-		box-sizing: border-box;
-	}
-
-	outline-color: $mainAccentColor;
+	outline-color: var(--main-accent-color);
 	outline-width: .3rem;
 	outline-offset:.2rem;
 	
-	// transition: background-color .1s linear;
-	
+}
+
+*::before,
+*::after {
+	box-sizing: border-box;
 }
 
 
@@ -29,12 +28,13 @@ button[disabled]
 {
 	opacity: 0.5 !important;
 	cursor: default !important;
-	&:hover,
-	&:active,
-	&:focus {
-		opacity: 0.5 !important;
-		cursor: default !important;
-	}
+}
+
+button[disabled]:hover,
+button[disabled]:active,
+button[disabled]:focus {
+	opacity: 0.5 !important;
+	cursor: default !important;
 }
 
 h1,

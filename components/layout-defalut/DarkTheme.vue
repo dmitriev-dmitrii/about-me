@@ -57,31 +57,28 @@ methods:{
 </script>
 
 
-<style  lang='scss'>
-
-$base: 1.6rem;
+<style>
 
 #darck-theme-label
 {
   display: block;
-  height: $base;
-  width: $base * 2;
+  height: 1.6rem;
+  width: 3.2rem;
 
-  border-radius: $base;
+  border-radius: 1.6rem;
 
   z-index: 1;
   position: relative;
 
   transition: 0.2s ease;
   box-shadow: 0 0 0 1px #c5c5c5;
-  &:hover{
-    box-shadow: 0 0 0.3rem 0.2rem currentColor;
-  }
 }
 
-#darck-theme-label
-{
-  &::before
+#darck-theme-label:hover {
+    box-shadow: 0 0 0.3rem 0.2rem currentColor;
+  }
+
+#darck-theme-label::before
   {  
   content: '';
   display: block;
@@ -97,16 +94,12 @@ $base: 1.6rem;
   transition: all 0.2s ease;
   }
 
-}
-#darck-theme-label.active
-{
-  &::before
+#darck-theme-label.active::before
   {  
   box-shadow: 0 0 0 1px #fff inset;
   transform: translateX(100%);
-  background-color: $mainAccentColor;
+  background-color: var(--main-accent-color);
   }
-}
 
 #darck-theme-label > input[type=checkbox]
 {
@@ -124,7 +117,7 @@ $base: 1.6rem;
 
   border: none;
 
-  border-radius: $base;
+  border-radius: 1.6rem;
   top: 0;
   left: 0;
 

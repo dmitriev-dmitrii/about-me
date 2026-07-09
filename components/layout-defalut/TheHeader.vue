@@ -24,23 +24,24 @@ export default {
   },
 };
 </script>
-<style lang="scss" >
+<style>
 
 .header {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.nav{
 
-}
 
 .nav__list {
 
   display: flex;
   justify-content: center;
   align-items: center;
-  @media (min-width: 767.98px){
+}
+
+@media (min-width: 767.98px){
+.nav__list {
   justify-content: flex-end;
   } 
 }
@@ -49,11 +50,10 @@ export default {
 
 font-size: .9em;
 margin:0 1rem;
-&:last-child
-{
-  margin-right:0 ;
 }
 
+.nav__item:last-child {
+  margin-right:0 ;
 }
 
 
@@ -64,21 +64,17 @@ margin:0 1rem;
 .nav__item a{
 
   font-weight: 300;
-  color: $mainTxtColor;
+  color: var(--main-text-color);
   cursor: pointer;
+}
+
 
 @media (min-width: 767.98px){ 
-  &:hover
-
+.nav__item a:hover
   {
       background-size: 100% .3rem;
   }
-
 }
-
-}
-
-
 
 </style>
 

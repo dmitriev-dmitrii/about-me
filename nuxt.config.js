@@ -1,10 +1,9 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'dmitriev-dmitrii portfolio',
+    title: 'dmitriev-dmitrii about',
     htmlAttrs: {
       lang: 'ru',
-
     },
     meta: [
       { charset: 'utf-8' },
@@ -20,7 +19,7 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     'normalize.css/normalize.css',
-    '@/assets/scss/index.scss',
+    '@/assets/css/index.css',
   ],
 
   // https://image.nuxtjs.org/
@@ -29,13 +28,6 @@ export default {
     staticFilename: 'img/[name]-[hash][ext]'
   },
 
-  // https://github.com/nuxt-community/style-resources-module
-  styleResources: {
-    scss: [
-        '@/assets/scss/settings/vars.scss',
-        // пушиться в каждый компонент поэтому импортируем отдельно
-    ]
-},
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   // plugins: ['@plugins/phone.js'],
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -50,7 +42,6 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/style-resources',
     '@nuxtjs/svg-sprite',
     '@nuxt/image',
   ],

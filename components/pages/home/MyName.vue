@@ -35,7 +35,7 @@ export default{
 </script>
 
 
-<style lang="scss">
+<style>
 .my-name__wrapper {
 
   margin-top: 1em;
@@ -45,13 +45,14 @@ export default{
   justify-content: space-evenly;
   flex-direction: column;
   align-items: center;
+}
 
 @media (min-width: 575.98px){ 
+.my-name__wrapper {
   justify-content: space-between;
   flex-direction: row;
   align-items: flex-start;
   }
-
 }
 
 .my-name {
@@ -59,33 +60,42 @@ export default{
 display: flex;
 align-items: flex-end;
 margin-bottom: 1em;
+}
+
 @media (min-width: 413.98px){ 
+.my-name {
   align-items:center;
   }
+}
 
 @media (min-width: 575.98px){ 
+.my-name {
   flex-direction: column;
   }
-
 }
+
 .my-name__about {
   width: 100%;
   padding-left: 1rem ;
-    @media (min-width: 575.98px){ 
-      text-align: center;
-      flex-direction: column;
-      padding:0 ;
+  justify-content: space-between;
+}
+
+@media (min-width: 575.98px){ 
+.my-name__about {
+  text-align: center;
+  flex-direction: column;
+  padding:0 ;
     }
-  & .title {
+}
+
+.my-name__about .title {
     margin: 1rem 0;
   }
-  justify-content: space-between;
-  & .button {
+
+.my-name__about .button {
     width: 100%;
     margin-bottom: 0;
   }
-
-}
 
 .my-name__photo {
   border-radius: .7rem;
@@ -121,10 +131,16 @@ margin-bottom: 1em;
   align-items: center;
   justify-content: center;
   width: 100%;
-  @media (min-width: 575.98px){ 
+}
+
+@media (min-width: 575.98px){ 
+.code {
   max-width: 50%;
   }
-  @media (min-width: 767.98px){
+}
+
+@media (min-width: 767.98px){
+.code {
     max-width: 60%;
   } 
 }

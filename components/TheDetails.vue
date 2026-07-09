@@ -20,7 +20,7 @@ export default {
 
 }
 </script>
-<style lang="scss">
+<style>
 
 .the-details,
 .the-details__summary 
@@ -34,20 +34,12 @@ export default {
     margin: .5em 0 1.5em ;
     padding: .5em .5em  0 .5em ;
 }
-// details > summary::marker {
-//     display: none;
-//     content: "";
-// }
+
 .the-details__summary {
     font-weight: bold;
     margin: -.5em -.5em  0  -.5em  ;
     padding: .5em;
     text-align: center;
-
-    // &::marker {
-    // display: none;
-    // content: ">";
-    // }
 }
 
 .the-details[open] {

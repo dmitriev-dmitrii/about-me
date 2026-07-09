@@ -1,20 +1,20 @@
 
 body {
 
-	background-color: $bgColor1;
-	color: $mainTxtColor;
+	background-color: var(--bg-color1);
+	color: var(--main-text-color);
 
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
 	"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 	
-	@include fontSize (1.7 , 2);
+	font-size: clamp(1.7rem, 1.5588rem + 0.4412vw, 2rem);
 	
 	}
 
 	
 .contanier {
 	width: 100%;
-	max-width: #{$maxWidth}px;
+	max-width: 1000px;
 	margin: 0 auto;
 	padding: 2rem 1rem ;
 }
@@ -26,21 +26,21 @@ body {
 
 .link {
 
-	color: $linkTxtColor;
+	color: var(--link-text-color);
 	font-weight: bold;
 	transition: all .2s ease;
 
 	text-decoration: underline transparent;
-	&:hover,
-	&:focus {
-		text-decoration: underline currentColor;
-	}
-	
+}
+
+.link:hover,
+.link:focus {
+	text-decoration: underline currentColor;
 }
 
 .title {
 
-	color: $titleTxtColor;
+	color: var(--title-text-color);
 	line-height: 1.5em;
 	font-weight: bold;
 	font-size: 1.5em;
@@ -48,9 +48,8 @@ body {
 }
 
 .underline,.underline-static {
-	background-color: $mainAccentColor;
-	// background-color если не работает градиент в браузере
-	background: $lg;
+	background-color: var(--main-accent-color);
+	background: var(--lg);
 
 	background-size: 0 .3rem ;
 
@@ -59,12 +58,15 @@ body {
 	transition: all 0.1s linear;
 	text-decoration: none;
 	
-	&:focus ,
-	&:hover
-	{
-		background-size: 100% .3rem;
-	}
-} 
+}
+
+.underline:focus,
+.underline:hover,
+.underline-static:focus,
+.underline-static:hover
+{
+	background-size: 100% .3rem;
+}
 
 .underline-static
 {
@@ -73,16 +75,14 @@ body {
 
 .button
 {
-$bgc:$lg;
 
-	outline-color: $mainAccentColor;
+	outline-color: var(--main-accent-color);
 	margin-top: 1rem;
 	margin-bottom: 1rem;
 
-	background-color: $mainAccentColor;
-	// background-color если не работает градиент в браузере
+	background-color: var(--main-accent-color);
 
-	background: $lg;
+	background: var(--lg);
 	background-size: 300% auto;
 	color: #ffffff;
 	border: none;
@@ -96,23 +96,19 @@ $bgc:$lg;
 
 	display: inline-block;
 	
-	&:hover,
-	&:focus {
-		text-decoration: none;
-		background-position: right center;
-		box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.3);
-	}
+}
+
+.button:hover,
+.button:focus {
+	text-decoration: none;
+	background-position: right center;
+	box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.3);
 }
 
 
-.button:disabled
-{
-	&:hover,
-	&:focus {
-		text-decoration: none;
-		background-position: inherit;
-		box-shadow: none;
-	}
+.button:disabled:hover,
+.button:disabled:focus {
+	text-decoration: none;
+	background-position: inherit;
+	box-shadow: none;
 }
-
-

@@ -25,10 +25,10 @@
 
 
 
-<style lang="scss">
+<style>
 
 .skills{
-  background: $bgColor2;
+  background: var(--bg-color2);
   width: 100%;
 }
 .skills .title
@@ -36,42 +36,17 @@
   text-align: center;
 }
 
-.skills{
-  $base-margin:1rem;
-  $cards:1;
-  // количество карточек при медиазапросе
-  &__list{
+.skills__list{
   display: flex;
   flex-wrap: wrap;
-  margin-left: - $base-margin ;
-  margin-right: - $base-margin ;
+  margin-left: -1rem ;
+  margin-right: -1rem ;
   }
-  &__item {
-     // 2cards
-  $cards:2;
-  width:calc( ( 100% - $base-margin * ($cards * 2) )  / $cards ) ;
-  margin: $base-margin ;
-  @media (min-width: 413.98px){
-  $cards:3;
-  width:calc( ( 100% - $base-margin * ($cards * 2) )  / $cards ) ;
-  }
-  @media (min-width: 575.98px){
-  $cards:4;
-  width:calc( ( 100% - $base-margin * ($cards * 2) )  / $cards ) ;
-  }
-  @media (min-width: 767.98px){
-  $cards:6;
-  width:calc( ( 100% - $base-margin * ($cards * 2) )  / $cards ) ;
-  }
-  @media (min-width: 991.98px){
-  $cards:7;
-  width:calc( ( 100% - $base-margin * ($cards * 2) )  / $cards ) ;
-  }
-}
-  }
-
 
 .skills__item {
+  width:calc( ( 100% - 4rem )  / 2 ) ;
+  margin: 1rem ;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -80,13 +55,32 @@
   margin-bottom: 1em;
   border-radius: .7rem;
   box-shadow: 0 0 .5rem .01rem currentColor;
-  background-color:$bgColor1;
+  background-color:var(--bg-color1);
+  color: var(--title-text-color);
+}
 
 
+@media (min-width: 413.98px){
+  .skills__item {
+    width:calc( ( 100% - 6rem )  / 3 ) ;
+  }
 }
-.skills__item {
-  color: $titleTxtColor;
+@media (min-width: 575.98px){
+  .skills__item {
+    width:calc( ( 100% - 8rem )  / 4 ) ;
+  }
 }
+@media (min-width: 767.98px){
+  .skills__item {
+    width:calc( ( 100% - 12rem )  / 6 ) ;
+  }
+}
+@media (min-width: 991.98px){
+  .skills__item {
+    width:calc( ( 100% - 14rem )  / 7 ) ;
+  }
+}
+
 .skills__item .icon
 {
 height: 3em;

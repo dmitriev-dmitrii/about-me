@@ -99,13 +99,13 @@ export default {
 </script>
 
 
-<style lang="scss">
+<style>
 
 .form__wrapper{
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: $bgColor2;
+  background-color: var(--bg-color2);
 }
 
 .form {
@@ -116,17 +116,24 @@ export default {
 
   display: flex;
   flex-direction: column;
+}
 
-  @media (min-width: 575.98px){ 
+@media (min-width: 575.98px){ 
+.form {
     max-width: 70%;
   }
-  @media (min-width: 767.98px){
+}
+
+@media (min-width: 767.98px){
+.form {
     max-width: 60%;
   } 
-  @media (min-width: 991.98px){
+}
+
+@media (min-width: 991.98px){
+.form {
   max-width: 50%;
   }
-
 }
 
 .form .title
@@ -149,9 +156,9 @@ width: 100%;
   padding: 0.5em;
   font-size: 1.1em;
   margin-bottom: 1rem;
-  background-color: $bgColor1;
-  caret-color: $mainTxtColor;
-  color: $mainTxtColor;
+  background-color: var(--bg-color1);
+  caret-color: var(--main-text-color);
+  color: var(--main-text-color);
   box-shadow: 0 0 .1rem .1rem rgba(0,0,0,.1),0 0 .7rem .3rem rgba(146,224,246,.9);
   transition: all 0.2s ease;
 
@@ -175,10 +182,10 @@ width: 100%;
   text-shadow: 0 0 .1rem;
 }
 .error {
-  color: $errorColor;
+  color: var(--error-color);
 }
 .success{
-  color: $succesColor;
+  color: var(--succes-color);
 }
 
 </style>

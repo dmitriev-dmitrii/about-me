@@ -36,7 +36,7 @@
 
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 
 .footer {
   background: #0d0d0d;
@@ -50,8 +50,10 @@
   flex-direction: column-reverse;
   align-items: center;
   justify-content: center;
+}
 
-  @media (min-width: 575.98px){ 
+@media (min-width: 575.98px){ 
+  .footer__body {
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
@@ -65,14 +67,17 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
 
-  @media (min-width: 575.98px){ 
+@media (min-width: 575.98px){ 
+  .footer__first,
+  .footer__second {
     margin-bottom: 0;
   }
 }
 
-.footer__first {
-  @media (min-width: 575.98px){ 
+@media (min-width: 575.98px){ 
+  .footer__first {
     align-items: flex-start;
   }
 }
@@ -81,11 +86,10 @@
 .footer__second .title 
 {
   color: rgba(255, 255, 255, 0.96);
-  // цвет скопирован из variables.scss для темной темы
 }
 .footer__first>h4
 {
-  background: $lg;
+  background: var(--lg);
   background-clip: text;
   color: transparent;
 }
@@ -106,19 +110,20 @@ margin:.25em .5em;
 transition: all .2s ease;
 
 filter: drop-shadow( 0 0 0);
-  &:hover,
-  &:focus {
-    color: $mainAccentColor;
+}
+
+.footer__social-item:hover,
+.footer__social-item:focus {
+    color: var(--main-accent-color);
     filter: drop-shadow( 0 .5rem .7rem);
   }
 
-  &:nth-of-type(even):hover,
-  &:nth-of-type(even):focus 
+.footer__social-item:nth-of-type(even):hover,
+.footer__social-item:nth-of-type(even):focus 
     {
-    color: $minorAccentColor;
+    color: var(--minor-accent-color);
   }
 
-}
 .footer__social-item .icon
 
 {

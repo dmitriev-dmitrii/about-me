@@ -24,7 +24,7 @@ export default{
 }
 </script>
 
-<style lang="scss">
+<style>
 
 .experience__item{
   font-size: .8em;

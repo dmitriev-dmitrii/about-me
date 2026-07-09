@@ -34,56 +34,44 @@ components:{
 
 </script>
 
-<style lang="scss">
+<style>
 .portfolio .title {
   text-align: center;
 }
 .portfolio {
-  background-color: $bgColor1;
+  background-color: var(--bg-color1);
   width: 100%;
 }
 
-.portfolio {
-
-  $base-margin:1rem;
-  $cards:1;
-  // количество карточек при медиазапросе
-
-&__list{
+.portfolio__list{
   display: flex;
   flex-wrap: wrap;
-  margin-left: - $base-margin ;
-  margin-right: - $base-margin ;
+  margin-left: -1rem ;
+  margin-right: -1rem ;
 }
 
-&__item {
-  $cards:1;
-  // 1card
-  margin: $base-margin auto;
-  width:calc( ( 100% - $base-margin * ($cards * 2) )  / $cards ) ;
+.portfolio__item {
+  margin: 1rem auto;
+  width:calc( 100% - 2rem ) ;
 
   max-width: 35rem;
-
-  @media (min-width: 575.98px)
-  { 
-    // 2cards
-    $cards:2;
-    width:calc( ( 100% - $base-margin * ($cards * 2) )  / $cards ) ;
-    margin: $base-margin ;
-    // получаем такой код
-    // width:calc( ( 100% - 4rem )  / 2 ) ;
-    // margin: 1rem ;
-    max-width: none;
-  }
-
-  @media (min-width: 767.98px)
-    {
-      $cards:3;
-      // 3cards
-      width:calc( ( 100% - $base-margin * ($cards * 2) )  / $cards ) ;
-    } 
-  }
 }
 
+@media (min-width: 575.98px)
+  { 
+    .portfolio__item {
+    width:calc( ( 100% - 4rem )  / 2 ) ;
+    margin: 1rem ;
+    max-width: none;
+    }
+  }
+
+@media (min-width: 767.98px)
+    {
+      .portfolio__item {
+      width:calc( ( 100% - 6rem )  / 3 ) ;
+      margin: 1rem ;
+      }
+    }
 
 </style>

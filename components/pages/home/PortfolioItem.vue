@@ -39,7 +39,7 @@ export default{
 </script>
 
 
-<style lang="scss">
+<style>
 
 
 .portfolio__item 
@@ -52,18 +52,17 @@ export default{
   border-radius: .7rem;
   overflow: hidden;
 
-  background:$bgColor2;
+  background: var(--bg-color2);
 
   color: rgba(255, 255, 255, 0.8);
 
   transition: all .2s ease;
+}
 
-  &:focus-within
+.portfolio__item:focus-within
   {
       box-shadow:  0 0 0 0 transparent;
   }
-
-}
 
 .portfolio__site-link 
 {
@@ -74,14 +73,15 @@ position: relative;
 
 border:0 ;
 border-bottom:.5rem solid ;
-border-image: $lg 5;
+border-image: var(--lg) 5;
 
 overflow: hidden;
 transition: all .2s linear;
-&:focus{
-border:.5rem solid $mainAccentColor;
-outline: none;
 }
+
+.portfolio__site-link:focus {
+border:.5rem solid var(--main-accent-color);
+outline: none;
 }
 
 
@@ -89,7 +89,7 @@ outline: none;
 .portfolio__site-link.portfolio__site-link:focus .portfolio__title
 {
 
-color: $linkTxtColor;
+color: var(--link-text-color);
 text-decoration: underline currentColor;
 text-shadow: 2px 2px 1px #2c3dce;
 }
@@ -124,7 +124,6 @@ filter: brightness(25%);
 
 .portfolio__title,.portfolio__subtitle 
 {
-  // color: inherit;
   transition: all 0.2s ease;
 }
 
@@ -157,17 +156,16 @@ align-self: flex-start;
   height: auto;
   transition: all 0.2s ease;
   background: #000;
-  // filter: brightness(20%);
 
 }
 
 .portfolio__item-about-list 
 
 {
-background-color: $bgColor2;
+background-color: var(--bg-color2);
 align-self: flex-start;
 padding: .5rem 1rem;
-color: $mainTxtColor;
+color: var(--main-text-color);
 font-size: .8em;
 width: 100%;
 }
@@ -190,23 +188,24 @@ list-style: inside;
   transition: all .2s ease;
   border-radius: 0  0  .7rem  .7rem;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    &:hover,&:focus
+.portfolio__git-link:hover,
+.portfolio__git-link:focus
   {
-    color: $mainAccentColor;
+    color: var(--main-accent-color);
     text-decoration: underline;
   }
 
-&:focus
+.portfolio__git-link:focus
 {
-box-shadow: 0 0 0 .3rem $mainAccentColor inset;
+box-shadow: 0 0 0 .3rem var(--main-accent-color) inset;
 outline: none;
 }
 
-display: flex;
-align-items: center;
-justify-content: center;
-}
 .portfolio__git-link .icon
 {
 
