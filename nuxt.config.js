@@ -2,7 +2,7 @@ export default {
     target: 'static',
     loading: false,
     router: {
-        base: '/about-me/',
+        base: process.env.NODE_ENV === 'production' ? '/about-me/' : '/',
         prefetchLinks: false
     },
     generate: {
