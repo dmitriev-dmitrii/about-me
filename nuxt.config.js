@@ -1,11 +1,12 @@
 export default {
     target: 'static',
+    loading: false,
     router: {
         base: '/about-me/',
         prefetchLinks: false
     },
     generate: {
-        fallback: true
+        fallback: true,
     },
     ssr: false,
 
