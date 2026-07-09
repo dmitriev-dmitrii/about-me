@@ -24,7 +24,7 @@ components:{
   },
 
   fetch() {
-    this.portfolioList =  this.$store.state.portfolio.list.reverse();
+    this.portfolioList =  [...this.$store.state.portfolio.list].reverse();
   },
 
   // mounted :function (){

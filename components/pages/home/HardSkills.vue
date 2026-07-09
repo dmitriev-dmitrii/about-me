@@ -6,7 +6,7 @@
         <div class="skills__item"><svg-icon name="html5"></svg-icon> Html  </div>
         <div class="skills__item"><svg-icon name="css"></svg-icon> Scss</div>
         <div class="skills__item"> <svg-icon name="js" />JS </div>
-        <div class="skills__item"><svg-icon name="gulp"/>    Gulp</div>
+        <div class="skills__item"><svg-icon name="gulp"/>Gulp</div>
         <div class="skills__item"><svg-icon name="webpack"/> Webpack</div>
         <div class="skills__item"> <svg-icon name="nodejs"/> NodeJS</div>
         <div class="skills__item"><svg-icon name="vuejs"/> VueJS/Nuxt</div>

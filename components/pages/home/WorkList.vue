@@ -5,7 +5,7 @@
   <h2 id="experience" class="title">Опыт работы</h2>
 
   <div class="experience__list contanier">
-    <work-item :item=item v-for="item in workList" :key="item.id"></work-item>
+    <WorkItem :item=item v-for="item in workList" :key="item.id"></WorkItem>
   </div>
 
 </div>
@@ -13,9 +13,11 @@
 </template>
 
 <script>
-import WorkItem from '@/components/pages/home/WorkItem';
+
+import WorkItem from "~/components/pages/home/WorkItem.vue";
 
 export default {
+  components: {WorkItem},
 
   data:()=>{
     return {
@@ -24,12 +26,10 @@ export default {
   },
 
   fetch() {
-    this.workList =  this.$store.state.work.list.reverse();
+    this.workList =  [...this.$store.state.work.list].reverse();
   },
 
-  components : {
-    WorkItem
-  },
+
 
 }
 

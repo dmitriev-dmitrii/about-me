@@ -4,12 +4,12 @@
 
     <nav id="nav" class="nav contanier  ">
 	<ul class="nav__list">
-        <li class="nav__item ">  <a class="underline"  href="/#experience">Опыт</a></li>
-        <li class="nav__item ">  <a class="underline"  href="/#portfolio">Портфолио</a></li>
-        <li class="nav__item ">  <a class="underline"  href="/#contacts" >Контакты</a></li>
+    <li class="nav__item "> <NuxtLink class="underline" to="/">Обо мне</NuxtLink></li>
+        <li class="nav__item "> <NuxtLink class="underline" to="/experience">Опыт</NuxtLink></li>
+        <li class="nav__item "><NuxtLink class="underline" to="/projects">Проекты</NuxtLink>  </li>
+        <li class="nav__item "> <NuxtLink class="underline" to="/contacts">Контакты</NuxtLink></li>
         <li class="nav__item "><DarkTheme/> </li>
     </ul>
-
     </nav>
 
 </header>

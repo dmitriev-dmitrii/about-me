@@ -1,4 +1,13 @@
 export default {
+    target: 'static',
+    router: {
+        base: '/',
+        prefetchLinks: false
+    },
+
+    ssr: false,
+
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'dmitriev-dmitrii about',
@@ -52,4 +61,6 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   }
+
+
 }
