@@ -4,9 +4,10 @@ export default {
         base: '/about-me/',
         prefetchLinks: false
     },
-
+    generate: {
+        fallback: true
+    },
     ssr: false,
-
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
