@@ -29,7 +29,7 @@ export default {
     AppFilterTabs,
     WorkList,
   },
-  data() {
+  data: () => {
     return {
       isLoading: false,
       currentTabFilterValue: 0,
