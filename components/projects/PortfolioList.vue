@@ -1,5 +1,5 @@
 <template>
-  <div class="portfolio block-border-bottom">
+  <div class="portfolio">
     <h2 id="portfolio" class="title">Портфолио</h2>
     <div class="container">
       <div class="portfolio__list">
@@ -38,7 +38,7 @@ export default {
 }
 
 .portfolio {
-  background-color: var(--bg-color1);
+  //background-color: var(--bg-color1);
   width: 100%;
 }
 

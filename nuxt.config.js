@@ -12,7 +12,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'dmitriev-dmitrii about',
+    title: 'dmitriev dmitrii about',
     htmlAttrs: {
       lang: 'ru',
     },

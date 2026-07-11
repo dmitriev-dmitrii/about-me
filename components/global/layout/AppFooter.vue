@@ -36,6 +36,7 @@ export default {}
 .footer {
   background: #0d0d0d;
   color: #dedede;
+  padding: 2rem 1rem;
 }
 
 .footer__body {

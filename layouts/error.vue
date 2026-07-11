@@ -1,12 +1,12 @@
 <template>
-  <div class="error-page">
+  <div class="error-layout">
     <div class="container">
-      <h1>
+      <h1 class="title">
         {{ error.statusCode }}
       </h1>
       <h2>{{ error.message }}</h2>
 
-      <NuxtLink to="/" class="button"> На главную </NuxtLink>
+      <NuxtLink to="/" class="button button-lg button-primary"> На главную </NuxtLink>
     </div>
   </div>
 </template>
@@ -14,16 +14,17 @@
 <script>
 export default {
   layout: 'error',
-  error: {
-    type: Object,
-    required: true,
-    default: () => ({ statusCode: 500, message: 'Unexpected Error' }),
+  props: {
+    error: {
+      type: Object,
+      default: () => ({ statusCode: 500, message: 'Unexpected Error' }),
+    },
   },
 }
 </script>
 
 <style scoped>
-.error-page {
+.error-layout {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,18 +33,17 @@ export default {
   padding: 2rem;
 }
 
-.error-page h1 {
+.error-layout h1 {
   font-size: 8rem;
   margin: 0;
-  opacity: 0.3;
 }
 
-.error-page h2 {
+.error-layout h2 {
   font-size: 2rem;
   margin: 0 0 1rem;
 }
 
-.error-page p {
+.error-layout p {
   margin-bottom: 2rem;
   opacity: 0.7;
 }

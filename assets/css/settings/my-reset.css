@@ -1,40 +1,37 @@
 
-html
-{
-scroll-behavior: smooth;
-font-size: 62.5%;
+html {
+    scroll-behavior: smooth;
+    font-size: 62.5%;
+    color: var(--main-text-color);
 }
 
 * {
-	box-sizing: border-box;
-	outline-color: var(--main-accent-color);
-	outline-width: .3rem;
-	outline-offset:.2rem;
-	
+    box-sizing: border-box;
+    outline-color: var(--main-accent-color);
+    outline-width: .3rem;
+    outline-offset: .2rem;
 }
 
 *::before,
 *::after {
-	box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 
-button,summary
-{
-cursor: pointer;
+button, summary {
+    cursor: pointer;
 }
 
-button[disabled]
-{
-	opacity: 0.5 !important;
-	cursor: default !important;
+button[disabled] {
+    opacity: 0.5 !important;
+    cursor: default !important;
 }
 
 button[disabled]:hover,
 button[disabled]:active,
 button[disabled]:focus {
-	opacity: 0.5 !important;
-	cursor: default !important;
+    opacity: 0.5 !important;
+    cursor: default !important;
 }
 
 h1,
@@ -46,44 +43,93 @@ h6,
 p,
 ul,
 li {
-	font-weight: inherit;
-	font-size: inherit;
-	margin: 0;
-	padding: 0;
+    font-weight: inherit;
+    font-size: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.75em;
+}
+
+h3 {
+    font-size: 1.5em;
+}
+
+h4 {
+    font-size: 1.25em;
+}
+
+h5 {
+    font-size: 1em;
 }
 
 ul,
 ol,
 li {
-	list-style: none;
+    list-style: none;
 }
 
 p {
-	padding: 0;
-	margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 a {
-	color: currentColor;
-	text-decoration: none;
+    color: currentColor;
+    text-decoration: none;
 }
 
 
-picture img
-{
-	display: block;
-	width: 100%;
-	max-width: 100%;
-	max-height: 100%;
+picture img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 
-input::input-placeholder       {opacity: 1; transition: opacity 0.2s ease;}
-input::placeholder                {opacity: 1; transition: opacity 0.2s ease;}
-input:placeholder                 {opacity: 1; transition: opacity 0.2s ease;}
-input:input-placeholder            {opacity: 1; transition: opacity 0.2s ease;}
+input::input-placeholder {
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
 
-input:focus::input-placeholder {opacity: 0; transition: opacity 0.2s ease;}
-input:focus::placeholder          {opacity: 0; transition: opacity 0.2s ease;}
-input:focus:placeholder           {opacity: 0; transition: opacity 0.2s ease;}
-input:focus:input-placeholder      {opacity: 0; transition: opacity 0.2s ease;}
+input::placeholder {
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+input:placeholder {
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+input:input-placeholder {
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+input:focus::input-placeholder {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+input:focus::placeholder {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+input:focus:placeholder {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+input:focus:input-placeholder {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}

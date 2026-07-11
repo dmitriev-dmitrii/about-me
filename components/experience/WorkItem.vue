@@ -9,17 +9,12 @@
     <p class="description experience__item-time">
       {{ item.time }}
     </p>
-    <AppDetails class="experience__item-description">
-      <div v-html="item.description"></div>
-    </AppDetails>
+    <p class="experience__item-description" v-html="item.description"></p>
   </div>
 </template>
 
 <script>
-import AppDetails from '~/components/global/AppDetails.vue'
-
 export default {
-  components: { AppDetails },
   props: {
     item: {
       type: Object,
@@ -57,11 +52,6 @@ export default {
 
 .experience__item-description {
   line-height: 1.3em;
-}
-
-.experience__item-description p,
-ul {
-  padding: 0.5rem;
 }
 
 .experience__item-description ul > li {

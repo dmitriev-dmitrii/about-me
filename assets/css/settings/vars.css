@@ -12,7 +12,6 @@ html{
     --max-Width: 1000;
    --error-color: #F03;
    --succes-color: #39d353;
-
 }
 
 html[dark-theme="true"] {

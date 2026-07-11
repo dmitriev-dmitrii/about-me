@@ -1,12 +1,14 @@
 <template>
-  <div class="my-name__wrapper container">
-    <div class="my-name">
-      <NuxtPicture class="my-name__photo" src="dmitriev-dmitrii.jpg" alt="dmitriev-dmitrii" />
+  <div class="about-me__wrapper container">
+    <div class="about-me">
+      <NuxtPicture class="about-me__photo" src="dmitriev-dmitrii.jpg" alt="dmitriev-dmitrii" />
 
-      <div class="my-name__about">
-        <h2 translate="no" class="title">Dmitriev Dmitrii</h2>
+      <div class="about-me__description">
+        <h1 translate="no" class="title about-me__description__title">Dmitriev Dmitrii</h1>
         <p translate="no">Frontend Developer</p>
-        <a class="button" href="#form-contact">Связаться</a>
+        <button class="button button-primary button-lg">
+          <NuxtLink to="/contacts">Связаться</NuxtLink>
+        </button>
       </div>
     </div>
 
@@ -16,9 +18,10 @@
 
       "name": "dmitrii",<br />
       "surename":dmitriev,<br />
-      "age": "29",<br />
+      "age": "{{ age }}",<br />
       "location:" Saint-Petersburg,<br />
       "position":Frontend Developer,<br />
+      "education":bla bla,<br />
       ... }
     </div>
 
@@ -34,11 +37,17 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data: () => {
+    return {
+      age: new Date().getFullYear() - 1992,
+    }
+  },
+}
 </script>
 
 <style>
-.my-name__wrapper {
+.about-me__wrapper {
   margin-top: 1em;
   margin-bottom: 2em;
   display: flex;
@@ -48,55 +57,59 @@ export default {}
 }
 
 @media (min-width: 575.98px) {
-  .my-name__wrapper {
+  .about-me__wrapper {
     justify-content: space-between;
     flex-direction: row;
     align-items: flex-start;
   }
 }
 
-.my-name {
+.about-me {
   display: flex;
   align-items: flex-end;
   margin-bottom: 1em;
 }
 
 @media (min-width: 413.98px) {
-  .my-name {
+  .about-me {
     align-items: center;
   }
 }
 
 @media (min-width: 575.98px) {
-  .my-name {
+  .about-me {
     flex-direction: column;
   }
 }
 
-.my-name__about {
+.about-me__description {
   width: 100%;
   padding-left: 1rem;
   justify-content: space-between;
 }
 
+.about-me__description__title {
+  font-size: 1.6em;
+}
+
 @media (min-width: 575.98px) {
-  .my-name__about {
+  .about-me__description {
     text-align: center;
     flex-direction: column;
     padding: 0;
   }
 }
 
-.my-name__about .title {
+.about-me__description__title {
   margin: 1rem 0;
 }
 
-.my-name__about .button {
+.about-me__description .button {
   width: 100%;
   margin-bottom: 0;
 }
 
-.my-name__photo {
+.about-me__photo {
   border-radius: 0.7rem;
   box-shadow: -0.2rem 0.2rem 1rem 0.1rem currentColor;
   display: block;

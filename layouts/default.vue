@@ -1,5 +1,5 @@
 <template>
-  <div class="defalut-layout">
+  <div class="default-layout">
     <AppHeader />
     <main>
       <nuxt />
@@ -17,4 +17,16 @@ export default {
 }
 </script>
 
-<style></style>
+<style scoped>
+.default-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+main {
+  flex: 1;
+  padding: 2rem 1rem;
+  background-color: var(--bg-color2);
+}
+</style>

@@ -32,6 +32,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 2rem 1rem;
 }
 
 .nav__list {
