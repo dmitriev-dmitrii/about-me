@@ -9,9 +9,6 @@
           <NuxtLink class="underline" to="/experience">Опыт</NuxtLink>
         </li>
         <li class="nav__item">
-          <NuxtLink class="underline" to="/projects">Проекты</NuxtLink>
-        </li>
-        <li class="nav__item">
           <NuxtLink class="underline" to="/contacts">Контакты</NuxtLink>
         </li>
         <li class="nav__item"><DarkThemeToggle /></li>

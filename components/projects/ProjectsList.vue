@@ -1,6 +1,5 @@
 <template>
   <div class="portfolio">
-    <h2 id="portfolio" class="title">Портфолио</h2>
     <div class="container">
       <div class="portfolio__list">
         <PortfolioItem v-for="item in portfolioList" :key="item.id" :item="item" />
@@ -10,11 +9,11 @@
 </template>
 
 <script>
-import PortfolioItem from '~/components/projects/PortfolioItem.vue'
+import ProjectItem from '@/components/projects/ProjectItem.vue'
 
 export default {
   components: {
-    PortfolioItem,
+    PortfolioItem: ProjectItem,
   },
   data: () => {
     return {
@@ -23,7 +22,7 @@ export default {
   },
 
   fetch() {
-    this.portfolioList = [...this.$store.state.portfolio.list].reverse()
+    this.portfolioList = [...this.$store.state.projects.projectsList].reverse()
   },
 
   // mounted :function (){
@@ -33,12 +32,7 @@ export default {
 </script>
 
 <style>
-.portfolio .title {
-  text-align: center;
-}
-
 .portfolio {
-  //background-color: var(--bg-color1);
   width: 100%;
 }
 

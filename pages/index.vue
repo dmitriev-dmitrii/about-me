@@ -1,38 +1,48 @@
 <template>
-  <div class="about-me__wrapper container">
-    <div class="about-me">
-      <NuxtPicture class="about-me__photo" src="dmitriev-dmitrii.jpg" alt="dmitriev-dmitrii" />
+  <div class="container">
+    <div class="about-me__wrapper">
+      <div class="about-me">
+        <NuxtPicture class="about-me__photo" src="dmitriev-dmitrii.jpg" alt="dmitriev-dmitrii" />
 
-      <div class="about-me__description">
-        <h1 translate="no" class="title about-me__description__title">Dmitriev Dmitrii</h1>
-        <p translate="no">Frontend Developer</p>
-        <button class="button button-primary button-lg">
-          <NuxtLink to="/contacts">Связаться</NuxtLink>
-        </button>
+        <div class="about-me__description">
+          <h1 translate="no" class="title about-me__description__title">Dmitriev Dmitrii</h1>
+          <p translate="no">Frontend Developer</p>
+          <button class="button button-primary button-lg">
+            <NuxtLink to="/contacts">Связаться</NuxtLink>
+          </button>
+        </div>
       </div>
+
+      <div class="code" translate="no">
+        console.log(dmitrievd);<br />
+        {<br />
+
+        "name": "dmitrii",<br />
+        "surename":dmitriev,<br />
+        "age": "{{ age }}",<br />
+        "location:" Saint-Petersburg,<br />
+        "position":Frontend Developer<br />
+        ... }
+      </div>
+
+      <!--    <div class="codewars-badge">-->
+      <!--      <a href="https://www.codewars.com/users/dmitriev-dmitrii" target="_blank">-->
+      <!--        <img-->
+      <!--            src="https://www.codewars.com/users/dmitriev-dmitrii/badges/large"-->
+      <!--            alt="Мой профиль на Codewars"-->
+      <!--        />-->
+      <!--      </a>-->
+      <!--    </div>-->
     </div>
+<p>
+  текст про основной стек
+  <div style="display: flex; justify-content: center;">
+    <div class="skills__item"><SvgIcon name="nodejs" /> NodeJS</div>
+    <div class="skills__item"><SvgIcon name="vuejs" /> VueJS/Nuxt</div>
+  </div>
 
-    <div class="code" translate="no">
-      console.log(dmitrievd);<br />
-      {<br />
+</p>
 
-      "name": "dmitrii",<br />
-      "surename":dmitriev,<br />
-      "age": "{{ age }}",<br />
-      "location:" Saint-Petersburg,<br />
-      "position":Frontend Developer,<br />
-      "education":bla bla,<br />
-      ... }
-    </div>
-
-    <!--    <div class="codewars-badge">-->
-    <!--      <a href="https://www.codewars.com/users/dmitriev-dmitrii" target="_blank">-->
-    <!--        <img-->
-    <!--            src="https://www.codewars.com/users/dmitriev-dmitrii/badges/large"-->
-    <!--            alt="Мой профиль на Codewars"-->
-    <!--        />-->
-    <!--      </a>-->
-    <!--    </div>-->
   </div>
 </template>
 
