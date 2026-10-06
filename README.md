@@ -5,14 +5,14 @@
 
 ## Build Setup
 master branch - auto deployed
-
+vue 2 (nuxt) legacy
 node 16
 
 ```bash
 # install dependencies
 $ npm install
 
-# serve with hot reload at localhost:3000
+# serve with hot reload
 $ npm run dev
 
 # generate static project
