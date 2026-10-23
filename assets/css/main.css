@@ -90,3 +90,28 @@ pre,
   flex-wrap: wrap;
   gap: 0.25rem;
 }
+
+/* Фирменный градиент — мягкая подсветка верхней части страницы */
+:root {
+  --site-gradient: linear-gradient(to right, #2d9cdb, #37f093 66%, #33c7ef);
+  --site-gradient-opacity: 0.14;
+}
+
+.gl-dark {
+  --site-gradient-opacity: 0.12;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 32rem;
+  background: var(--site-gradient);
+  opacity: var(--site-gradient-opacity);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 100%);
+  pointer-events: none;
+}

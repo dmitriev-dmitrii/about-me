@@ -62,6 +62,13 @@ export default {
   border-bottom: 1px solid var(--gl-border-color-default);
 }
 
+@supports (backdrop-filter: blur(1px)) {
+  .app-header {
+    background-color: color-mix(in srgb, var(--gl-background-color-subtle) 75%, transparent);
+    backdrop-filter: blur(12px);
+  }
+}
+
 .app-header__inner {
   display: flex;
   align-items: center;
