@@ -21,7 +21,8 @@ export default {
 .default-layout {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: calc(100vh + 1px);
+  min-height: calc(100dvh + 1px);
 }
 
 .default-layout__main {

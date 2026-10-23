@@ -92,17 +92,47 @@ import GlLink from '@gitlab/ui/dist/components/base/link/link'
 import photo from '~/static/img/dmitriev-dmitrii.jpg'
 import { PROFILE, SOCIAL_LINKS } from '~/constants/profile'
 
+// info — основной стек, neutral — остальное
 const STACK = [
-  { title: 'Основное', variant: 'info', items: ['Vue 2 / Vue 3', 'Nuxt 2 / Nuxt 3', 'Node.js'] },
   {
-    title: 'Языки и вёрстка',
-    variant: 'neutral',
-    items: ['JavaScript', 'TypeScript', 'HTML', 'SCSS', 'PostCSS'],
+    title: 'Основное',
+    variant: 'info',
+    items: ['Vue 3', 'Vue 2', 'Nuxt 3', 'Nuxt 2', 'TypeScript', 'JavaScript'],
   },
   {
-    title: 'Инструменты',
+    title: 'Данные и состояние',
     variant: 'neutral',
-    items: ['Webpack', 'Gulp', 'Storybook', 'Jest', 'Docker', 'Figma'],
+    items: ['Pinia', 'Vuex', 'TanStack Query', 'REST API', 'WebSocket', 'WebRTC'],
+  },
+  {
+    title: 'Архитектура',
+    variant: 'neutral',
+    items: ['SPA', 'SSR', 'Микрофронтенды', 'BFF', 'Directus (Headless CMS)'],
+  },
+  {
+    title: 'Вёрстка и UI',
+    variant: 'neutral',
+    items: ['HTML', 'SCSS', 'Tailwind', 'Vuetify', 'Element UI', 'Figma'],
+  },
+  {
+    title: 'Сборка и DevOps',
+    variant: 'neutral',
+    items: ['Vite', 'Webpack', 'Docker', 'CI/CD', 'Git', 'Linux'],
+  },
+  {
+    title: 'Бэкенд',
+    variant: 'neutral',
+    items: ['Node.js', 'Express', 'MongoDB'],
+  },
+  {
+    title: 'Тесты и документация',
+    variant: 'neutral',
+    items: ['Jest', 'Storybook'],
+  },
+  {
+    title: 'Доводилось работать',
+    variant: 'neutral',
+    items: ['jQuery', 'PHP', 'Gulp'],
   },
 ]
 
@@ -298,9 +328,13 @@ export default {
 }
 
 .stack {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 1.25rem 1.5rem;
+}
+
+.stack__group:first-child {
+  grid-column: 1 / -1;
 }
 
 .stack__title {
