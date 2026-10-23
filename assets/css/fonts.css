@@ -1,0 +1,16 @@
+/* GitLab Sans / GitLab Mono — SIL Open Font License 1.1 (см. assets/fonts/OFL-*.txt) */
+@font-face {
+  font-family: 'GitLab Sans';
+  src: url('~/assets/fonts/GitLabSans.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GitLab Mono';
+  src: url('~/assets/fonts/GitLabMono.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}

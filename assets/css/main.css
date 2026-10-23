@@ -1,74 +1,92 @@
+/*
+ * Базовые стили сайта поверх GitLab UI.
+ * Цвета берутся только из дизайн-токенов GitLab (--gl-*),
+ * поэтому светлая и тёмная тема (класс .gl-dark на <html>) работают автоматически.
+ */
 
-body{
-    background-color: var(--bg-color1);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    font-size: clamp(1.7rem, 1.5588rem + 0.4412vw, 2rem);
-    height: 100.1vh;
+body {
+  font-family: 'GitLab Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans',
+    Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--gl-text-color-default);
+  background-color: var(--gl-background-color-default);
+  -webkit-font-smoothing: antialiased;
 }
+
 #__nuxt,
-#__layout{
-    min-height: 100vh;
-    height: 100%;
+#__layout {
+  min-height: 100vh;
+}
+
+code,
+pre,
+.font-monospace {
+  font-family: 'GitLab Mono', 'JetBrains Mono', Menlo, 'DejaVu Sans Mono', monospace;
 }
 
 .container {
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
-.block-border-bottom {
-    border-bottom: rgb(197 197 197 / 20%) 1px solid;
+.page-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--gl-text-color-heading);
 }
 
-.link {
-    color: var(--link-text-color);
-    font-weight: bold;
-    transition: all .2s ease;
-    text-decoration: underline transparent;
+.section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--gl-text-color-heading);
 }
 
-.link:hover,
-.link:focus {
-    text-decoration: underline currentColor;
+.text-subtle {
+  color: var(--gl-text-color-subtle);
 }
 
-.title {
-    color: var(--title-text-color);
-    font-weight: bold;
+/* Карточка в стиле блоков GitLab (README, настройки) */
+.gl-box {
+  border: 1px solid var(--gl-border-color-default);
+  border-radius: var(--gl-border-radius-lg, 0.5rem);
+  background-color: var(--gl-background-color-default);
+  overflow: hidden;
 }
 
-.text-center {
-    text-align: center;
+.gl-box__header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background-color: var(--gl-background-color-subtle);
+  border-bottom: 1px solid var(--gl-border-color-default);
+  font-weight: 600;
+  color: var(--gl-text-color-heading);
 }
 
-.text-error {
-    color: var(--error-color);
+.gl-box__body {
+  padding: 1rem;
 }
 
-.text-success {
-    color: var(--succes-color);
+/* Список строк как в списках проектов/задач GitLab */
+.row-list > li {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--gl-border-color-subtle, var(--gl-border-color-default));
 }
 
-.underline, .underline-static {
-    background-color: var(--main-accent-color);
-    background: var(--lg);
-    background-size: 0 .3rem;
-    background-repeat: no-repeat;
-    background-position: left 95%;
-    transition: all 0.1s linear;
-    text-decoration: none;
-
+.row-list > li:last-child {
+  border-bottom: 0;
 }
 
-.underline:focus,
-.underline:hover,
-.underline-static:focus,
-.underline-static:hover {
-    background-size: 100% .3rem;
-}
-
-.underline-static {
-    background-size: 100% .3rem;
+.badge-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
 }

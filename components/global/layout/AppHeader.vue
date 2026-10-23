@@ -1,71 +1,135 @@
 <template>
-  <header class="header block-border-bottom">
-    <nav id="nav" class="nav container">
-      <ul class="nav__list">
-        <li class="nav__item">
-          <NuxtLink class="underline" to="/">Обо мне</NuxtLink>
-        </li>
-        <li class="nav__item">
-          <NuxtLink class="underline" to="/experience">Опыт</NuxtLink>
-        </li>
-        <li class="nav__item">
-          <NuxtLink class="underline" to="/contacts">Контакты</NuxtLink>
-        </li>
-        <li class="nav__item"><DarkThemeToggle /></li>
-      </ul>
-    </nav>
+  <header class="app-header">
+    <div class="app-header__inner container">
+      <NuxtLink to="/" class="app-header__brand" aria-label="На главную">
+        <GlAvatar :entity-name="profile.name" :entity-id="7" :size="24" shape="rect" />
+        <span class="app-header__brand-name" translate="no">{{ profile.username }}</span>
+      </NuxtLink>
+
+      <nav class="app-header__nav" aria-label="Основная навигация">
+        <NuxtLink
+          v-for="link in navLinks"
+          :key="link.to"
+          :to="link.to"
+          class="app-header__nav-link"
+          active-class="is-active"
+          :exact="link.to === '/'"
+        >
+          {{ link.label }}
+        </NuxtLink>
+      </nav>
+
+      <div class="app-header__actions">
+        <GlButton
+          category="tertiary"
+          icon="github"
+          href="https://github.com/dmitriev-dmitrii/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub"
+        />
+      </div>
+    </div>
   </header>
 </template>
+
 <script>
-import DarkThemeToggle from '~/components/global/layout/DarkThemeToggle.vue'
+import GlAvatar from '@gitlab/ui/dist/components/base/avatar/avatar'
+import GlButton from '@gitlab/ui/dist/components/base/button/button'
+import { PROFILE } from '~/constants/profile'
+
+const NAV_LINKS = [
+  { to: '/', label: 'Обо мне', icon: 'user' },
+  { to: '/experience', label: 'Опыт', icon: 'work' },
+  { to: '/contacts', label: 'Контакты', icon: 'mail' },
+]
+
 export default {
-  components: {
-    DarkThemeToggle,
-  },
+  components: { GlAvatar, GlButton },
+  data: () => ({
+    profile: PROFILE,
+    navLinks: NAV_LINKS,
+  }),
 }
 </script>
-<style>
-.header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem 1rem;
+
+<style scoped>
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: var(--gl-background-color-subtle);
+  border-bottom: 1px solid var(--gl-border-color-default);
 }
 
-.nav__list {
+.app-header__inner {
   display: flex;
-  justify-content: center;
   align-items: center;
+  gap: 1.5rem;
+  height: 3rem;
 }
 
-@media (min-width: 767.98px) {
-  .nav__list {
-    justify-content: flex-end;
+.app-header__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: var(--gl-text-color-heading);
+  text-decoration: none;
+}
+
+.app-header__brand:hover {
+  color: var(--gl-text-color-heading);
+  text-decoration: none;
+}
+
+.app-header__nav {
+  display: flex;
+  align-self: stretch;
+  gap: 0.25rem;
+}
+
+.app-header__nav-link {
+  display: flex;
+  align-items: center;
+  padding: 0 0.5rem;
+  color: var(--gl-text-color-subtle);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.app-header__nav-link:hover {
+  color: var(--gl-text-color-default);
+  text-decoration: none;
+  border-bottom-color: var(--gl-border-color-strong);
+}
+
+.app-header__nav-link.is-active {
+  color: var(--gl-text-color-heading);
+  font-weight: 600;
+  border-bottom-color: var(--gl-color-blue-500, #1f75cb);
+}
+
+.app-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-left: auto;
+}
+
+@media (max-width: 575.98px) {
+  .app-header__inner {
+    gap: 0.75rem;
   }
-}
 
-.nav__item {
-  font-size: 0.9em;
-  margin: 0 1rem;
-}
+  .app-header__brand-name {
+    display: none;
+  }
 
-.nav__item:last-child {
-  margin-right: 0;
-}
-
-.nav__item label {
-  padding: 0.5rem 0.2rem;
-}
-
-.nav__item a {
-  font-weight: 300;
-  color: var(--main-text-color);
-  cursor: pointer;
-}
-
-@media (min-width: 767.98px) {
-  .nav__item a:hover {
-    background-size: 100% 0.3rem;
+  .app-header__nav-link {
+    padding: 0 0.25rem;
   }
 }
 </style>

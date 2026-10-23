@@ -1,25 +1,28 @@
 <template>
   <div>
-    <div v-if="options.length" class="filter-tabs">
-      <button
+    <GlButtonGroup v-if="options.length" class="filter-tabs">
+      <GlButton
         v-for="(option, index) in options"
         :key="option.value ?? index"
-        :class="{
-          'button button-sm filter-tabs__item': true,
-          'active-tab': option.value === value,
-        }"
+        size="small"
+        :selected="option.value === value"
         @click="changeTab(option.value)"
       >
         {{ option.label }}
-      </button>
-    </div>
+      </GlButton>
+    </GlButtonGroup>
 
     <div v-else class="text-error">no data</div>
   </div>
 </template>
 
 <script>
+import GlButton from '@gitlab/ui/dist/components/base/button/button'
+import GlButtonGroup from '@gitlab/ui/dist/components/base/button_group/button_group'
+
 export default {
+  components: { GlButton, GlButtonGroup },
+
   props: {
     options: {
       type: Array,
@@ -42,24 +45,6 @@ export default {
 
 <style scoped>
 .filter-tabs {
-  display: flex;
-}
-.filter-tabs__item {
-  display: flex;
-  border-radius: unset;
-}
-
-.filter-tabs__item:first-child {
-  border-radius: 7px 0 0 7px; /* скругление слева */
-}
-
-/* ✅ ПОСЛЕДНИЙ ЭЛЕМЕНТ */
-.filter-tabs__item:last-child {
-  border-radius: 0 7px 7px 0; /* скругление справа */
-}
-
-.active-tab {
-  background-color: var(--main-accent-color);
-  color: #ffffff;
+  flex-wrap: wrap;
 }
 </style>

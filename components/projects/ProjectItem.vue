@@ -1,175 +1,122 @@
 <template>
-  <div v-if="item.isActive" class="portfolio__item">
-    <a class="portfolio__site-link" target="blank" :href="item.link">
-      <div class="portfolio__title-wrapper">
-        <h3 class="portfolio__title title">{{ item.title }}</h3>
-        <span class="portfolio__subtitle">{{ item.description }}</span>
+  <li class="project-item">
+    <a :href="item.link" target="_blank" rel="noopener noreferrer" class="project-item__preview">
+      <img :src="preview" :alt="`Скриншот ${item.title}`" loading="lazy" />
+    </a>
+
+    <div class="project-item__body">
+      <h2 class="project-item__title">
+        <GlLink :href="item.link" target="_blank">{{ item.title }}</GlLink>
+      </h2>
+      <p class="text-subtle">{{ item.description }}</p>
+      <div class="badge-list">
+        <GlBadge v-for="tech in item.stack" :key="tech">{{ tech }}</GlBadge>
       </div>
-      <NuxtPicture
-        class="portfolio__img"
-        :src="`portfolio/${item.imgName}.png`"
-        :alt="item.imgName + '-image'"
-      />
-    </a>
+    </div>
 
-    <ul class="portfolio__item-about-list">
-      <li v-for="stackElement in item.stack" :key="stackElement" class="portfolio__item-about">
-        {{ stackElement }}
-      </li>
-    </ul>
-
-    <a class="portfolio__git-link" target="blank" :href="item.linkGit">
-      <SvgIcon name="github" /> Код на GitHub
-    </a>
-  </div>
+    <div class="project-item__actions">
+      <GlButton
+        icon="github"
+        size="small"
+        :href="item.linkGit"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Код
+      </GlButton>
+      <GlButton
+        icon="external-link"
+        size="small"
+        :href="item.link"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Демо
+      </GlButton>
+    </div>
+  </li>
 </template>
 
 <script>
+import GlBadge from '@gitlab/ui/dist/components/base/badge/badge'
+import GlButton from '@gitlab/ui/dist/components/base/button/button'
+import GlLink from '@gitlab/ui/dist/components/base/link/link'
+
 export default {
+  components: { GlBadge, GlButton, GlLink },
+
   props: {
     item: {
       type: Object,
       required: true,
     },
   },
+
+  computed: {
+    preview() {
+      return require(`~/static/img/portfolio/${this.item.imgName}.png`)
+    },
+  },
 }
 </script>
 
-<style>
-.portfolio__item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 0.05rem 0.3rem 0.1rem rgb(197 197 197 / 50%);
-  border-radius: 0.7rem;
+<style scoped>
+.project-item {
+  align-items: flex-start;
+}
+
+.project-item__preview {
+  flex-shrink: 0;
+  width: 8rem;
+  aspect-ratio: 16 / 10;
+  border: 1px solid var(--gl-border-color-default);
+  border-radius: var(--gl-border-radius-default, 0.25rem);
   overflow: hidden;
-  background: var(--bg-color2);
-  color: rgb(255 255 255 / 80%);
-  transition: all 0.2s ease;
+  background-color: var(--gl-background-color-subtle);
 }
 
-.portfolio__item:focus-within {
-  box-shadow: 0 0 0 0 transparent;
-}
-
-.portfolio__site-link {
-  height: 25rem;
-  width: 100%;
-  position: relative;
-  border: 0;
-  border-bottom: 0.5rem solid;
-  border-image: var(--lg) 5;
-  overflow: hidden;
-  transition: all 0.2s linear;
-}
-
-.portfolio__site-link:focus {
-  border: 0.5rem solid var(--main-accent-color);
-  outline: none;
-}
-
-.portfolio__site-link.portfolio__site-link:hover .portfolio__title,
-.portfolio__site-link.portfolio__site-link:focus .portfolio__title {
-  color: var(--link-text-color);
-  text-decoration: underline currentColor;
-  text-shadow: 2px 2px 1px #2c3dce;
-}
-
-.portfolio__site-link.portfolio__site-link:hover .portfolio__img,
-.portfolio__site-link.portfolio__site-link:focus .portfolio__img {
-  filter: brightness(25%);
-}
-
-.portfolio__title-wrapper {
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 3;
-  padding: 1.5rem;
+.project-item__preview img {
   width: 100%;
   height: 100%;
-  font-weight: bold;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.2s ease;
+}
+
+.project-item__preview:hover img {
+  transform: scale(1.05);
+}
+
+.project-item__body {
   display: flex;
   flex-direction: column;
-  background: linear-gradient(15deg, rgb(0 0 0 / 90%) 30%, transparent);
-  justify-content: flex-end;
-  align-items: flex-end;
+  gap: 0.375rem;
+  flex: 1;
+  min-width: 0;
 }
 
-.portfolio__title,
-.portfolio__subtitle {
-  transition: all 0.2s ease;
+.project-item__title {
+  font-size: 1rem;
+  font-weight: 600;
 }
 
-.portfolio__title {
-  text-decoration: underline transparent;
-  font-size: 1.1em;
-  margin-bottom: 1rem;
-  color: inherit;
-  align-self: flex-start;
-}
-
-.portfolio__subtitle {
-  font-size: 0.7em;
-  align-self: flex-end;
-  align-self: flex-start;
-}
-
-.portfolio__img {
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  left: 0;
-  width: 100%;
-  min-height: 100%;
-  height: auto;
-  transition: all 0.2s ease;
-  background: #000;
-}
-
-.portfolio__item-about-list {
-  background-color: var(--bg-color2);
-  align-self: flex-start;
-  padding: 0.5rem 1rem;
-  color: var(--main-text-color);
-  font-size: 0.8em;
-  width: 100%;
-}
-
-.portfolio__item-about {
-  list-style: inside;
-}
-
-.portfolio__git-link {
-  width: 100%;
-  border-top: rgb(197 197 197 / 20%) 1px solid;
-  color: inherit;
-  font-weight: bold;
-  background: #000;
-  text-align: center;
-  padding: 0.7rem 1rem;
-  font-size: 0.75em;
-  transition: all 0.2s ease;
-  border-radius: 0 0 0.7rem 0.7rem;
+.project-item__actions {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
 }
 
-.portfolio__git-link:hover,
-.portfolio__git-link:focus {
-  color: var(--main-accent-color);
-  text-decoration: underline;
-}
+@media (max-width: 575.98px) {
+  .project-item {
+    flex-wrap: wrap;
+  }
 
-.portfolio__git-link:focus {
-  box-shadow: 0 0 0 0.3rem var(--main-accent-color) inset;
-  outline: none;
-}
+  .project-item__preview {
+    width: 6rem;
+  }
 
-.portfolio__git-link .icon {
-  height: 1.4em;
-  width: 2em;
+  .project-item__actions {
+    width: 100%;
+  }
 }
 </style>

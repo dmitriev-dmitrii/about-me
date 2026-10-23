@@ -29,7 +29,7 @@ export default {
   font-size: 0.8em;
   margin: 0.5em 0;
   width: 100%;
-  max-width: 35rem;
+  max-width: 21.875rem;
 
   @media (min-width: 767.98px) {
     max-width: 50%;
@@ -56,6 +56,6 @@ export default {
 
 .experience__item-description ul > li {
   list-style: inside;
-  padding: 0.25rem;
+  padding: 0.1562rem;
 }
 </style>

@@ -1,79 +1,137 @@
 <template>
-  <div class="form__wrapper block-border-bottom">
-    <form
-      id="form-contact"
-      class="form"
-      autocomplete="on"
-      enctype="multipart/form-data"
-      @submit.prevent="testForm"
-    >
-      <h4 id="contacts" class="title">Отправить Сообщение</h4>
+  <div class="contacts container">
+    <section class="settings-section">
+      <div class="settings-section__intro">
+        <h1 class="section-title">Отправить сообщение</h1>
+        <p class="text-subtle">
+          Сообщение придёт мне в Telegram. Поля «Имя» и «Телефон» обязательные.
+        </p>
 
-      <label for="name">Ваше имя</label>
-      <input id="name" v-model="form.name" class="form__input" type="text" placeholder="*" />
-      <label for="phone">Телефон</label>
-      <input
-        id="phone"
-        v-model="form.phone"
-        class="form__input"
-        minlength="10"
-        pattern="\+7\-[0-9]{3}\-[0-9]{3}\-[0-9]{2}\-[0-9]{2}"
-        autocomplete="tel"
-        type="tel"
-        placeholder="*"
-      />
-      <label for="email">Email</label>
-      <input id="email" v-model="form.email" class="form__input" type="email" />
-      <label for="message">Сообщение</label>
-      <textarea
-        id="message"
-        v-model="form.message"
-        class="form__input"
-        cols="20"
-        rows="4"
-      ></textarea>
-      <div class="status-message">
-        <span v-for="message in errors" :key="message" class="error"> {{ message }}<br /> </span>
-        <span class="success"> {{ status }}<br /> </span>
-        <span v-if="loading"> Отправка формы<br /> </span>
+        <h2 class="section-title contacts__direct-title">Или напишите напрямую</h2>
+        <ul class="contacts__links">
+          <li v-for="link in socialLinks" :key="link.name">
+            <GlIcon :name="link.icon" class="contacts__link-icon" />
+            <GlLink :href="link.href" target="_blank">{{ link.label }}</GlLink>
+          </li>
+        </ul>
       </div>
-      <button class="button" :disabled="loading" type="submit">Отправить</button>
-    </form>
+
+      <form
+        id="form-contact"
+        class="settings-section__form"
+        autocomplete="on"
+        novalidate
+        @submit.prevent="testForm"
+      >
+        <GlAlert
+          v-if="errors.length"
+          variant="danger"
+          title="Проверьте форму"
+          class="contacts__alert"
+          @dismiss="errors = []"
+        >
+          <ul class="contacts__errors">
+            <li v-for="message in errors" :key="message">{{ message }}</li>
+          </ul>
+        </GlAlert>
+
+        <GlAlert v-if="status" variant="success" class="contacts__alert" @dismiss="status = ''">
+          {{ status }}
+        </GlAlert>
+
+        <GlFormGroup label="Ваше имя" label-for="name">
+          <GlFormInput
+            id="name"
+            v-model="form.name"
+            autocomplete="name"
+            :state="fieldState('name')"
+          />
+        </GlFormGroup>
+
+        <GlFormGroup
+          label="Телефон"
+          label-for="phone"
+          label-description="Например, +7-999-123-45-67"
+        >
+          <GlFormInput
+            id="phone"
+            v-model="form.phone"
+            type="tel"
+            autocomplete="tel"
+            :state="fieldState('phone')"
+          />
+        </GlFormGroup>
+
+        <GlFormGroup label="Email" label-for="email" optional optional-text="(необязательно)">
+          <GlFormInput id="email" v-model="form.email" type="email" autocomplete="email" />
+        </GlFormGroup>
+
+        <GlFormGroup label="Сообщение" label-for="message" optional optional-text="(необязательно)">
+          <GlFormTextarea id="message" v-model="form.message" :rows="5" />
+        </GlFormGroup>
+
+        <div class="settings-section__footer">
+          <GlButton variant="confirm" type="submit" :loading="loading">Отправить</GlButton>
+        </div>
+      </form>
+    </section>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import GlAlert from '@gitlab/ui/dist/components/base/alert/alert'
+import GlButton from '@gitlab/ui/dist/components/base/button/button'
+import GlFormGroup from '@gitlab/ui/dist/components/base/form/form_group/form_group'
+import GlFormInput from '@gitlab/ui/dist/components/base/form/form_input/form_input'
+import GlFormTextarea from '@gitlab/ui/dist/components/base/form/form_textarea/form_textarea'
+import GlIcon from '@gitlab/ui/dist/components/base/icon/icon'
+import GlLink from '@gitlab/ui/dist/components/base/link/link'
+import { SOCIAL_LINKS } from '~/constants/profile'
+
+const emptyForm = () => ({
+  name: '',
+  phone: '',
+  email: '',
+  message: '',
+})
 
 export default {
+  components: { GlAlert, GlButton, GlFormGroup, GlFormInput, GlFormTextarea, GlIcon, GlLink },
+
   data: () => {
     return {
-      form: {
-        name: '',
-        phone: '',
-        email: '',
-        message: '',
-      },
-
+      form: emptyForm(),
+      socialLinks: SOCIAL_LINKS,
+      submitted: false,
       loading: false,
       status: '',
       errors: [],
     }
   },
+
   methods: {
+    fieldState(field) {
+      if (!this.submitted) return null
+      return this.form[field].length > 0 ? null : false
+    },
+
     testForm: function () {
+      this.submitted = true
+      this.status = ''
       this.errors = []
       if (!this.form.name.length > 0) {
-        this.errors.push('поле "Имя" обязательное')
+        this.errors.push('Поле «Имя» обязательное')
       }
       if (!this.form.phone.length > 0) {
-        this.errors.push('поле "Телефон" обязательное')
+        this.errors.push('Поле «Телефон» обязательное')
       }
 
       if (this.errors.length == 0) {
         this.sendMessage()
       }
     },
+
     sendMessage: function () {
       const token = '911702492:AAHG0Vm3jGvHaoG2WkTEF-sf3Zf4gKH_w5g'
       const chatID = '-302509922'
@@ -87,108 +145,82 @@ export default {
       stringMessage = stringMessage.join('')
       this.loading = true
       const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatID}&parse_mode=html&text=${stringMessage}`
-      axios.get(url).then((e) => {
-        if (e.status == 200) {
-          this.status = 'Oтправленно!'
-          this.form = {
-            name: '',
-            phone: '',
-            email: '',
-            message: '',
+      axios
+        .get(url)
+        .then((e) => {
+          if (e.status == 200) {
+            this.status = 'Сообщение отправлено, спасибо!'
+            this.form = emptyForm()
+            this.submitted = false
+          } else {
+            this.errors.push('Что-то пошло не так, попробуйте ещё раз')
           }
-        } else {
-          this.errors.push('Что то пошло не так...')
-        }
-        this.loading = false
-      })
+        })
+        .catch(() => {
+          this.errors.push('Не удалось отправить сообщение, попробуйте ещё раз')
+        })
+        .finally(() => {
+          this.loading = false
+        })
     },
   },
 }
 </script>
 
-<style>
-.form__wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.form {
-  width: 100%;
-  margin: 0 auto;
-  padding: 1em;
-  display: flex;
-  flex-direction: column;
-}
-
-@media (min-width: 575.98px) {
-  .form {
-    max-width: 70%;
-  }
+<style scoped>
+.settings-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem 2rem;
 }
 
 @media (min-width: 767.98px) {
-  .form {
-    max-width: 60%;
+  .settings-section {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
   }
 }
 
-@media (min-width: 991.98px) {
-  .form {
-    max-width: 50%;
-  }
+.settings-section__intro .text-subtle {
+  margin-top: 0.5rem;
 }
 
-.form .title {
-  text-align: center;
-  width: 100%;
+.contacts__direct-title {
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
 }
 
-.form textarea {
-  resize: vertical;
-  min-height: 5em;
+.contacts__links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
 }
 
-.form__input {
-  width: 100%;
-  display: block;
-  border-radius: 0.7rem;
-  border: 0.1rem solid rgb(197 197 197 / 30%);
-  padding: 0.5em;
-  font-size: 1.1em;
+.contacts__links li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contacts__link-icon {
+  color: var(--gl-icon-color-subtle);
+}
+
+.settings-section__form {
+  max-width: 40rem;
+}
+
+.contacts__alert {
   margin-bottom: 1rem;
-  background-color: var(--bg-color1);
-  caret-color: var(--main-text-color);
-  color: var(--main-text-color);
-  box-shadow:
-    0 0 0.1rem 0.1rem rgb(0 0 0 / 10%),
-    0 0 0.7rem 0.3rem rgb(146 224 246 / 90%);
-  transition: all 0.2s ease;
 }
 
-.form label {
-  display: block;
-  font-weight: 700;
-  margin: 0.5em 0;
+.contacts__errors {
+  margin: 0;
 }
 
-.form button[type='submit'] {
-  align-self: flex-end;
-}
-
-.status-message {
-  display: block;
-  transition: all 0.2s ease;
-  font-weight: bold;
-  user-select: none;
-  text-shadow: 0 0 0.1rem;
-}
-
-.error {
-  color: var(--error-color);
-}
-
-.success {
-  color: var(--succes-color);
+.settings-section__footer {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--gl-border-color-default);
 }
 </style>

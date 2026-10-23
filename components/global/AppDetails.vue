@@ -19,7 +19,7 @@ export default {}
 
 .app-details {
   border: 1px solid currentColor;
-  border-radius: 0.7rem;
+  border-radius: 0.4375rem;
   margin: 0.5em 0 1.5em;
   padding: 0.5em 0.5em 0;
 }

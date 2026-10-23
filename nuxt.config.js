@@ -26,7 +26,13 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['normalize.css/normalize.css', '@/assets/css/index.css'],
+  // GitLab UI подключается до стилей сайта, чтобы собственные стили имели приоритет
+  css: [
+    'normalize.css/normalize.css',
+    '@gitlab/ui/dist/index.css',
+    '@gitlab/ui/dist/tailwind.css',
+    '@/assets/css/index.css',
+  ],
 
   // https://image.nuxtjs.org/
   image: {
@@ -36,6 +42,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   // plugins: ['@plugins/phone.js'],
+  plugins: ['~/plugins/gitlab-ui.js'],
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
@@ -54,5 +61,8 @@ export default {
   axios: {},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    // @gitlab/ui поставляется как ES-модули с современным синтаксисом — webpack 4 нужна транспиляция
+    transpile: ['@gitlab/ui', 'lodash-es', 'gridstack'],
+  },
 }

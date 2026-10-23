@@ -1,119 +1,61 @@
 <template>
-  <footer class="footer">
-    <div class="footer__body container">
-      <div class="footer__first">
-        <h4 class="title" translate="no">
-          <span>Dmitriev</span>&nbsp;
-          <span>Dmitrii</span>
-        </h4>
-        <p translate="no">Frontend Developer<br /></p>
-      </div>
+  <footer class="app-footer">
+    <div class="app-footer__inner container">
+      <span class="text-subtle" translate="no">
+        © {{ year }} {{ profile.name }} · {{ profile.position }}
+      </span>
 
-      <div class="footer__second">
-        <h5 class="title">Контакты</h5>
-
-        <div class="footer__social-list">
-          <a class="footer__social-item" href="https://t.me/Dmitrev_Dmitrii" target="blank">
-            <SvgIcon name="telegram"></SvgIcon>
-          </a>
-          <a class="footer__social-item" href="https://github.com/dmitriev-dmitrii/" target="blank">
-            <SvgIcon name="github"></SvgIcon>
-          </a>
-          <a class="footer__social-item" href="https://vk.com/mr.dmitrievdmitrii" target="blank">
-            <SvgIcon name="vk"></SvgIcon>
-          </a>
-        </div>
-      </div>
+      <ul class="app-footer__links">
+        <li v-for="link in socialLinks" :key="link.name">
+          <GlLink :href="link.href" target="_blank" class="app-footer__link">
+            <GlIcon :name="link.icon" :size="16" />
+            {{ link.name }}
+          </GlLink>
+        </li>
+      </ul>
     </div>
   </footer>
 </template>
 
 <script>
-export default {}
+import GlIcon from '@gitlab/ui/dist/components/base/icon/icon'
+import GlLink from '@gitlab/ui/dist/components/base/link/link'
+import { PROFILE, SOCIAL_LINKS } from '~/constants/profile'
+
+export default {
+  components: { GlIcon, GlLink },
+  data: () => ({
+    profile: PROFILE,
+    socialLinks: SOCIAL_LINKS,
+    year: new Date().getFullYear(),
+  }),
+}
 </script>
 
 <style scoped>
-.footer {
-  background: #0d0d0d;
-  color: #dedede;
-  padding: 2rem 1rem;
+.app-footer {
+  border-top: 1px solid var(--gl-border-color-default);
+  background-color: var(--gl-background-color-subtle);
+  padding: 1.5rem 0;
 }
 
-.footer__body {
+.app-footer__inner {
   display: flex;
-  flex-flow: column-reverse wrap;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
 }
 
-@media (min-width: 575.98px) {
-  .footer__body {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-}
-
-.footer__first,
-.footer__second {
-  margin-bottom: 1em;
+.app-footer__links {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.app-footer__link {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-}
-
-@media (min-width: 575.98px) {
-  .footer__first,
-  .footer__second {
-    margin-bottom: 0;
-  }
-}
-
-@media (min-width: 575.98px) {
-  .footer__first {
-    align-items: flex-start;
-  }
-}
-
-.footer__second .title {
-  color: rgb(255 255 255 / 96%);
-}
-
-.footer__first > h4 {
-  background: var(--lg);
-  background-clip: text;
-  color: transparent;
-}
-
-.footer__social-list {
-  display: flex;
-}
-
-.footer__social-item {
-  height: 2em;
-  width: 2em;
-  margin: 0.25em 0.5em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
-  filter: drop-shadow(0 0 0);
-}
-
-.footer__social-item:hover,
-.footer__social-item:focus {
-  color: var(--main-accent-color);
-  filter: drop-shadow(0 0.5rem 0.7rem);
-}
-
-.footer__social-item:nth-of-type(even):hover,
-.footer__social-item:nth-of-type(even):focus {
-  color: var(--minor-accent-color);
-}
-
-.footer__social-item .icon {
-  height: 90%;
-  width: 90%;
+  gap: 0.25rem;
 }
 </style>

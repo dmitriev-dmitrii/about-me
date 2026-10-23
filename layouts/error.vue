@@ -1,64 +1,62 @@
 <template>
-  <div class="error-layout">
-    <div class="container">
-      <h1 class="title">
-        {{ error.statusCode }}
-      </h1>
-      <h2>{{ error.message }}</h2>
-
-      <NuxtLink to="/" class="button button-lg button-primary"> На главную </NuxtLink>
+  <div class="error-page container">
+    <p class="error-page__code">{{ error.statusCode }}</p>
+    <h1 class="error-page__title">{{ title }}</h1>
+    <p v-if="error.statusCode !== 404" class="text-subtle">{{ error.message }}</p>
+    <div class="error-page__actions">
+      <GlButton variant="confirm" icon="home" to="/">На главную</GlButton>
+      <GlButton icon="mail" to="/contacts">Связаться</GlButton>
     </div>
   </div>
 </template>
 
 <script>
+import GlButton from '@gitlab/ui/dist/components/base/button/button'
+
 export default {
-  layout: 'error',
+  components: { GlButton },
+  layout: 'default',
   props: {
     error: {
       type: Object,
       default: () => ({ statusCode: 500, message: 'Unexpected Error' }),
     },
   },
+  computed: {
+    title() {
+      return this.error.statusCode === 404 ? 'Страница не найдена' : 'Что-то пошло не так'
+    },
+  },
 }
 </script>
 
 <style scoped>
-.error-layout {
+.error-page {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  min-height: 60vh;
   text-align: center;
-  padding: 2rem;
+  gap: 0.5rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
-.error-layout h1 {
-  font-size: 8rem;
-  margin: 0;
+.error-page__code {
+  font-size: 4.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--gl-text-color-heading);
 }
 
-.error-layout h2 {
-  font-size: 2rem;
-  margin: 0 0 1rem;
+.error-page__title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--gl-text-color-heading);
 }
 
-.error-layout p {
-  margin-bottom: 2rem;
-  opacity: 0.7;
-}
-
-.btn {
-  display: inline-block;
-  padding: 0.8rem 2rem;
-  background: var(--main-text-color, #333);
-  color: var(--bg-color, #fff);
-  text-decoration: none;
-  border-radius: 4px;
-  transition: opacity 0.2s;
-}
-
-.btn:hover {
-  opacity: 0.8;
+.error-page__actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
 }
 </style>
