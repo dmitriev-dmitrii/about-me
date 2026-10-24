@@ -13,8 +13,6 @@ body {
   background-color: var(--gl-background-color-default);
   -webkit-font-smoothing: antialiased;
   height: 100%;
-    min-height: calc(100vh + 1px);
-    min-height: calc(100dvh + 1px);
 }
 
 /* id-элементы, которые создаёт Nuxt */

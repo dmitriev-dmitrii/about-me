@@ -19,7 +19,8 @@ export default {
 
 <style scoped>
 .default-layout {
-  height: 100%;
+  min-height: calc(100vh + 1px);
+  min-height: calc(100dvh + 1px);
   display: flex;
   flex-direction: column;
 }
