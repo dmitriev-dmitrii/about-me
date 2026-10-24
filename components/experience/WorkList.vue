@@ -91,14 +91,12 @@ export default {
         ...item,
         achievements: item.achievements || [],
         sections: [
-          { title: 'О компании', text: item.about },
           {
             title: item.project.name ? `Проект · ${item.project.name}` : 'Проект',
             text: item.project.description,
             url: item.project.url,
             urlLabel: item.project.url && stripProtocol(item.project.url),
           },
-          { title: 'Роль и команда', text: item.role },
         ].filter((section) => section.text),
       }))
     },

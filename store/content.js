@@ -1,37 +1,10 @@
-/*
- * Опыт работы и пет-проекты — из файла about-me.json в публичном GitHub Gist:
- * https://gist.github.com/dmitriev-dmitrii/e4742f218539795b2823f7a57d9feee1
- * Чтобы обновить сайт, достаточно отредактировать gist. Ссылка без хеша коммита
- * всегда отдаёт последнюю версию; GitHub кэширует её до 5 минут.
- *
- * Формат about-me.json:
- * {
- *   "work": [{
- *     "company": "4People",
- *     "companyUrl": "https://…",          // необязательно
- *     "position": "Frontend-разработчик (Vue)",
- *     "period": "Март 2023 — настоящее время",
- *     "duration": "3 года 8 месяцев",
- *     "about": "о компании",
- *     "project": { "name": "…", "description": "…", "url": "https://…" },  // url необязателен
- *     "role": "роль и команда",
- *     "achievements": ["что сделал", …],
- *     "stack": ["Vue 3", …]
- *   }],
- *   "projects": [{
- *     "name": "we-meet",
- *     "description": "…",
- *     "demo": "https://…",                // сайт / демо, необязательно
- *     "source": "https://gitlab.com/…",   // исходный код: строка или массив ссылок, необязательно
- *     "stack": ["Vue 3", …]
- *   }]
- * }
- * Картинка пет-проекта берётся из static/img/portfolio/<name в нижнем регистре>.png, если она есть.
- */
 import { slugify, toRepository } from '~/utils/links'
 
 export const CONTENT_URL =
   'https://gist.githubusercontent.com/dmitriev-dmitrii/e4742f218539795b2823f7a57d9feee1/raw/about-me.json'
+
+// редакитировать контент
+// https://gist.github.com/dmitriev-dmitrii/e4742f218539795b2823f7a57d9feee1/edit
 
 export const STATUS = {
   LOADING: 'loading',
@@ -57,9 +30,7 @@ export const getters = {
       position: item.position,
       period: item.period,
       duration: item.duration,
-      about: item.about,
       project: item.project || {},
-      role: item.role,
       achievements: item.achievements || [],
       stack: item.stack || [],
     }))
