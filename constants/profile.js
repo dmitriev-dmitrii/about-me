@@ -73,3 +73,6 @@ export const STACK = [
     items: ['jQuery', 'PHP', 'Gulp', 'WebRtc', 'Directus (Headless CMS)'],
   },
 ]
+
+export const TELEGRAM = 'dmitrii_dmitriev_dev'
+export const EMAIL = 'dmitrii.dmitriev.dev@gmail.com'

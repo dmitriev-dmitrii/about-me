@@ -2,161 +2,112 @@
   <div class="contacts container">
     <section class="settings-section">
       <div class="settings-section__intro">
-        <h1 class="section-title">Отправить сообщение</h1>
+        <h1 class="section-title">Контакты</h1>
         <p class="text-subtle">
-          Сообщение придёт мне напрямую. Поля «Имя» и «Телефон» обязательные.
+          Быстрее всего со мной связаться в Telegram, можно и на почту. Код и пет-проекты — на
+          GitHub и GitLab.
         </p>
-
-        <h2 class="section-title contacts__direct-title">Я в сети</h2>
-        <ul class="contacts__links">
-          <li v-for="link in socialLinks" :key="link.name">
-            <GlIcon :name="link.icon" class="contacts__link-icon" />
-            <GlLink :href="link.href" target="_blank">{{ link.label }}</GlLink>
-          </li>
-        </ul>
       </div>
 
-      <form
-        id="form-contact"
-        class="settings-section__form"
-        autocomplete="on"
-        novalidate
-        @submit.prevent="testForm"
-      >
-        <GlAlert
-          v-if="errors.length"
-          variant="danger"
-          title="Проверьте форму"
-          class="contacts__alert"
-          @dismiss="errors = []"
-        >
-          <ul class="contacts__errors">
-            <li v-for="message in errors" :key="message">{{ message }}</li>
-          </ul>
-        </GlAlert>
-
-        <GlAlert v-if="status" variant="success" class="contacts__alert" @dismiss="status = ''">
-          {{ status }}
-        </GlAlert>
-
-        <GlFormGroup label="Ваше имя" label-for="name">
-          <GlFormInput
-            id="name"
-            v-model="form.name"
-            autocomplete="name"
-            :state="fieldState('name')"
-          />
-        </GlFormGroup>
-
-        <GlFormGroup
-          label="Телефон"
-          label-for="phone"
-          label-description="Например, +7-999-123-45-67"
-        >
-          <GlFormInput
-            id="phone"
-            v-model="form.phone"
-            type="tel"
-            autocomplete="tel"
-            :state="fieldState('phone')"
-          />
-        </GlFormGroup>
-
-        <GlFormGroup label="Email" label-for="email" optional optional-text="(необязательно)">
-          <GlFormInput id="email" v-model="form.email" type="email" autocomplete="email" />
-        </GlFormGroup>
-
-        <GlFormGroup label="Сообщение" label-for="message" optional optional-text="(необязательно)">
-          <GlFormTextarea id="message" v-model="form.message" :rows="5" />
-        </GlFormGroup>
-
-        <div class="settings-section__footer">
-          <GlButton variant="confirm" type="submit" :loading="loading">Отправить</GlButton>
+      <div class="contacts__cards">
+        <div v-for="contact in contacts" :key="contact.id" class="gl-box contacts__card">
+          <span class="contacts__tile" :class="`contacts__tile--${contact.id}`">
+            <svg
+              v-if="contact.id === 'telegram'"
+              class="contacts__brand-icon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                d="M21.43 4.1 2.97 11.22c-1.26.5-1.25 1.2-.23 1.52l4.74 1.48 10.97-6.92c.52-.32 1-.15.6.2l-8.88 8.02-.34 4.9c.5 0 .72-.23 1-.5l2.3-2.24 4.79 3.54c.88.49 1.52.24 1.74-.82l3.15-14.83c.32-1.29-.49-1.87-1.38-1.47z"
+              />
+            </svg>
+            <GlIcon v-else :name="contact.icon" :size="24" />
+          </span>
+          <div class="contacts__info">
+            <span class="contacts__title">{{ contact.title }}</span>
+            <GlLink :href="contact.href" target="_blank" class="contacts__handle">
+              {{ contact.value }}
+            </GlLink>
+          </div>
+          <div class="contacts__actions">
+            <GlButton
+              v-gl-tooltip
+              :title="contact.action"
+              :aria-label="contact.action"
+              icon="external-link"
+              category="tertiary"
+              :href="contact.href"
+              target="_blank"
+              rel="noopener noreferrer"
+            />
+            <GlButton
+              v-gl-tooltip
+              :title="copiedId === contact.id ? 'Скопировано' : 'Скопировать'"
+              aria-label="Скопировать"
+              :icon="copiedId === contact.id ? 'check' : 'copy-to-clipboard'"
+              category="tertiary"
+              @click="copy(contact)"
+            />
+          </div>
         </div>
-      </form>
+      </div>
     </section>
   </div>
 </template>
 
 <script>
-import { SOCIAL_LINKS } from '~/constants/profile'
-import GlAlert from '@gitlab/ui/dist/components/base/alert/alert'
 import GlButton from '@gitlab/ui/dist/components/base/button/button'
-import GlFormGroup from '@gitlab/ui/dist/components/base/form/form_group/form_group'
-import GlFormInput from '@gitlab/ui/dist/components/base/form/form_input/form_input'
-import GlFormTextarea from '@gitlab/ui/dist/components/base/form/form_textarea/form_textarea'
 import GlIcon from '@gitlab/ui/dist/components/base/icon/icon'
 import GlLink from '@gitlab/ui/dist/components/base/link/link'
-
-// Адрес серверной прослойки (например, Cloudflare Worker), которая пересылает сообщение в Telegram.
-// Токен бота хранится только там — в коде сайта его быть не должно.
-// Пока адрес пустой, форма не отправляется и предлагает написать через GitHub / GitLab.
-const CONTACT_ENDPOINT = ''
-
-const emptyForm = () => ({
-  name: '',
-  phone: '',
-  email: '',
-  message: '',
-})
+import { GlTooltipDirective } from '@gitlab/ui/dist/directives/tooltip/tooltip'
+import { EMAIL, SOCIAL_LINKS, TELEGRAM } from '~/constants/profile'
 
 export default {
-  components: { GlAlert, GlButton, GlFormGroup, GlFormInput, GlFormTextarea, GlIcon, GlLink },
+  components: { GlButton, GlIcon, GlLink },
 
-  data: () => {
-    return {
-      socialLinks: SOCIAL_LINKS,
-      form: emptyForm(),
-      submitted: false,
-      loading: false,
-      status: '',
-      errors: [],
-    }
-  },
+  directives: { GlTooltip: GlTooltipDirective },
+
+  data: () => ({
+    contacts: [
+      {
+        id: 'telegram',
+        title: 'Telegram',
+        icon: 'paper-airplane',
+        value: `@${TELEGRAM}`,
+        href: `https://t.me/${TELEGRAM}`,
+        action: 'Написать',
+      },
+      {
+        id: 'email',
+        title: 'Почта',
+        icon: 'mail',
+        value: EMAIL,
+        href: `mailto:${EMAIL}`,
+        action: 'Написать',
+      },
+      ...SOCIAL_LINKS.map((link) => ({
+        id: link.name.toLowerCase(),
+        title: link.name,
+        icon: link.icon,
+        value: link.label,
+        href: link.href,
+        action: 'Открыть профиль',
+      })),
+    ],
+    copiedId: null,
+  }),
 
   methods: {
-    fieldState(field) {
-      if (!this.submitted) return null
-      return this.form[field].length > 0 ? null : false
-    },
-
-    testForm: function () {
-      this.submitted = true
-      this.status = ''
-      this.errors = []
-      if (!this.form.name.length > 0) {
-        this.errors.push('Поле «Имя» обязательное')
-      }
-      if (!this.form.phone.length > 0) {
-        this.errors.push('Поле «Телефон» обязательное')
-      }
-
-      if (this.errors.length == 0) {
-        this.sendMessage()
-      }
-    },
-
-    async sendMessage() {
-      if (!CONTACT_ENDPOINT) {
-        this.errors.push('Отправка формы пока не настроена — напишите мне через GitHub или GitLab')
-        return
-      }
-
-      this.loading = true
+    async copy(contact) {
       try {
-        const response = await fetch(CONTACT_ENDPOINT, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(this.form),
-        })
-        if (!response.ok) throw new Error(`HTTP ${response.status}`)
-        this.status = 'Сообщение отправлено, спасибо!'
-        this.form = emptyForm()
-        this.submitted = false
+        await navigator.clipboard.writeText(contact.value)
+        this.copiedId = contact.id
+        setTimeout(() => {
+          this.copiedId = null
+        }, 2000)
       } catch (e) {
-        this.errors.push('Не удалось отправить сообщение, попробуйте ещё раз')
-      } finally {
-        this.loading = false
+        // буфер обмена недоступен (например, не https) — контакт и так виден на странице
       }
     },
   },
@@ -170,53 +121,86 @@ export default {
   gap: 1.5rem 2rem;
 }
 
-@media (min-width: 767.98px) {
-  .settings-section {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-  }
-}
-
 .settings-section__intro .text-subtle {
   margin-top: 0.5rem;
 }
 
-.contacts__direct-title {
-  margin-top: 1.5rem;
+.contacts__cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 767.98px) {
+  .contacts__cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.contacts__card {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 1rem;
+}
+
+.contacts__tile {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: var(--gl-background-color-strong);
+}
+
+.contacts__tile--telegram {
+  color: #2aabee;
+}
+
+.contacts__brand-icon {
+  width: 1.375rem;
+  height: 1.375rem;
+  margin-left: -0.125rem;
+  fill: currentColor;
+}
+
+.contacts__tile--email {
+  color: var(--gl-text-color-default);
+}
+
+.contacts__tile--github {
+  color: var(--gl-text-color-default);
+}
+
+.contacts__tile--gitlab {
+  color: #fc6d26;
+}
+
+.contacts__info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.125rem;
+  min-width: 0;
+}
+
+.contacts__title {
+  color: var(--gl-text-color-subtle);
   font-size: 0.875rem;
 }
 
-.contacts__links {
+.contacts__handle {
+  overflow: hidden;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.contacts__actions {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-top: 0.75rem;
-}
-
-.contacts__links li {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.contacts__link-icon {
-  color: var(--gl-icon-color-subtle);
-}
-
-.settings-section__form {
-  max-width: 40rem;
-}
-
-.contacts__alert {
-  margin-bottom: 1rem;
-}
-
-.contacts__errors {
-  margin: 0;
-}
-
-.settings-section__footer {
-  margin-top: 1.5rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--gl-border-color-default);
+  flex-shrink: 0;
+  gap: 0.25rem;
 }
 </style>
