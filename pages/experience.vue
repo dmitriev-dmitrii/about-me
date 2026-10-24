@@ -2,30 +2,34 @@
   <div class="experience container">
     <header class="experience__header">
       <h1 class="page-title">Опыт</h1>
-      <p class="text-subtle">Коммерческая разработка и пет-проекты.</p>
+      <p class="text-subtle">{{ experience }} в коммерческой разработке, а ещё пет-проекты.</p>
     </header>
 
-    <GlTabs :value="activeTab" @input="onTabChange">
-      <GlTab
-        title="Опыт работы"
-        :tab-count="workList.length"
-        :tab-count-sr-text="`Мест работы: ${workList.length}`"
-      >
-        <WorkList :work-list="workList" />
-      </GlTab>
-      <GlTab
-        title="Пет-проекты"
-        :tab-count="projectsCount"
-        :tab-count-sr-text="`Проектов: ${projectsCount}`"
-      >
-        <ProjectsList />
-      </GlTab>
-    </GlTabs>
+    <ContentState>
+      <GlTabs :value="activeTab" @input="onTabChange">
+        <GlTab
+          title="Опыт работы"
+          :tab-count="workList.length"
+          :tab-count-sr-text="`Мест работы: ${workList.length}`"
+        >
+          <WorkList :work-list="workList" />
+        </GlTab>
+        <GlTab
+          title="Пет-проекты"
+          :tab-count="projects.length"
+          :tab-count-sr-text="`Проектов: ${projects.length}`"
+        >
+          <ProjectsList :projects="projects" />
+        </GlTab>
+      </GlTabs>
+    </ContentState>
   </div>
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
+import { mapGetters } from 'vuex'
+import ContentState from '~/components/global/ContentState.vue'
+import { PROFILE } from '~/constants/profile'
 import GlTab from '@gitlab/ui/dist/components/base/tabs/tab/tab'
 import GlTabs from '@gitlab/ui/dist/components/base/tabs/tabs/tabs'
 import WorkList from '~/components/experience/WorkList.vue'
@@ -35,25 +39,20 @@ import ProjectsList from '~/components/projects/ProjectsList.vue'
 const TABS = ['work', 'projects']
 
 export default {
-  components: { GlTab, GlTabs, WorkList, ProjectsList },
+  components: { ContentState, GlTab, GlTabs, WorkList, ProjectsList },
+
+  data: () => ({
+    experience: PROFILE.experience,
+  }),
 
   computed: {
     activeTab() {
       return Math.max(TABS.indexOf(this.$route.query.tab), 0)
     },
-    ...mapState('work', ['workList']),
-    projectsCount() {
-      return this.$store.state.projects.projectsList.filter((item) => item.isActive).length
-    },
-  },
-
-  created() {
-    this.fetchWorkData()
+    ...mapGetters('content', ['workList', 'projects']),
   },
 
   methods: {
-    ...mapActions('work', ['fetchWorkData']),
-
     onTabChange(index) {
       if (index === this.activeTab) return
       const tab = TABS[index]

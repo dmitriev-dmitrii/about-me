@@ -2,7 +2,8 @@
   <footer class="app-footer">
     <div class="app-footer__inner container">
       <span class="text-subtle" translate="no">
-        © {{ year }} {{ profile.name }} · {{ profile.position }}
+        {{ startYear }}–{{ year }}
+        <template v-if="profile.name"> {{ profile.name }}</template>
       </span>
 
       <ul class="app-footer__links">
@@ -18,15 +19,16 @@
 </template>
 
 <script>
+import { PROFILE, SOCIAL_LINKS } from '~/constants/profile'
 import GlIcon from '@gitlab/ui/dist/components/base/icon/icon'
 import GlLink from '@gitlab/ui/dist/components/base/link/link'
-import { PROFILE, SOCIAL_LINKS } from '~/constants/profile'
 
 export default {
   components: { GlIcon, GlLink },
   data: () => ({
     profile: PROFILE,
     socialLinks: SOCIAL_LINKS,
+    startYear: 2019,
     year: new Date().getFullYear(),
   }),
 }

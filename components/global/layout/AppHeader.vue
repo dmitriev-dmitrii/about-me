@@ -2,8 +2,10 @@
   <header class="app-header">
     <div class="app-header__inner container">
       <NuxtLink to="/" class="app-header__brand" aria-label="На главную">
-        <GlAvatar :entity-name="profile.name" :entity-id="7" :size="24" shape="rect" />
-        <span class="app-header__brand-name" translate="no">{{ profile.username }}</span>
+        <GlAvatar :entity-name="profile.name || 'D'" :entity-id="7" :size="24" shape="rect" />
+        <span v-if="profile.username" class="app-header__brand-name" translate="no">
+          {{ profile.username }}
+        </span>
       </NuxtLink>
 
       <nav class="app-header__nav" aria-label="Основная навигация">
@@ -21,12 +23,16 @@
 
       <div class="app-header__actions">
         <GlButton
+          v-for="link in socialLinks"
+          :key="link.name"
+          v-gl-tooltip.bottom
           category="tertiary"
-          icon="github"
-          href="https://github.com/dmitriev-dmitrii/"
+          :icon="link.icon"
+          :href="link.href"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="GitHub"
+          :title="link.name"
+          :aria-label="link.name"
         />
       </div>
     </div>
@@ -34,9 +40,10 @@
 </template>
 
 <script>
+import { PROFILE, SOCIAL_LINKS } from '~/constants/profile'
 import GlAvatar from '@gitlab/ui/dist/components/base/avatar/avatar'
 import GlButton from '@gitlab/ui/dist/components/base/button/button'
-import { PROFILE } from '~/constants/profile'
+import { GlTooltipDirective } from '@gitlab/ui/dist/directives/tooltip/tooltip'
 
 const NAV_LINKS = [
   { to: '/', label: 'Обо мне', icon: 'user' },
@@ -46,8 +53,10 @@ const NAV_LINKS = [
 
 export default {
   components: { GlAvatar, GlButton },
+  directives: { GlTooltip: GlTooltipDirective },
   data: () => ({
     profile: PROFILE,
+    socialLinks: SOCIAL_LINKS,
     navLinks: NAV_LINKS,
   }),
 }
@@ -64,7 +73,7 @@ export default {
 
 @supports (backdrop-filter: blur(1px)) {
   .app-header {
-    background-color: color-mix(in srgb, var(--gl-background-color-subtle) 75%, transparent);
+    background-color: color-mix(in sRGB, var(--gl-background-color-subtle) 75%, transparent);
     backdrop-filter: blur(12px);
   }
 }

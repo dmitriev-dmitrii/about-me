@@ -1,14 +1,41 @@
 <template>
   <li class="project-item">
-    <a :href="item.link" target="_blank" rel="noopener noreferrer" class="project-item__preview">
+    <a
+      v-if="preview"
+      :href="item.link"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="project-item__preview"
+    >
       <img :src="preview" :alt="`Скриншот ${item.title}`" loading="lazy" />
     </a>
+    <GlAvatar
+      v-else
+      :entity-name="item.title"
+      :entity-id="item.id"
+      :size="64"
+      shape="rect"
+      class="project-item__avatar"
+    />
 
     <div class="project-item__body">
       <h2 class="project-item__title">
-        <GlLink :href="item.link" target="_blank">{{ item.title }}</GlLink>
+        <GlLink v-if="item.link" :href="item.link" target="_blank">{{ item.title }}</GlLink>
+        <template v-else>{{ item.title }}</template>
       </h2>
-      <p class="text-subtle">{{ item.description }}</p>
+      <p v-if="item.description" class="text-subtle">{{ item.description }}</p>
+
+      <ul v-if="item.repositories.length || item.link" class="project-item__links">
+        <li v-for="repo in item.repositories" :key="repo.url">
+          <GlIcon :name="repo.icon" :size="14" class="project-item__link-icon" />
+          <GlLink :href="repo.url" target="_blank">{{ repo.label }}</GlLink>
+        </li>
+        <li v-if="item.link">
+          <GlIcon name="earth" :size="14" class="project-item__link-icon" />
+          <GlLink :href="item.link" target="_blank">{{ siteLabel }}</GlLink>
+        </li>
+      </ul>
+
       <div class="badge-list">
         <GlBadge v-for="tech in item.stack" :key="tech">{{ tech }}</GlBadge>
       </div>
@@ -16,34 +43,38 @@
 
     <div class="project-item__actions">
       <GlButton
-        icon="github"
-        size="small"
-        :href="item.linkGit"
+        v-for="repo in item.repositories"
+        :key="repo.url"
+        :icon="repo.icon"
+        :href="repo.url"
         target="_blank"
         rel="noopener noreferrer"
       >
-        Код
+        {{ item.repositories.length > 1 ? repo.name : 'Исходный код' }}
       </GlButton>
       <GlButton
+        v-if="item.link"
+        variant="confirm"
         icon="external-link"
-        size="small"
         :href="item.link"
         target="_blank"
         rel="noopener noreferrer"
       >
-        Демо
+        Сайт
       </GlButton>
     </div>
   </li>
 </template>
 
 <script>
+import GlAvatar from '@gitlab/ui/dist/components/base/avatar/avatar'
 import GlBadge from '@gitlab/ui/dist/components/base/badge/badge'
 import GlButton from '@gitlab/ui/dist/components/base/button/button'
+import GlIcon from '@gitlab/ui/dist/components/base/icon/icon'
 import GlLink from '@gitlab/ui/dist/components/base/link/link'
 
 export default {
-  components: { GlBadge, GlButton, GlLink },
+  components: { GlAvatar, GlBadge, GlButton, GlIcon, GlLink },
 
   props: {
     item: {
@@ -53,8 +84,19 @@ export default {
   },
 
   computed: {
+    siteLabel() {
+      return this.item.link.replace(/^https?:\/\//, '').replace(/\/$/, '')
+    },
+    // image — полная ссылка на картинку или имя файла из static/img/portfolio (без .png)
     preview() {
-      return require(`~/static/img/portfolio/${this.item.imgName}.png`)
+      const { image } = this.item
+      if (!image) return null
+      if (/^https?:\/\//.test(image)) return image
+      try {
+        return require(`~/static/img/portfolio/${image}.png`)
+      } catch (e) {
+        return null
+      }
     },
   },
 }
@@ -87,12 +129,35 @@ export default {
   transform: scale(1.05);
 }
 
+.project-item__avatar {
+  flex-shrink: 0;
+}
+
 .project-item__body {
   display: flex;
   flex-direction: column;
   gap: 0.375rem;
   flex: 1;
   min-width: 0;
+}
+
+.project-item__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+}
+
+.project-item__links li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.project-item__link-icon {
+  flex-shrink: 0;
+  color: var(--gl-icon-color-subtle);
 }
 
 .project-item__title {
@@ -102,6 +167,8 @@ export default {
 
 .project-item__actions {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 0.5rem;
   flex-shrink: 0;
 }

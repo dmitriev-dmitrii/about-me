@@ -5,24 +5,30 @@
  */
 
 body {
-  font-family: 'GitLab Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans',
-    Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  font-family: 'GitLab Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Noto Sans',
+    'Ubuntu', 'Cantarell', 'Helvetica Neue', sans-serif;
   font-size: 0.875rem;
   line-height: 1.5;
   color: var(--gl-text-color-default);
   background-color: var(--gl-background-color-default);
   -webkit-font-smoothing: antialiased;
+  height: 100%;
+    min-height: calc(100vh + 1px);
+    min-height: calc(100dvh + 1px);
 }
 
+/* id-элементы, которые создаёт Nuxt */
+/* stylelint-disable selector-id-pattern */
 #__nuxt,
 #__layout {
-  min-height: 100vh;
+    height: 100%;
 }
+/* stylelint-enable selector-id-pattern */
 
 code,
 pre,
 .font-monospace {
-  font-family: 'GitLab Mono', 'JetBrains Mono', Menlo, 'DejaVu Sans Mono', monospace;
+  font-family: 'GitLab Mono', 'JetBrains Mono', 'Menlo', 'DejaVu Sans Mono', monospace;
 }
 
 .container {
@@ -91,7 +97,6 @@ pre,
   gap: 0.25rem;
 }
 
-/* Фирменный градиент — мягкая подсветка верхней части страницы */
 :root {
   --site-gradient: linear-gradient(to right, #2d9cdb, #37f093 66%, #33c7ef);
   --site-gradient-opacity: 0.14;
@@ -111,7 +116,6 @@ body::before {
   height: 32rem;
   background: var(--site-gradient);
   opacity: var(--site-gradient-opacity);
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 100%);
   mask-image: linear-gradient(to bottom, #000 0%, transparent 100%);
   pointer-events: none;
 }

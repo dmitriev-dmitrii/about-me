@@ -4,10 +4,10 @@
       <div class="settings-section__intro">
         <h1 class="section-title">Отправить сообщение</h1>
         <p class="text-subtle">
-          Сообщение придёт мне в Telegram. Поля «Имя» и «Телефон» обязательные.
+          Сообщение придёт мне напрямую. Поля «Имя» и «Телефон» обязательные.
         </p>
 
-        <h2 class="section-title contacts__direct-title">Или напишите напрямую</h2>
+        <h2 class="section-title contacts__direct-title">Я в сети</h2>
         <ul class="contacts__links">
           <li v-for="link in socialLinks" :key="link.name">
             <GlIcon :name="link.icon" class="contacts__link-icon" />
@@ -79,7 +79,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import { SOCIAL_LINKS } from '~/constants/profile'
 import GlAlert from '@gitlab/ui/dist/components/base/alert/alert'
 import GlButton from '@gitlab/ui/dist/components/base/button/button'
 import GlFormGroup from '@gitlab/ui/dist/components/base/form/form_group/form_group'
@@ -87,7 +87,11 @@ import GlFormInput from '@gitlab/ui/dist/components/base/form/form_input/form_in
 import GlFormTextarea from '@gitlab/ui/dist/components/base/form/form_textarea/form_textarea'
 import GlIcon from '@gitlab/ui/dist/components/base/icon/icon'
 import GlLink from '@gitlab/ui/dist/components/base/link/link'
-import { SOCIAL_LINKS } from '~/constants/profile'
+
+// Адрес серверной прослойки (например, Cloudflare Worker), которая пересылает сообщение в Telegram.
+// Токен бота хранится только там — в коде сайта его быть не должно.
+// Пока адрес пустой, форма не отправляется и предлагает написать через GitHub / GitLab.
+const CONTACT_ENDPOINT = ''
 
 const emptyForm = () => ({
   name: '',
@@ -101,8 +105,8 @@ export default {
 
   data: () => {
     return {
-      form: emptyForm(),
       socialLinks: SOCIAL_LINKS,
+      form: emptyForm(),
       submitted: false,
       loading: false,
       status: '',
@@ -132,36 +136,28 @@ export default {
       }
     },
 
-    sendMessage: function () {
-      const token = '911702492:AAHG0Vm3jGvHaoG2WkTEF-sf3Zf4gKH_w5g'
-      const chatID = '-302509922'
-
-      let stringMessage = []
-
-      for (let item in this.form) {
-        const row = `<b>${item}</b>:%20${this.form[item]}%0A`
-        stringMessage.push(row)
+    async sendMessage() {
+      if (!CONTACT_ENDPOINT) {
+        this.errors.push('Отправка формы пока не настроена — напишите мне через GitHub или GitLab')
+        return
       }
-      stringMessage = stringMessage.join('')
+
       this.loading = true
-      const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatID}&parse_mode=html&text=${stringMessage}`
-      axios
-        .get(url)
-        .then((e) => {
-          if (e.status == 200) {
-            this.status = 'Сообщение отправлено, спасибо!'
-            this.form = emptyForm()
-            this.submitted = false
-          } else {
-            this.errors.push('Что-то пошло не так, попробуйте ещё раз')
-          }
+      try {
+        const response = await fetch(CONTACT_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(this.form),
         })
-        .catch(() => {
-          this.errors.push('Не удалось отправить сообщение, попробуйте ещё раз')
-        })
-        .finally(() => {
-          this.loading = false
-        })
+        if (!response.ok) throw new Error(`HTTP ${response.status}`)
+        this.status = 'Сообщение отправлено, спасибо!'
+        this.form = emptyForm()
+        this.submitted = false
+      } catch (e) {
+        this.errors.push('Не удалось отправить сообщение, попробуйте ещё раз')
+      } finally {
+        this.loading = false
+      }
     },
   },
 }

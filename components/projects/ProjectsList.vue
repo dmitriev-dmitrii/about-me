@@ -10,9 +10,10 @@ import ProjectItem from '~/components/projects/ProjectItem.vue'
 export default {
   components: { ProjectItem },
 
-  computed: {
-    projects() {
-      return [...this.$store.state.projects.projectsList].filter((item) => item.isActive).reverse()
+  props: {
+    projects: {
+      type: Array,
+      default: () => [],
     },
   },
 }
