@@ -117,3 +117,28 @@ body::before {
   mask-image: linear-gradient(to bottom, #000 0%, transparent 100%);
   pointer-events: none;
 }
+
+/* Переходы между страницами (Nuxt по умолчанию вешает transition "page" в режиме out-in) */
+.page-enter-active,
+.page-leave-active {
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.page-enter {
+  opacity: 0;
+  transform: translateY(0.5rem);
+}
+
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-0.25rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-enter-active,
+  .page-leave-active {
+    transition: none;
+  }
+}
