@@ -39,9 +39,6 @@ export const STATUS = {
   ERROR: 'error',
 }
 
-const isValidContent = (data) =>
-  Boolean(data && Array.isArray(data.work) && Array.isArray(data.projects))
-
 export const state = () => ({
   status: STATUS.LOADING,
   work: [],
@@ -99,9 +96,11 @@ export const actions = {
     commit('SET_STATUS', STATUS.LOADING)
     try {
       const response = await fetch(CONTENT_URL)
-      if (!response.ok) throw new Error(`HTTP ${response.status}`)
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`)
+      }
       const data = await response.json()
-      if (!isValidContent(data)) throw new Error('Некорректный about-me.json')
+
       commit('SET_CONTENT', data)
       commit('SET_STATUS', STATUS.SUCCESS)
     } catch (error) {

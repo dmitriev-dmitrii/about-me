@@ -2,7 +2,7 @@
   <footer class="app-footer">
     <div class="app-footer__inner container">
       <span class="text-subtle" translate="no">
-        {{ startYear }}–{{ year }}
+        {{ profile.startCarrierYear }}–{{ year }}
         <template v-if="profile.name"> {{ profile.name }}</template>
       </span>
 
@@ -28,7 +28,6 @@ export default {
   data: () => ({
     profile: PROFILE,
     socialLinks: SOCIAL_LINKS,
-    startYear: 2019,
     year: new Date().getFullYear(),
   }),
 }

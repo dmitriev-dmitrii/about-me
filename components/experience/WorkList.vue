@@ -54,22 +54,8 @@
         <section v-if="item.achievements.length">
           <h3 class="work-item__section-title">Что сделал</h3>
           <ul class="work-item__achievements">
-            <li v-for="(text, index) in visibleAchievements(item)" :key="index">{{ text }}</li>
+            <li v-for="(text, index) in item.achievements" :key="index">{{ text }}</li>
           </ul>
-          <GlButton
-            v-if="item.achievements.length > previewCount"
-            category="tertiary"
-            size="small"
-            :icon="isExpanded(item) ? 'chevron-up' : 'chevron-down'"
-            class="work-item__toggle"
-            @click="toggle(item)"
-          >
-            {{
-              isExpanded(item)
-                ? 'Свернуть'
-                : `Показать ещё ${item.achievements.length - previewCount}`
-            }}
-          </GlButton>
         </section>
 
         <div class="badge-list">
@@ -85,13 +71,12 @@
 <script>
 import GlAvatar from '@gitlab/ui/dist/components/base/avatar/avatar'
 import GlBadge from '@gitlab/ui/dist/components/base/badge/badge'
-import GlButton from '@gitlab/ui/dist/components/base/button/button'
 import GlIcon from '@gitlab/ui/dist/components/base/icon/icon'
 import GlLink from '@gitlab/ui/dist/components/base/link/link'
 import { stripProtocol } from '~/utils/links'
 
 export default {
-  components: { GlAvatar, GlBadge, GlButton, GlIcon, GlLink },
+  components: { GlAvatar, GlBadge, GlIcon, GlLink },
 
   props: {
     workList: {
@@ -99,11 +84,6 @@ export default {
       default: () => [],
     },
   },
-
-  data: () => ({
-    previewCount: 4,
-    expandedIds: [],
-  }),
 
   computed: {
     items() {
@@ -121,22 +101,6 @@ export default {
           { title: 'Роль и команда', text: item.role },
         ].filter((section) => section.text),
       }))
-    },
-  },
-
-  methods: {
-    isExpanded(item) {
-      return this.expandedIds.includes(item.id)
-    },
-    toggle(item) {
-      this.expandedIds = this.isExpanded(item)
-        ? this.expandedIds.filter((id) => id !== item.id)
-        : [...this.expandedIds, item.id]
-    },
-    visibleAchievements(item) {
-      return this.isExpanded(item)
-        ? item.achievements
-        : item.achievements.slice(0, this.previewCount)
     },
   },
 }
@@ -223,11 +187,6 @@ export default {
   height: 0.375rem;
   border-radius: 50%;
   background: var(--site-gradient, var(--gl-text-color-subtle));
-}
-
-.work-item__toggle {
-  margin-top: 0.5rem;
-  margin-left: -0.5rem;
 }
 
 .work-list__empty {

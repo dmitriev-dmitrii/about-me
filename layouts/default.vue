@@ -27,6 +27,9 @@ export default {
 
 .default-layout__main {
   flex: 1;
+  /* колонка, чтобы страница (например, ошибка) могла растянуться на всю высоту */
+  display: flex;
+  flex-direction: column;
   padding: 2rem 0 3rem;
 }
 </style>

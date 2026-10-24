@@ -1,15 +1,17 @@
-// Профиль, ссылки и стек — задаются прямо на фронте.
-// Опыт работы и пет-проекты приходят из gist (about-me.json), см. store/content.js
-
 export const PROFILE = {
   name: 'Dmitriev Dmitrii',
   username: 'dmitriev-dmitrii',
   position: 'Frontend Developer',
   summary:
-    'Привет! Я JavaScript / Node.js-разработчик, специализирующийся на фронтенде (Vue / Nuxt). Создаю сложные SPA и платформы на базе микрофронтенд-архитектуры, а при необходимости — работаю и с бэкендом.',
+    'Привет! Я JavaScript-разработчик с фокусом на фронтенде - Vue / Nuxt. ' +
+    'Делал сложные SPA на Vue 2 и Vue 3 и SSR-приложения на Nuxt в микрофронтендной архитектуре. ' +
+    'Могу выйти и за пределы фронта: напишу API на Node.js, упакую в Docker и задеплою - ' +
+    'Linux у меня основная ОС, базовый DevOps не пугает. ' +
+    'В работе активно использую нейросети и AI-ассистентов: быстрее разбираюсь в чужом коде, ' +
+    'прототипирую и отдаю рутину машине.',
   location: 'Saint-Petersburg',
   birthYear: 1992,
-  experience: '6 лет',
+  startCarrierYear: 2019,
 }
 
 // icon — имя иконки из @gitlab/svgs
@@ -33,7 +35,7 @@ export const STACK = [
   {
     title: 'Основное',
     variant: 'info',
-    items: ['Vue 3', 'Vue 2', 'Nuxt 3', 'Nuxt 2', 'TypeScript', 'JavaScript'],
+    items: ['Vue 3', 'Vue 2', 'Nuxt 3', 'Nuxt 2', 'TypeScript', 'JavaScript', 'Node.js'],
   },
   {
     title: 'Данные и состояние',
@@ -43,12 +45,12 @@ export const STACK = [
   {
     title: 'Архитектура',
     variant: 'neutral',
-    items: ['SPA', 'SSR', 'Микрофронтенды', 'BFF', 'Directus (Headless CMS)'],
+    items: ['SPA', 'SSR', 'Микрофронтенды', 'BFF'],
   },
   {
     title: 'Вёрстка и UI',
     variant: 'neutral',
-    items: ['HTML', 'SCSS', 'Tailwind', 'Vuetify', 'Element UI', 'Figma'],
+    items: ['HTML', 'SCSS', 'Tailwind', 'Vuetify', 'Element UI', 'Bootstrap', 'Figma'],
   },
   {
     title: 'Сборка и DevOps',
@@ -63,11 +65,11 @@ export const STACK = [
   {
     title: 'Тесты и документация',
     variant: 'neutral',
-    items: ['Jest', 'Storybook'],
+    items: ['Jest', 'Storybook', 'Confluence'],
   },
   {
     title: 'Доводилось работать',
     variant: 'neutral',
-    items: ['jQuery', 'PHP', 'Gulp'],
+    items: ['jQuery', 'PHP', 'Gulp', 'WebRtc', 'Directus (Headless CMS)'],
   },
 ]

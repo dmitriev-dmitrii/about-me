@@ -32,10 +32,11 @@ export default {
 
 <style scoped>
 .error-page {
-  height: 100%;
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
   gap: 0.5rem;
   padding-top: 4rem;

@@ -28,10 +28,6 @@
             <GlIcon name="work" class="profile__meta-icon" />
             {{ profile.position }}
           </li>
-          <li>
-            <GlIcon name="calendar" class="profile__meta-icon" />
-            {{ ageLabel }}
-          </li>
           <li v-for="link in socialLinks" :key="link.name">
             <GlIcon :name="link.icon" class="profile__meta-icon" />
             <GlLink :href="link.href" target="_blank">{{ link.label }}</GlLink>
@@ -47,17 +43,31 @@
           </div>
           <div class="readme">
             <p v-if="profile.summary" class="readme__lead">{{ profile.summary }}</p>
-
-            <pre class="code-viewer" translate="no"><code><span
-            v-for="(line, index) in codeLines"
-            :key="index"
-            class="code-viewer__line"
-          ><span class="code-viewer__number">{{ index + 1 }}</span><span
-            v-for="(token, tIndex) in line"
-            :key="tIndex"
-            :class="token.type && `tok-${token.type}`"
-          >{{ token.text }}</span>
-</span></code></pre>
+            <div class="code-viewer font-monospace" translate="no">
+              <div class="code-viewer__line">
+                <span class="tok-keyword">const</span> <span class="tok-variable">dmitrii</span> = {
+              </div>
+              <div class="code-viewer__line code-viewer__line--indent">
+                <span class="tok-property">name</span>: <span class="tok-string">'Dmitrii'</span>,
+              </div>
+              <div class="code-viewer__line code-viewer__line--indent">
+                <span class="tok-property">surname</span>:
+                <span class="tok-string">'Dmitriev'</span>,
+              </div>
+              <div class="code-viewer__line code-viewer__line--indent">
+                <span class="tok-property">age</span>: <span class="tok-number">{{ age }}</span
+                >,
+              </div>
+              <div class="code-viewer__line code-viewer__line--indent">
+                <span class="tok-property">location</span>:
+                <span class="tok-string">'{{ profile.location }}'</span>,
+              </div>
+              <div class="code-viewer__line code-viewer__line--indent">
+                <span class="tok-property">position</span>:
+                <span class="tok-string">'{{ profile.position }}'</span>,
+              </div>
+              <div class="code-viewer__line">}</div>
+            </div>
           </div>
         </section>
 
@@ -91,15 +101,6 @@ import GlLink from '@gitlab/ui/dist/components/base/link/link'
 import photo from '~/static/img/dmitriev-dmitrii.jpg'
 import { PROFILE, SOCIAL_LINKS, STACK } from '~/constants/profile'
 
-// склонение: 1 год, 2 года, 5 лет
-function plural(n, [one, few, many]) {
-  const mod10 = n % 10
-  const mod100 = n % 100
-  if (mod10 === 1 && mod100 !== 11) return one
-  if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return few
-  return many
-}
-
 export default {
   components: { GlAvatar, GlBadge, GlButton, GlIcon, GlLink },
 
@@ -113,34 +114,6 @@ export default {
   computed: {
     age() {
       return new Date().getFullYear() - this.profile.birthYear
-    },
-    ageLabel() {
-      return `${this.age} ${plural(this.age, ['год', 'года', 'лет'])}`
-    },
-    codeLines() {
-      const prop = (key, value, type = 'string') => [
-        { text: '  ' },
-        { text: key, type: 'property' },
-        { text: ': ' },
-        { text: value, type },
-        { text: ',' },
-      ]
-      // basics.name в формате «Фамилия Имя»
-      const [surname = '', name = ''] = (this.profile.name || '').split(' ')
-      return [
-        [
-          { text: 'const', type: 'keyword' },
-          { text: ' ' },
-          { text: (name || 'me').toLowerCase(), type: 'variable' },
-          { text: ' = {' },
-        ],
-        prop('name', `'${name}'`),
-        prop('surname', `'${surname}'`),
-        prop('age', String(this.age), 'number'),
-        prop('location', `'${this.profile.location}'`),
-        prop('position', `'${this.profile.position}'`),
-        [{ text: '}' }],
-      ]
     },
   },
 }
@@ -235,21 +208,31 @@ export default {
   border-radius: var(--gl-border-radius-default, 0.25rem);
   color: var(--gl-text-color-default);
   overflow-x: auto;
-  white-space: pre !important;
+  counter-reset: line;
 }
 
+/* Код написан прямо в шаблоне: переносы от форматтера схлопываются в пробел,
+   отступ свойств задаётся классом, номера строк — CSS-счётчиком */
 .code-viewer__line {
-  display: block;
+  position: relative;
+  padding-left: 4rem;
   padding-right: 1rem;
+  white-space: nowrap;
 }
 
-.code-viewer__number {
-  display: inline-block;
+.code-viewer__line::before {
+  counter-increment: line;
+  content: counter(line);
+  position: absolute;
+  left: 0;
   width: 3rem;
-  padding-right: 1rem;
   text-align: right;
   color: var(--gl-text-color-disabled);
   user-select: none;
+}
+
+.code-viewer__line--indent {
+  padding-left: calc(4rem + 2ch);
 }
 
 /* подсветка синтаксиса */

@@ -25,17 +25,6 @@
       </h2>
       <p v-if="item.description" class="text-subtle">{{ item.description }}</p>
 
-      <ul v-if="item.repositories.length || item.link" class="project-item__links">
-        <li v-for="repo in item.repositories" :key="repo.url">
-          <GlIcon :name="repo.icon" :size="14" class="project-item__link-icon" />
-          <GlLink :href="repo.url" target="_blank">{{ repo.label }}</GlLink>
-        </li>
-        <li v-if="item.link">
-          <GlIcon name="earth" :size="14" class="project-item__link-icon" />
-          <GlLink :href="item.link" target="_blank">{{ siteLabel }}</GlLink>
-        </li>
-      </ul>
-
       <div class="badge-list">
         <GlBadge v-for="tech in item.stack" :key="tech">{{ tech }}</GlBadge>
       </div>
@@ -139,25 +128,6 @@ export default {
   gap: 0.375rem;
   flex: 1;
   min-width: 0;
-}
-
-.project-item__links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem 1rem;
-}
-
-.project-item__links li {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  min-width: 0;
-  overflow-wrap: anywhere;
-}
-
-.project-item__link-icon {
-  flex-shrink: 0;
-  color: var(--gl-icon-color-subtle);
 }
 
 .project-item__title {

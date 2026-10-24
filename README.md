@@ -5,7 +5,7 @@
 ## Build Setup
 master branch - auto deploy generate nuxt
 vue 2 (nuxt) legacy
-ui - [gitlabUI](https://design.gitlab.com/components/tabs)
+ui - [gitlabUI](https://design.gitlab.com/components)
 node version 16
 
 json load from github-gist
