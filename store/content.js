@@ -31,7 +31,6 @@ export const getters = {
       period: item.period,
       duration: item.duration,
       project: item.project || {},
-      achievements: item.achievements || [],
       stack: item.stack || [],
     }))
   },
